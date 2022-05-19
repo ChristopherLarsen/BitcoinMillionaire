@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+class HomeInteractor: HomeInteractorProtocol {
+    
+    func checkLatestBitcoinPrice() {
+        print("Check latest BitCoin Price")
+    }
+    
+    func checkIfIAmAMillionaire() {
+        print("Check If I am a Millionaire")
+    }
+}

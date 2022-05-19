@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+class HomeRouter: HomeRouterProtocol {
+    func openAddBitCoinView() {
+        print("Opening Add Bitcoin View")
+    }
+    
+    func openSellBitCoinView() {
+        print("Opening Sell Bitcoin View")
+    }
+}

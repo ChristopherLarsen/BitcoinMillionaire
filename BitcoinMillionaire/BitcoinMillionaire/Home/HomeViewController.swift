@@ -11,6 +11,7 @@ import Combine
 class HomeViewController: UIViewController {
     
     //MARK: Variables & Constants
+    
     var latestPriceLabel: UILabel!
     var latestPrice: Double?
     var numberOfCoinsLabel: UILabel!
@@ -18,11 +19,11 @@ class HomeViewController: UIViewController {
     var bitcoinContainerView: UIView!
     var buttonStack: UIStackView!
     var millionaireButton: UIButton!
-    
-    var presenter: HomePresenter?
+    var presenter: HomePresenterProtocol?
 
     //MARK: Lifecycle methods
-    init(presenter: HomePresenter) {
+    
+    init(presenter: HomePresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -174,18 +175,18 @@ class HomeViewController: UIViewController {
     
     //MARK: Actions performed by buttons
     @objc func addBitCoin() {
-       print("Add BitCoin")
+        presenter?.addBitCoin()
     }
     
     @objc func sellBitCoin() {
-        print("Sell BitCoin")
+        presenter?.sellBitCoin()
     }
     
     @objc func checkPrice() {
-        print("Check BitCoin Price")
+        presenter?.checkLatestBitcoinPrice()
     }
     
     @objc func checkForMillionaire() {
-        print("Check if i am millionaire")
+        presenter?.checkIfIAmAMillionaire()
     }
 }
