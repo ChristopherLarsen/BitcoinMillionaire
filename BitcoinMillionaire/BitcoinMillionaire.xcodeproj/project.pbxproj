@@ -22,7 +22,6 @@
 		57A0C7462836A49B00AC0A39 /* DatabaseServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C7452836A49B00AC0A39 /* DatabaseServiceTests.swift */; };
 		57A0C7482836A50100AC0A39 /* MockUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C7472836A50100AC0A39 /* MockUserDefaults.swift */; };
 		57A0C74A2836A78200AC0A39 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C7492836A78200AC0A39 /* UserDefaultsProtocol.swift */; };
-		57A0C74C2836B9F100AC0A39 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C74B2836B9F100AC0A39 /* Weak.swift */; };
 		57A0C74E2836CF8100AC0A39 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C74D2836CF8100AC0A39 /* MockDatabase.swift */; };
 		57A0C7542836D57300AC0A39 /* UserBitcoinEntityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C7532836D57300AC0A39 /* UserBitcoinEntityTests.swift */; };
 		7A2A3F2F28357DF300559CB4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F2E28357DF300559CB4 /* HomeViewController.swift */; };
@@ -374,6 +373,7 @@
 				57A0C70028355CAA00AC0A39 /* Sources */,
 				57A0C70128355CAA00AC0A39 /* Frameworks */,
 				57A0C70228355CAA00AC0A39 /* Resources */,
+				57A0C7552836D72D00AC0A39 /* Mark TODO as Warnings */,
 			);
 			buildRules = (
 			);
@@ -489,6 +489,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		57A0C7552836D72D00AC0A39 /* Mark TODO as Warnings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Mark TODO as Warnings";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:\"\nERRORTAG=\"FIXME:\"\nOUTPUT=$(find \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\")\nECHO \"$OUTPUT\"\nif [[ $OUTPUT == *\" error: \"* ]]\nthen\nexit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		57A0C70028355CAA00AC0A39 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -509,7 +530,6 @@
 				57A0C7422836A0A000AC0A39 /* DatabaseService.swift in Sources */,
 				57A0C70828355CAA00AC0A39 /* AppDelegate.swift in Sources */,
 				7A2A3F3528357E1500559CB4 /* HomeRouter.swift in Sources */,
-				57A0C74C2836B9F100AC0A39 /* Weak.swift in Sources */,
 				7A2A3F4528357E9800559CB4 /* RemoveBitcoinPresenter.swift in Sources */,
 				57A0C7442836A22500AC0A39 /* DatabaseError.swift in Sources */,
 				7A2A3F4728357EA000559CB4 /* RemoveBitcoinRouter.swift in Sources */,
