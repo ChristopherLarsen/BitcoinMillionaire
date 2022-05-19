@@ -8,7 +8,12 @@
 import Foundation
 
 struct Constants {
+ 
     struct WebService {
         static let bitcoinPriceEndpoint = "https://api.coindesk.com/v1/bpi/currentprice.json"
     }
+    
+    static let keyUserBitcoin: String       = "KeyUserBitoin"
+    static let keyBitcoinPrice: String      = "KeyBitoinPrice"
+
 }
