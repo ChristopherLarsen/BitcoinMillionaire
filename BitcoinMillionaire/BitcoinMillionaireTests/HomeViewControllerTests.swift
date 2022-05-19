@@ -11,9 +11,11 @@ import XCTest
 class HomeViewControllerTests: XCTestCase {
 
     var systemUnderTest: HomeViewController!
+    var homeInteractor: HomeInteractorProtocol!
     
     override func setUpWithError() throws {
-        systemUnderTest = HomeViewController(presenter: HomePresenter())
+        homeInteractor = MockHomeInteractor()
+        systemUnderTest = HomeViewController(presenter: MockHomePresenter(interactor: homeInteractor))
         systemUnderTest.loadViewIfNeeded()
     }
 
