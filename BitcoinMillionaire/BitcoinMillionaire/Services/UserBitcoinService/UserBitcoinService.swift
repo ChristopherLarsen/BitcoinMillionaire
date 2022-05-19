@@ -17,6 +17,13 @@ protocol UserBitcoinServiceProtocol {
 }
 
 
+// MARK: - UserBitcoinServiceError
+
+enum UserBitcoinServiceError: Error {
+    case insufficientBitcoinToRemove
+    case unknownError
+}
+
 // MARK: - UserBitcoinService
 
 class UserBitcoinService: UserBitcoinServiceProtocol {
@@ -39,12 +46,52 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     
     func fetchLatestUserBitcoinsFromDatabase() {
         
+        print("Fetching ...")
+        
         if case .success(let readObject) = database.read(key: Constants.keyUserBitcoin) {
+            print("Hit")
             if let userBitcoinEntity = readObject as? UserBitcoinEntity {
                 self.currentUserBitcoins.value = userBitcoinEntity
             }
+        } else {
+            print("Miss")
+            // TODO: Handle a miss on the Database
         }
         
+    }
+    
+    func addBitcoin(amountToAdd: Float) -> Result<Bool, UserBitcoinServiceError> {
+        
+        let currentBitcoins: Float = currentUserBitcoins.value.bitcoins
+        
+        let newValue = currentBitcoins + amountToAdd
+        
+        let userBitcoinEntity = UserBitcoinEntity(initialCoins: newValue)
+        
+        currentUserBitcoins.value = userBitcoinEntity
+        
+        return .success(true)
+    }
+
+    func removeBitcoin(amountToRemove: Float) -> Result<Bool, UserBitcoinServiceError> {
+
+        let currentBitcoins: Float = currentUserBitcoins.value.bitcoins
+        
+        guard currentBitcoins > amountToRemove else {
+            return .failure(.insufficientBitcoinToRemove)
+        }
+        
+        let newValue = currentBitcoins - amountToRemove
+        
+        let userBitcoinEntity = UserBitcoinEntity(initialCoins: newValue)
+        
+        currentUserBitcoins.value = userBitcoinEntity
+        
+        return .success(true)
+    }
+
+    func saveCurrentBitcoinsToDatabase() {
+        // TODO:
     }
     
 }

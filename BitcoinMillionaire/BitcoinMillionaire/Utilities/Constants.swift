@@ -13,7 +13,7 @@ struct Constants {
         static let bitcoinPriceEndpoint = "https://api.coindesk.com/v1/bpi/currentprice.json"
     }
     
-    static let keyUserBitcoin: String       = "KeyUserBitoin"
-    static let keyBitcoinPrice: String      = "KeyBitoinPrice"
+    static let keyUserBitcoin: String       = "keyUserBitcoin"
+    static let keyBitcoinPrice: String      = "KeyBitcoinPrice"
 
 }

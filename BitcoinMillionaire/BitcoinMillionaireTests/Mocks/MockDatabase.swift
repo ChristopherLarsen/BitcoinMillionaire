@@ -9,32 +9,30 @@ import Foundation
 @testable import BitcoinMillionaire
 
 
-class MockDatabase : DatabaseServiceProtocol {
+class MockDatabase : DatabaseService {
     
-    let userDefaults: UserDefaultsProtocol
-    
-    required init(userDefaults: UserDefaultsProtocol) {
-        self.userDefaults = userDefaults
+    override func create(key: String, object: Any) -> Result<Bool, DatabaseError> {
+        // TODO:
+        print("Mocking the Database - Create")
+        return super.create(key: key, object: object)
     }
     
-    func create(key: String, object: Codable) -> Result<Bool, DatabaseError> {
+    override func read(key: String) -> Result<Any, DatabaseError> {
         // TODO:
-        return .failure(.unknown)
+        print("Mocking the Database - Read")
+        return super.read(key: key)
     }
     
-    func read(key: String) -> Result<Codable, DatabaseError> {
+    override func update(key: String, object: Any) -> Result<Bool, DatabaseError> {
         // TODO:
-        return .failure(.unknown)
+        print("Mocking the Database - Update")
+        return super.update(key: key, object: object)
     }
     
-    func update(key: String, object: Codable) -> Result<Bool, DatabaseError> {
+    override func delete(key: String) -> Result<Bool, DatabaseError> {
         // TODO:
-        return .failure(.unknown)
-    }
-    
-    func delete(key: String) -> Result<Bool, DatabaseError> {
-        // TODO:
-        return .failure(.unknown)
+        print("Mocking the Database - Delete")
+        return super.delete(key: key)
     }
     
 }
