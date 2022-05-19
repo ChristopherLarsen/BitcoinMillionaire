@@ -36,6 +36,13 @@
 		7A2A3F4728357EA000559CB4 /* RemoveBitcoinRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F4628357EA000559CB4 /* RemoveBitcoinRouter.swift */; };
 		7A6F78E4283592BC0030FE91 /* ButtonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F78E3283592BC0030FE91 /* ButtonUtility.swift */; };
 		7A6F78E62835C6A10030FE91 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F78E52835C6A10030FE91 /* HomeViewControllerTests.swift */; };
+		7A6F79212836BEB00030FE91 /* HomePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F791E2836BEB00030FE91 /* HomePresenterProtocol.swift */; };
+		7A6F79222836BEB00030FE91 /* HomeInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F791F2836BEB00030FE91 /* HomeInteractorProtocol.swift */; };
+		7A6F79232836BEB00030FE91 /* HomeRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F79202836BEB00030FE91 /* HomeRouterProtocol.swift */; };
+		7A6F79292836BEC00030FE91 /* MockHomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F79252836BEC00030FE91 /* MockHomePresenter.swift */; };
+		7A6F792A2836BEC00030FE91 /* MockHomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F79262836BEC00030FE91 /* MockHomeInteractor.swift */; };
+		7A6F792B2836BEC00030FE91 /* MockHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F79272836BEC00030FE91 /* MockHomeRouter.swift */; };
+		7A6F792C2836BEC00030FE91 /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F79282836BEC00030FE91 /* HomePresenterTests.swift */; };
 		99AFD77128368B1500BD7321 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AFD77028368B1500BD7321 /* APIResponse.swift */; };
 		99AFD77328368B7500BD7321 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AFD77228368B7500BD7321 /* Repository.swift */; };
 		99AFD77528368C6700BD7321 /* BitcoinPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AFD77428368C6700BD7321 /* BitcoinPrice.swift */; };
@@ -98,6 +105,13 @@
 		7A2A3F4628357EA000559CB4 /* RemoveBitcoinRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBitcoinRouter.swift; sourceTree = "<group>"; };
 		7A6F78E3283592BC0030FE91 /* ButtonUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonUtility.swift; sourceTree = "<group>"; };
 		7A6F78E52835C6A10030FE91 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
+		7A6F791E2836BEB00030FE91 /* HomePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenterProtocol.swift; sourceTree = "<group>"; };
+		7A6F791F2836BEB00030FE91 /* HomeInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeInteractorProtocol.swift; sourceTree = "<group>"; };
+		7A6F79202836BEB00030FE91 /* HomeRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRouterProtocol.swift; sourceTree = "<group>"; };
+		7A6F79252836BEC00030FE91 /* MockHomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockHomePresenter.swift; sourceTree = "<group>"; };
+		7A6F79262836BEC00030FE91 /* MockHomeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockHomeInteractor.swift; sourceTree = "<group>"; };
+		7A6F79272836BEC00030FE91 /* MockHomeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockHomeRouter.swift; sourceTree = "<group>"; };
+		7A6F79282836BEC00030FE91 /* HomePresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
 		99AFD77028368B1500BD7321 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		99AFD77228368B7500BD7321 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		99AFD77428368C6700BD7321 /* BitcoinPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinPrice.swift; sourceTree = "<group>"; };
@@ -157,6 +171,7 @@
 		57A0C70628355CAA00AC0A39 /* BitcoinMillionaire */ = {
 			isa = PBXGroup;
 			children = (
+				7A6F791D2836BEB00030FE91 /* Protocols */,
 				99AFD76F28368AD000BD7321 /* Entities */,
 				7A6F78E22835929D0030FE91 /* Utilities */,
 				7A2A3F2D28357DC900559CB4 /* Home */,
@@ -177,6 +192,8 @@
 		57A0C71D28355CAC00AC0A39 /* BitcoinMillionaireTests */ = {
 			isa = PBXGroup;
 			children = (
+				7A6F79282836BEC00030FE91 /* HomePresenterTests.swift */,
+				7A6F79242836BEC00030FE91 /* Mocks */,
 				99AFD778283691EB00BD7321 /* Network */,
 				57A0C71E28355CAC00AC0A39 /* BitcoinMillionaireTests.swift */,
 				7A6F78E52835C6A10030FE91 /* HomeViewControllerTests.swift */,
@@ -266,6 +283,26 @@
 				99AFD77F2836942300BD7321 /* Constants.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		7A6F791D2836BEB00030FE91 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7A6F791E2836BEB00030FE91 /* HomePresenterProtocol.swift */,
+				7A6F791F2836BEB00030FE91 /* HomeInteractorProtocol.swift */,
+				7A6F79202836BEB00030FE91 /* HomeRouterProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7A6F79242836BEC00030FE91 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				7A6F79252836BEC00030FE91 /* MockHomePresenter.swift */,
+				7A6F79262836BEC00030FE91 /* MockHomeInteractor.swift */,
+				7A6F79272836BEC00030FE91 /* MockHomeRouter.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		99AFD76F28368AD000BD7321 /* Entities */ = {
@@ -427,13 +464,16 @@
 				99AFD77E283693A300BD7321 /* BitcoinPriceRepository.swift in Sources */,
 				57A0C74A2836A78200AC0A39 /* UserDefaultsProtocol.swift in Sources */,
 				7A2A3F3E28357E5A00559CB4 /* AddBitcoinRouter.swift in Sources */,
+				7A6F79232836BEB00030FE91 /* HomeRouterProtocol.swift in Sources */,
 				57A0C7422836A0A000AC0A39 /* DatabaseService.swift in Sources */,
 				57A0C70828355CAA00AC0A39 /* AppDelegate.swift in Sources */,
 				7A2A3F3528357E1500559CB4 /* HomeRouter.swift in Sources */,
 				7A2A3F4528357E9800559CB4 /* RemoveBitcoinPresenter.swift in Sources */,
 				57A0C7442836A22500AC0A39 /* DatabaseError.swift in Sources */,
 				7A2A3F4728357EA000559CB4 /* RemoveBitcoinRouter.swift in Sources */,
+				7A6F79212836BEB00030FE91 /* HomePresenterProtocol.swift in Sources */,
 				57A0C70A28355CAA00AC0A39 /* SceneDelegate.swift in Sources */,
+				7A6F79222836BEB00030FE91 /* HomeInteractorProtocol.swift in Sources */,
 				7A2A3F3328357E0E00559CB4 /* HomePresenter.swift in Sources */,
 				7A2A3F3128357E0500559CB4 /* HomeInteractor.swift in Sources */,
 				7A2A3F2F28357DF300559CB4 /* HomeViewController.swift in Sources */,
@@ -451,11 +491,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A6F79292836BEC00030FE91 /* MockHomePresenter.swift in Sources */,
+				7A6F792A2836BEC00030FE91 /* MockHomeInteractor.swift in Sources */,
 				57A0C7462836A49B00AC0A39 /* DatabaseServiceTests.swift in Sources */,
+				7A6F792C2836BEC00030FE91 /* HomePresenterTests.swift in Sources */,
 				57A0C71F28355CAC00AC0A39 /* BitcoinMillionaireTests.swift in Sources */,
 				99AFD77C2836922D00BD7321 /* BitcoinPriceRepositoryTests.swift in Sources */,
 				57A0C7482836A50100AC0A39 /* MockUserDefaults.swift in Sources */,
 				7A6F78E62835C6A10030FE91 /* HomeViewControllerTests.swift in Sources */,
+				7A6F792B2836BEC00030FE91 /* MockHomeRouter.swift in Sources */,
 				57A0C74028369BD600AC0A39 /* UserBitcoinServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
