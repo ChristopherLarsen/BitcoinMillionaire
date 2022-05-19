@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import Combine
+
+protocol WebServiceProtocol {
+    
+    func get<T : ResponseProtocol >(endpoint : EndpointProtocol, responseType: T.Type) -> AnyPublisher<T, Error>
+    
+}

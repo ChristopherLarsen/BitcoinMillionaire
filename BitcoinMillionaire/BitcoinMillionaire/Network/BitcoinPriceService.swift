@@ -9,11 +9,11 @@ import Foundation
 import Combine
 
 
-class BitcoinPriceRepository : Repository {
+class BitcoinPriceService : Repository {
     
-    func readLatest() -> AnyPublisher<BitcoinPrice,Error> {
+    func getLatest() -> AnyPublisher<BitcoinPrice,Error> {
         let webService = WebService()
-        return webService.get(endpoint: .getLatestBitcoinPrice, responseType: APIResponse.self)
+        return webService.get(endpoint: Endpoint.getLatestBitcoinPrice, responseType: APIResponse.self)
             .map({ $0.bpi.bitcoinPrice }) 
             .eraseToAnyPublisher() 
     }

@@ -41,10 +41,11 @@
 		99AFD77528368C6700BD7321 /* BitcoinPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AFD77428368C6700BD7321 /* BitcoinPrice.swift */; };
 		99AFD77728368CBB00BD7321 /* BPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AFD77628368CBB00BD7321 /* BPI.swift */; };
 		99AFD77C2836922D00BD7321 /* BitcoinPriceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AFD77B2836922D00BD7321 /* BitcoinPriceRepositoryTests.swift */; };
-		99AFD77E283693A300BD7321 /* BitcoinPriceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AFD77D283693A300BD7321 /* BitcoinPriceRepository.swift */; };
+		99AFD77E283693A300BD7321 /* BitcoinPriceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AFD77D283693A300BD7321 /* BitcoinPriceService.swift */; };
 		99AFD7802836942300BD7321 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AFD77F2836942300BD7321 /* Constants.swift */; };
 		99E33D612836ABD800021460 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E33D602836ABD800021460 /* WebService.swift */; };
 		99E33D632836AD9500021460 /* ResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E33D622836AD9500021460 /* ResponseProtocol.swift */; };
+		99E33D652836C3CA00021460 /* WebServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E33D642836C3CA00021460 /* WebServiceProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,10 +104,11 @@
 		99AFD77428368C6700BD7321 /* BitcoinPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinPrice.swift; sourceTree = "<group>"; };
 		99AFD77628368CBB00BD7321 /* BPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPI.swift; sourceTree = "<group>"; };
 		99AFD77B2836922D00BD7321 /* BitcoinPriceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinPriceRepositoryTests.swift; sourceTree = "<group>"; };
-		99AFD77D283693A300BD7321 /* BitcoinPriceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinPriceRepository.swift; sourceTree = "<group>"; };
+		99AFD77D283693A300BD7321 /* BitcoinPriceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinPriceService.swift; sourceTree = "<group>"; };
 		99AFD77F2836942300BD7321 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		99E33D602836ABD800021460 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		99E33D622836AD9500021460 /* ResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseProtocol.swift; sourceTree = "<group>"; };
+		99E33D642836C3CA00021460 /* WebServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,8 +254,9 @@
 			isa = PBXGroup;
 			children = (
 				99E33D602836ABD800021460 /* WebService.swift */,
+				99E33D642836C3CA00021460 /* WebServiceProtocol.swift */,
 				99AFD77228368B7500BD7321 /* Repository.swift */,
-				99AFD77D283693A300BD7321 /* BitcoinPriceRepository.swift */,
+				99AFD77D283693A300BD7321 /* BitcoinPriceService.swift */,
 				99E33D622836AD9500021460 /* ResponseProtocol.swift */,
 			);
 			path = Network;
@@ -418,13 +421,14 @@
 			files = (
 				99E33D612836ABD800021460 /* WebService.swift in Sources */,
 				99AFD77128368B1500BD7321 /* APIResponse.swift in Sources */,
+				99E33D652836C3CA00021460 /* WebServiceProtocol.swift in Sources */,
 				99AFD7802836942300BD7321 /* Constants.swift in Sources */,
 				7A2A3F3A28357E4B00559CB4 /* AddBitcoinInteractor.swift in Sources */,
 				99E33D632836AD9500021460 /* ResponseProtocol.swift in Sources */,
 				7A2A3F4328357E9100559CB4 /* RemoveBitcoinInteractor.swift in Sources */,
 				57A0C739283696AE00AC0A39 /* UserBitcoinEntity.swift in Sources */,
 				7A2A3F3828357E4300559CB4 /* AddBitCoinViewController.swift in Sources */,
-				99AFD77E283693A300BD7321 /* BitcoinPriceRepository.swift in Sources */,
+				99AFD77E283693A300BD7321 /* BitcoinPriceService.swift in Sources */,
 				57A0C74A2836A78200AC0A39 /* UserDefaultsProtocol.swift in Sources */,
 				7A2A3F3E28357E5A00559CB4 /* AddBitcoinRouter.swift in Sources */,
 				57A0C7422836A0A000AC0A39 /* DatabaseService.swift in Sources */,

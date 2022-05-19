@@ -19,10 +19,10 @@ class BitcoinPriceRepositoryTests: XCTestCase {
     
     func testBitcoinPriceRepository_WhenGivenSuccessfulResponse_ReturnsSuccess() throws {
         //Arrange
-        let sut = BitcoinPriceRepository()
+        let sut = BitcoinPriceService()
         let repositoryExpectation = expectation(description: "Bitcoin price resposne expectation ")
         //Act
-        sut.readLatest()
+        sut.getLatest()
             .sink { _ in } receiveValue: {
                 XCTAssertNotNil($0)
                 repositoryExpectation.fulfill()
@@ -35,6 +35,4 @@ class BitcoinPriceRepositoryTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
- 
-
 }
