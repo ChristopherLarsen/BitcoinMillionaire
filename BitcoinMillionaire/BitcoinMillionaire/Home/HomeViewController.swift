@@ -20,7 +20,9 @@ class HomeViewController: UIViewController {
     var buttonStack: UIStackView!
     var millionaireButton: UIButton!
     var presenter: HomePresenterProtocol?
-
+    
+    private var subscriptions = Set<AnyCancellable>()
+    
     //MARK: Lifecycle methods
     
     init(presenter: HomePresenterProtocol) {
@@ -29,12 +31,15 @@ class HomeViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUserInterface()
+        setupBindings()
+        presenter?.checkNumberOfCoinsAvailable()
+        presenter?.checkLatestBitcoinPrice()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +50,40 @@ class HomeViewController: UIViewController {
     
     //MARK: Custom methods
     
+    private func setupBindings() {
+        if let presenter = presenter as? HomePresenter {
+            subscriptions =
+            [presenter.$latestPrice
+                .sink(receiveValue: { price in
+                    self.latestPriceLabel.text  =  String(format: "Latest Price: $%.2f", price ?? 0.0)
+                }),
+             presenter.$bitcoinsAvailable
+                .sink(receiveValue: { coins in
+                    self.numberOfCoinsLabel.text = "Bitcoins: \(self.numberOfCoins ?? 0.0)"
+                })]
+        }
+    }
+    
+    //MARK: Actions performed by buttons
+    @objc func addBitCoin() {
+        presenter?.addBitCoin()
+    }
+    
+    @objc func sellBitCoin() {
+        presenter?.sellBitCoin()
+    }
+    
+    @objc func checkPrice() {
+        presenter?.checkLatestBitcoinPrice()
+    }
+    
+    @objc func checkForMillionaire() {
+        presenter?.checkIfIAmAMillionaire()
+    }
+}
+
+// Setup User Interface
+extension HomeViewController {
     /// Method to setup user interface
     func setUpUserInterface() {
         //latest price label
@@ -65,10 +104,9 @@ class HomeViewController: UIViewController {
     func createLatestPriceLabel() {
         latestPriceLabel = UILabel()
         latestPriceLabel.textAlignment = .center
+        self.latestPriceLabel.text  =  "Latest Price: $0.0"
         latestPriceLabel.font = UIFont.preferredFont(forTextStyle: .title2)
         latestPriceLabel.adjustsFontForContentSizeCategory = true
-
-        latestPriceLabel.text = "Latest Price: $\(latestPrice ?? 0.0)"
         latestPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(latestPriceLabel)
         
@@ -115,9 +153,9 @@ class HomeViewController: UIViewController {
         //Coins number label
         numberOfCoinsLabel = UILabel()
         numberOfCoinsLabel.textAlignment = .center
+        self.numberOfCoinsLabel.text = "Bitcoins: 0.0"
         numberOfCoinsLabel.font = UIFont.preferredFont(forTextStyle: .title3)
         numberOfCoinsLabel.adjustsFontForContentSizeCategory = true
-        numberOfCoinsLabel.text = "Bitcoins: \(numberOfCoins ?? 0.0)"
         numberOfCoinsLabel.translatesAutoresizingMaskIntoConstraints = false
         bitcoinContainerView.addSubview(numberOfCoinsLabel)
         
@@ -134,7 +172,7 @@ class HomeViewController: UIViewController {
     func createButtonsStack() {
         let addBitCoinButton = ButtonUtility.createButton(title: "Add BitCoin")
         addBitCoinButton.addTarget(self, action: #selector(addBitCoin), for: .touchUpInside)
-
+        
         let sellBitCoinButton = ButtonUtility.createButton(title: "Sell Bitcoin")
         sellBitCoinButton.addTarget(self, action: #selector(sellBitCoin), for: .touchUpInside)
         
@@ -171,22 +209,5 @@ class HomeViewController: UIViewController {
             millionaireButton.leadingAnchor.constraint(equalTo: bitcoinContainerView.leadingAnchor),
             millionaireButton.trailingAnchor.constraint(equalTo: bitcoinContainerView.trailingAnchor)
         ])
-    }
-    
-    //MARK: Actions performed by buttons
-    @objc func addBitCoin() {
-        presenter?.addBitCoin()
-    }
-    
-    @objc func sellBitCoin() {
-        presenter?.sellBitCoin()
-    }
-    
-    @objc func checkPrice() {
-        presenter?.checkLatestBitcoinPrice()
-    }
-    
-    @objc func checkForMillionaire() {
-        presenter?.checkIfIAmAMillionaire()
     }
 }

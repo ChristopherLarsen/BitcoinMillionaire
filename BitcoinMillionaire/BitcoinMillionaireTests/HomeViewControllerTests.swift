@@ -12,15 +12,22 @@ class HomeViewControllerTests: XCTestCase {
 
     var systemUnderTest: HomeViewController!
     var homeInteractor: HomeInteractorProtocol!
+    var homePresenter: HomePresenterProtocol!
     
     override func setUpWithError() throws {
         homeInteractor = MockHomeInteractor()
-        systemUnderTest = HomeViewController(presenter: MockHomePresenter(interactor: homeInteractor))
+        homePresenter = MockHomePresenter(interactor: homeInteractor)
+        systemUnderTest = HomeViewController(presenter: homePresenter)
         systemUnderTest.loadViewIfNeeded()
     }
 
     override func tearDownWithError() throws {
         systemUnderTest = nil
+    }
+    
+    func testInitWithCoder() {
+        let homeView = HomeViewController(coder: NSCoder())
+        XCTAssertNil(homeView)
     }
 
     func testHomeViewController_WhenCreated_HasPresenterSetup() {
@@ -29,6 +36,7 @@ class HomeViewControllerTests: XCTestCase {
     
     func testHomeViewController_WhenCreated_HasCreatedLatestPriceLabel() throws {
         let latestPriceLabel = try XCTUnwrap(systemUnderTest.latestPriceLabel, "Label not created")
+        sleep(5)
         XCTAssertEqual(latestPriceLabel.text, "Latest Price: $0.0")
     }
     
@@ -63,5 +71,40 @@ class HomeViewControllerTests: XCTestCase {
 
     }
     
+    func testHomeViewController_WhenCheckPriceTapped_CheckLatestBitcoinPriceInPresenterMethodIsCalled() throws {
+        let stackView = try XCTUnwrap(systemUnderTest.buttonStack, "Button stack not created")
+        let button3 = stackView.arrangedSubviews[2] as? UIButton
+        XCTAssertEqual(button3?.titleLabel?.text, "Check Latest Price")
+        button3?.sendActions(for: .touchUpInside)
+        if let presenter = homePresenter as? MockHomePresenter {
+            XCTAssertTrue(presenter.checkLatestBitcoinPriceCalled)
+        }
+    }
+    
+    func testHomeViewController_WhenCheckForMillionaireTapped_CheckIfIAmAMillionaireInPresenterMethodIsCalled() throws {
+        let checkMillionaireButton = try XCTUnwrap(systemUnderTest.millionaireButton, "Check Millionaire Button not created")
+        checkMillionaireButton.sendActions(for: .touchUpInside)
+        if let presenter = homePresenter as? MockHomePresenter {
+            XCTAssertTrue(presenter.checkIfIAmAMillionaireCalled)
+        }
+    }
+    
+    func testHomeViewController_addBitCoinTapped_AddBitCoinInPresenterMethodIsCalled() throws {
+        let stackView = try XCTUnwrap(systemUnderTest.buttonStack, "Button stack not created")
+        let addBitCoinButton = stackView.arrangedSubviews[0] as? UIButton
+        addBitCoinButton?.sendActions(for: .touchUpInside)
+        if let presenter = homePresenter as? MockHomePresenter {
+            XCTAssertTrue(presenter.addBitCoinCalled)
+        }
+    }
+    
+    func testHomeViewController_WhensellBitCoinTapped_SellBitCoinInPresenterMethodIsCalled() throws {
+        let stackView = try XCTUnwrap(systemUnderTest.buttonStack, "Button stack not created")
+        let sellBitCoinButton = stackView.arrangedSubviews[1] as? UIButton
+        sellBitCoinButton?.sendActions(for: .touchUpInside)
+        if let presenter = homePresenter as? MockHomePresenter {
+            XCTAssertTrue(presenter.sellBitCoinCalled)
+        }
+    }
 
 }

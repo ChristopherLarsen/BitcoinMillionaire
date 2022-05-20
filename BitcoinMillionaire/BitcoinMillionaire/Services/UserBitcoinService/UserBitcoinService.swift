@@ -38,7 +38,6 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     init(database: DatabaseServiceProtocol) {
         
         self.database = database
-
         fetchLatestUserBitcoinsFromDatabase()
     }
     
