@@ -11,6 +11,7 @@ protocol HomePresenterProtocol: AnyObject {
     init(interactor: HomeInteractorProtocol, router: HomeRouterProtocol)
     func addBitCoin()
     func sellBitCoin()
+    func checkNumberOfCoinsAvailable()
     func checkLatestBitcoinPrice()
     func checkIfIAmAMillionaire()
 }

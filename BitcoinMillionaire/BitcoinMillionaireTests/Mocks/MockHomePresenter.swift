@@ -9,13 +9,13 @@ import Foundation
 @testable import BitcoinMillionaire
 
 class MockHomePresenter: HomePresenterProtocol {
-    
+
     var interactor: HomeInteractorProtocol
     var router: HomeRouterProtocol
-    var addBitCoinInInteractorCalled: Bool = false
-    var sellBitCoinInInteractorCalled: Bool = false
-    var checkLatestBitcoinPriceInInteractorCalled: Bool = false
-    var checkIfIAmAMillionaireInInteractorCalled: Bool = false
+    var addBitCoinCalled: Bool = false
+    var sellBitCoinCalled: Bool = false
+    var checkLatestBitcoinPriceCalled: Bool = false
+    var checkIfIAmAMillionaireCalled: Bool = false
 
     required init(interactor: HomeInteractorProtocol, router: HomeRouterProtocol = MockHomeRouter()) {
         self.interactor = interactor
@@ -23,19 +23,22 @@ class MockHomePresenter: HomePresenterProtocol {
     }
     
     func addBitCoin() {
-        addBitCoinInInteractorCalled = true
+        addBitCoinCalled = true
     }
     
     func sellBitCoin() {
-        sellBitCoinInInteractorCalled = true
+        sellBitCoinCalled = true
     }
     func checkLatestBitcoinPrice() {
-        checkLatestBitcoinPriceInInteractorCalled = true
+        checkLatestBitcoinPriceCalled = true
     }
     
     func checkIfIAmAMillionaire() {
-        checkIfIAmAMillionaireInInteractorCalled = false
+        checkIfIAmAMillionaireCalled = true
     }
     
+    func checkNumberOfCoinsAvailable() {
+        
+    }
     
 }
