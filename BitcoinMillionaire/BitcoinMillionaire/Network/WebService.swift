@@ -10,10 +10,19 @@ import Combine
 
 class WebService: WebServiceProtocol {
     
+    var urlSession : URLSession
+    
+    init(urlSession : URLSession = .shared) {
+        self.urlSession = urlSession
+    }
+    
     func get<T:ResponseProtocol>(endpoint : EndpointProtocol, responseType: T.Type) -> AnyPublisher<T, Error>  {
         let url = URL(string: endpoint.urlString)!
-        return URLSession.shared.dataTaskPublisher(for: url)
-            .map({ $0.data })
+        return urlSession.dataTaskPublisher(for: url)
+            .map({
+                print(String(data: $0.data, encoding: .utf8)!)
+                return $0.data 
+            })
             .decode(type: T.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
