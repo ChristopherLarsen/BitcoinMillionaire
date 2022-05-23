@@ -19,8 +19,6 @@ class BitcoinPriceService : BitcoinPriceServiceProtocol {
     init(webService: WebServiceProtocol = WebService()) {
         self.webService = webService
     }
-     
- 
     
     func getLatest() -> AnyPublisher<BitcoinPrice,Error> { 
         return webService.get(endpoint: Endpoint.getLatestBitcoinPrice, responseType: APIResponse.self)

@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import Combine
 
 protocol HomeInteractorProtocol: AnyObject {
-    func checkLatestBitcoinPrice()
+    func checkLatestBitcoinPrice() -> AnyPublisher<BitcoinPrice,Error>
+    func checkBitcoinAvailability() -> CurrentValueSubject<UserBitcoinEntity, Error>
     func checkIfIAmAMillionaire()
 }
 

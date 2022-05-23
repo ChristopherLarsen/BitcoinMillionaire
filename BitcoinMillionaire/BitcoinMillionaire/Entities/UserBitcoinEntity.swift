@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - UserBitcoinEntityProtocol
 
-protocol UserBitcoinEntityProtocol {
+protocol UserBitcoinEntityProtocol : Codable {
     var bitcoins: Float { get }
     init(initialCoins: Float)
 }

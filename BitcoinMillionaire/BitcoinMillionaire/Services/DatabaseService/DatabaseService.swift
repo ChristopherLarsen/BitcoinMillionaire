@@ -14,9 +14,9 @@ protocol DatabaseServiceProtocol {
     
     init(userDefaults: UserDefaultsProtocol)
     
-    func create(key: String, object: Codable) -> Result<Bool, DatabaseError>
-    func read(key: String) -> Result<Codable, DatabaseError>
-    func update(key: String, object: Codable) -> Result<Bool, DatabaseError>
+    func create(key: String, object: Any) -> Result<Bool, DatabaseError>
+    func read(key: String) -> Result<Any, DatabaseError>
+    func update(key: String, object: Any) -> Result<Bool, DatabaseError>
     func delete(key: String) -> Result<Bool, DatabaseError>
     
 }
@@ -36,7 +36,7 @@ class DatabaseService: DatabaseServiceProtocol {
     
     // MARK: - CRUD Repository Functions
     
-    func create(key: String, object: Codable) -> Result<Bool, DatabaseError> {
+    func create(key: String, object: Any) -> Result<Bool, DatabaseError> {
         
         userDefaults.set(object, forKey: key)
         userDefaults.synchronize()
@@ -44,14 +44,15 @@ class DatabaseService: DatabaseServiceProtocol {
         return .success(true)
     }
     
-    func read(key: String) -> Result<Codable, DatabaseError> {
-        if let object = userDefaults.object(forKey: key) as? Codable {
+    func read(key: String) -> Result<Any, DatabaseError> {
+        
+        if let object = userDefaults.object(forKey: key) {
             return .success(object)
         }
         return .failure(.objectDoesNotExist)
     }
     
-    func update(key: String, object: Codable) -> Result<Bool, DatabaseError> {
+    func update(key: String, object: Any) -> Result<Bool, DatabaseError> {
 
         userDefaults.set(object, forKey: key)
         userDefaults.synchronize()
