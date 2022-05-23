@@ -9,15 +9,15 @@ import Foundation
 @testable import BitcoinMillionaire
 
 class MockHomeRouter: HomeRouterProtocol {
-    var addBitCoinViewOpened: Bool = false
-    var sellBitCoinViewOpened: Bool = false
+    var addBitcoinViewOpened: Bool = false
+    var sellBitcoinViewOpened: Bool = false
     
-    func openAddBitCoinView() {
-        addBitCoinViewOpened = true
+    func openAddBitcoinView() {
+        addBitcoinViewOpened = true
     }
     
-    func openSellBitCoinView() {
-        sellBitCoinViewOpened = true
+    func openSellBitcoinView() {
+        sellBitcoinViewOpened = true
     }
     
     

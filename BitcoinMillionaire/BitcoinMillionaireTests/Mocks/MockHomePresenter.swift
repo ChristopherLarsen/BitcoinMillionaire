@@ -12,8 +12,8 @@ class MockHomePresenter: HomePresenterProtocol {
 
     var interactor: HomeInteractorProtocol
     var router: HomeRouterProtocol
-    var addBitCoinCalled: Bool = false
-    var sellBitCoinCalled: Bool = false
+    var addBitcoinCalled: Bool = false
+    var sellBitcoinCalled: Bool = false
     var checkLatestBitcoinPriceCalled: Bool = false
     var checkIfIAmAMillionaireCalled: Bool = false
 
@@ -22,12 +22,12 @@ class MockHomePresenter: HomePresenterProtocol {
         self.router = router
     }
     
-    func addBitCoin() {
-        addBitCoinCalled = true
+    func addBitcoin() {
+        addBitcoinCalled = true
     }
     
-    func sellBitCoin() {
-        sellBitCoinCalled = true
+    func sellBitcoin() {
+        sellBitcoinCalled = true
     }
     func checkLatestBitcoinPrice() {
         checkLatestBitcoinPriceCalled = true

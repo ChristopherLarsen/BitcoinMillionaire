@@ -9,8 +9,8 @@ import Foundation
 
 protocol HomePresenterProtocol: AnyObject {
     init(interactor: HomeInteractorProtocol, router: HomeRouterProtocol)
-    func addBitCoin()
-    func sellBitCoin()
+    func addBitcoin()
+    func sellBitcoin()
     func checkNumberOfCoinsAvailable()
     func checkLatestBitcoinPrice()
     func checkIfIAmAMillionaire()

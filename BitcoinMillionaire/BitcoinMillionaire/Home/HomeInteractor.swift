@@ -26,7 +26,7 @@ class HomeInteractor: HomeInteractorProtocol {
     /// Method to call bitcoin repository to read latest price of bitcoin.
     /// - Returns: A Publisher containing Bitcoin Price entity or Error, if any.
     func checkLatestBitcoinPrice() -> AnyPublisher<BitcoinPrice,Error> {
-        print("Checking latest BitCoin Price")
+        print("Checking latest Bitcoin Price")
         return bitCoinPriceRepository.getLatest()
     }
     

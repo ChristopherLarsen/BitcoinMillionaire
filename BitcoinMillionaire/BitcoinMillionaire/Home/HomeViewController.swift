@@ -65,12 +65,12 @@ class HomeViewController: UIViewController {
     }
     
     //MARK: Actions performed by buttons
-    @objc func addBitCoin() {
-        presenter?.addBitCoin()
+    @objc func addBitcoin() {
+        presenter?.addBitcoin()
     }
     
-    @objc func sellBitCoin() {
-        presenter?.sellBitCoin()
+    @objc func sellBitcoin() {
+        presenter?.sellBitcoin()
     }
     
     @objc func checkPrice() {
@@ -170,16 +170,16 @@ extension HomeViewController {
     
     /// Method to create action button stacks
     func createButtonsStack() {
-        let addBitCoinButton = ButtonUtility.createButton(title: "Add BitCoin")
-        addBitCoinButton.addTarget(self, action: #selector(addBitCoin), for: .touchUpInside)
+        let addBitcoinButton = ButtonUtility.createButton(title: "Add Bitcoin")
+        addBitcoinButton.addTarget(self, action: #selector(addBitcoin), for: .touchUpInside)
         
-        let sellBitCoinButton = ButtonUtility.createButton(title: "Sell Bitcoin")
-        sellBitCoinButton.addTarget(self, action: #selector(sellBitCoin), for: .touchUpInside)
+        let sellBitcoinButton = ButtonUtility.createButton(title: "Sell Bitcoin")
+        sellBitcoinButton.addTarget(self, action: #selector(sellBitcoin), for: .touchUpInside)
         
         let checkPriceButton = ButtonUtility.createButton(title: "Check Latest Price")
         checkPriceButton.addTarget(self, action: #selector(checkPrice), for: .touchUpInside)
         
-        buttonStack = UIStackView(arrangedSubviews: [addBitCoinButton, sellBitCoinButton, checkPriceButton])
+        buttonStack = UIStackView(arrangedSubviews: [addBitcoinButton, sellBitcoinButton, checkPriceButton])
         buttonStack.axis = .vertical
         buttonStack.distribution = .fillEqually
         buttonStack.spacing = 5
