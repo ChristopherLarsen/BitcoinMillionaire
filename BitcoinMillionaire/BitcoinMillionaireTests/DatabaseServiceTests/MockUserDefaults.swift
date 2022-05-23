@@ -37,3 +37,11 @@ class MockUserDefaults: UserDefaultsProtocol {
     }
 
 }
+
+extension MockUserDefaults {
+    
+    func clearUserDefaults() {
+        dictionary = [:]
+    }
+    
+}

@@ -45,15 +45,11 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     
     func fetchLatestUserBitcoinsFromDatabase() {
         
-        print("Fetching ...")
-        
         if case .success(let readObject) = database.read(key: Constants.keyUserBitcoin) {
-            print("Hit")
             if let userBitcoinEntity = readObject as? UserBitcoinEntity {
                 self.currentUserBitcoins.value = userBitcoinEntity
             }
         } else {
-            print("Miss")
             // TODO: Handle a miss on the Database
         }
         

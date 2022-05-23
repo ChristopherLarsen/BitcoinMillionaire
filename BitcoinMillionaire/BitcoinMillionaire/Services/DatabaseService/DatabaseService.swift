@@ -54,6 +54,10 @@ class DatabaseService: DatabaseServiceProtocol {
     
     func update(key: String, object: Any) -> Result<Bool, DatabaseError> {
 
+        guard userDefaults.object(forKey: key) != nil else {
+            return .failure(.objectDoesNotExist)
+        }
+        
         userDefaults.set(object, forKey: key)
         userDefaults.synchronize()
 
