@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+protocol RemoveBitcoinPresenterProtocol { }
+
+class RemoveBitcoinPresenter : RemoveBitcoinPresenterProtocol {
+    
+    var interactor : RemoveBitcoinInteractorProtocol
+    
+    init(interactor : RemoveBitcoinInteractorProtocol = RemoveBitcoinInteractor()) {
+        self.interactor = interactor
+    }
+    
+    
+}

@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+protocol AddBitcoinPresenterProtocol { }
+
+class AddBitcoinPresenter : AddBitcoinPresenterProtocol {
+    
+    var interactor : AddBitcoinInteractorProtocol
+    
+    init(interactor : AddBitcoinInteractorProtocol = AddBitcoinInteractor()) {
+        self.interactor = interactor
+    }
+    
+    
+}

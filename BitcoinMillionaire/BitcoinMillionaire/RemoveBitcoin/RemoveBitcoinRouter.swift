@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol RemoveBitcoinRouterProtocol { }
+
+class RemoveBitcoinRouter : RemoveBitcoinRouterProtocol {}

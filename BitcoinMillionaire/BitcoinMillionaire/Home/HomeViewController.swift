@@ -65,7 +65,7 @@ class HomeViewController: UIViewController {
     }
     
     //MARK: Actions performed by buttons
-    @objc func addBitCoin() {
+    @objc func addBitcoin() { 
         presenter?.addBitcoin()
     }
     
@@ -74,7 +74,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func checkPrice() {
-        presenter?.checkLatestBitcoinPrice()
+        presenter?.checkLatestBitcoinPriceOnline()
     }
     
     @objc func checkForMillionaire() {
@@ -112,7 +112,7 @@ extension HomeViewController {
         view.addSubview(latestPriceLabel)
         
         NSLayoutConstraint.activate([
-            latestPriceLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 130),
+            latestPriceLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
             latestPriceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             latestPriceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             latestPriceLabel.heightAnchor.constraint(equalToConstant: 40)
@@ -175,7 +175,7 @@ extension HomeViewController {
     func createButtonsStack() {
         let addBitCoinButton = ButtonUtility.createButton(title: "Add Bitcoin")
         addBitCoinButton.accessibilityIdentifier = "addBitCoinButton"
-        addBitCoinButton.addTarget(self, action: #selector(addBitCoin), for: .touchUpInside)
+        addBitCoinButton.addTarget(self, action: #selector(addBitcoin), for: .touchUpInside)
         
         let sellBitCoinButton = ButtonUtility.createButton(title: "Sell Bitcoin")
         sellBitCoinButton.accessibilityIdentifier = "sellBitCoinButton"

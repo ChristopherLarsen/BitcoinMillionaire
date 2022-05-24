@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+protocol RemoveBitcoinInteractorProtocol { }
+
+class RemoveBitcoinInteractor : RemoveBitcoinInteractorProtocol {}
+

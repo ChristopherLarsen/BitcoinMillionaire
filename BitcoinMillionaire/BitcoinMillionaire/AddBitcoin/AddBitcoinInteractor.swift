@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+protocol AddBitcoinInteractorProtocol { }
+
+class AddBitcoinInteractor : AddBitcoinInteractorProtocol {}
+

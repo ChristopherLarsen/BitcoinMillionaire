@@ -12,6 +12,17 @@ import Combine
 class AddBitcoinViewController : UIViewController {
     var cancellables : Set<AnyCancellable> = []
     var textFieldText : CurrentValueSubject<String, Never> = .init("")
+    var presenter : AddBitcoinPresenterProtocol
+    
+    init(presenter : AddBitcoinPresenterProtocol = AddBitcoinPresenter()) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        return nil
+    }
+    
     
     override func loadView() {
         configureView()

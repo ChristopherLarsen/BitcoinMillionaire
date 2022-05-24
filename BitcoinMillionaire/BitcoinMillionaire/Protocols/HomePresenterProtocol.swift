@@ -14,6 +14,7 @@ protocol HomePresenterProtocol: AnyObject {
     func checkNumberOfCoinsAvailable()
     func checkLatestBitcoinPrice()
     func checkIfIAmAMillionaire()
+    func checkLatestBitcoinPriceOnline()
 }
 
 
