@@ -9,25 +9,39 @@ import Foundation
 import Combine
 
 class HomeInteractor: HomeInteractorProtocol {
-   
+    
     //MARK: Variables & Constants
-    var bitCoinPriceRepository: BitcoinPriceService!
+    var bitcoinPriceService: BitcoinPriceService!
     var userBitcoinService: UserBitcoinServiceProtocol!
-    private var subscription: AnyCancellable?
 
     //MARK: Lifecycle methods
-    init(with repository: BitcoinPriceService, userBitcoinService: UserBitcoinServiceProtocol = UserBitcoinService(database: DatabaseService(userDefaults: BitcoinUserDefaults()))) {
-        self.bitCoinPriceRepository = repository
+    init(with bitcoinPriceService: BitcoinPriceService, userBitcoinService: UserBitcoinServiceProtocol = UserBitcoinService(database: DatabaseService(userDefaults: BitcoinUserDefaults()))) {
+        self.bitcoinPriceService = bitcoinPriceService
         self.userBitcoinService = userBitcoinService
     }
     
     //MARK: Custom methods
     
-    /// Method to call bitcoin repository to read latest price of bitcoin.
+    /// Method to call bitcoin repository to read latest price of bitcoin .
     /// - Returns: A Publisher containing Bitcoin Price entity or Error, if any.
-    func checkLatestBitcoinPrice() -> AnyPublisher<BitcoinPrice,Error> {
-        print("Checking latest Bitcoin Price")
-        return bitCoinPriceRepository.getLatest()
+    func checkLatestBitcoinPrice() -> AnyPublisher<Double,Error> {
+        
+        print("Checking latest BitCoin Price")
+        return bitcoinPriceService.getLatest()
+            .map { bitcoinPrice in
+                let doublePrice = Double(bitcoinPrice.rateFloat)
+                if let bitcoinService = self.userBitcoinService as? UserBitcoinService {
+                   let _ = bitcoinService.database.create(key: Constants.keyBitcoinPrice, object: doublePrice)
+                }
+                print("Price Online: \(doublePrice)")
+                return doublePrice
+            }.eraseToAnyPublisher()
+    }
+    
+    /// Method to call userdefaults to read latest price of bitcoin  saved in DB.
+    /// - Returns: A Publisher containing Bitcoin Price entity or Error, if any.
+    func checkLatestPriceFromDataBase() -> AnyPublisher<Double,Error> {
+        return bitcoinPriceService.getLatestFromDataBase()
     }
     
     /// Method to call bitcoin user bitcoin service to fetch available number of bitcoins with the user.

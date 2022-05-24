@@ -45,8 +45,9 @@
 		7A6F792A2836BEC00030FE91 /* MockHomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F79262836BEC00030FE91 /* MockHomeInteractor.swift */; };
 		7A6F792B2836BEC00030FE91 /* MockHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F79272836BEC00030FE91 /* MockHomeRouter.swift */; };
 		7A6F792C2836BEC00030FE91 /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F79282836BEC00030FE91 /* HomePresenterTests.swift */; };
+		7ADE5DE72837352F003C81CC /* BitcoinUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE5DE62837352F003C81CC /* BitcoinUserDefaults.swift */; };
+		7ADE5DEB283D572C003C81CC /* BitcoinPriceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE5DEA283D572C003C81CC /* BitcoinPriceRepository.swift */; };
 		996B5DCE283BD12F00B18D14 /* WebServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B5DCD283BD12F00B18D14 /* WebServiceMock.swift */; };
-		7ADE5DE72837352F003C81CC /* BitcoinUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE5DE62837352F003C81CC /* BitcoinUserDefaults.swift */; }; 
 		99AFD77128368B1500BD7321 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AFD77028368B1500BD7321 /* APIResponse.swift */; };
 		99AFD77328368B7500BD7321 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AFD77228368B7500BD7321 /* Repository.swift */; };
 		99AFD77528368C6700BD7321 /* BitcoinPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AFD77428368C6700BD7321 /* BitcoinPrice.swift */; };
@@ -120,9 +121,10 @@
 		7A6F79252836BEC00030FE91 /* MockHomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockHomePresenter.swift; sourceTree = "<group>"; };
 		7A6F79262836BEC00030FE91 /* MockHomeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockHomeInteractor.swift; sourceTree = "<group>"; };
 		7A6F79272836BEC00030FE91 /* MockHomeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockHomeRouter.swift; sourceTree = "<group>"; };
-		7A6F79282836BEC00030FE91 /* HomePresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; }; 
-		996B5DCD283BD12F00B18D14 /* WebServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceMock.swift; sourceTree = "<group>"; }; 
-		7ADE5DE62837352F003C81CC /* BitcoinUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinUserDefaults.swift; sourceTree = "<group>"; }; 
+		7A6F79282836BEC00030FE91 /* HomePresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
+		7ADE5DE62837352F003C81CC /* BitcoinUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinUserDefaults.swift; sourceTree = "<group>"; };
+		7ADE5DEA283D572C003C81CC /* BitcoinPriceRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinPriceRepository.swift; sourceTree = "<group>"; };
+		996B5DCD283BD12F00B18D14 /* WebServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceMock.swift; sourceTree = "<group>"; };
 		99AFD77028368B1500BD7321 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		99AFD77228368B7500BD7321 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		99AFD77428368C6700BD7321 /* BitcoinPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinPrice.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 		7A2A3F4828357EB200559CB4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				7ADE5DEA283D572C003C81CC /* BitcoinPriceRepository.swift */,
 				99E33D602836ABD800021460 /* WebService.swift */,
 				99E33D642836C3CA00021460 /* WebServiceProtocol.swift */,
 				99AFD77228368B7500BD7321 /* Repository.swift */,
@@ -349,10 +352,10 @@
 			children = (
 				7A6F79252836BEC00030FE91 /* MockHomePresenter.swift */,
 				7A6F79262836BEC00030FE91 /* MockHomeInteractor.swift */,
-				7A6F79272836BEC00030FE91 /* MockHomeRouter.swift */, 
+				7A6F79272836BEC00030FE91 /* MockHomeRouter.swift */,
 				99E33D6E2836E44700021460 /* MockURLProtocol.swift */,
-				996B5DCD283BD12F00B18D14 /* WebServiceMock.swift */, 
-				57A0C74D2836CF8100AC0A39 /* MockDatabase.swift */, 
+				996B5DCD283BD12F00B18D14 /* WebServiceMock.swift */,
+				57A0C74D2836CF8100AC0A39 /* MockDatabase.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ADE5DEB283D572C003C81CC /* BitcoinPriceRepository.swift in Sources */,
 				99E33D612836ABD800021460 /* WebService.swift in Sources */,
 				99AFD77128368B1500BD7321 /* APIResponse.swift in Sources */,
 				99E33D652836C3CA00021460 /* WebServiceProtocol.swift in Sources */,
@@ -569,9 +573,9 @@
 			files = (
 				996B5DCE283BD12F00B18D14 /* WebServiceMock.swift in Sources */,
 				7A6F79292836BEC00030FE91 /* MockHomePresenter.swift in Sources */,
-				7A6F792A2836BEC00030FE91 /* MockHomeInteractor.swift in Sources */, 
-				99E33D6F2836E44700021460 /* MockURLProtocol.swift in Sources */, 
-				57A0C7542836D57300AC0A39 /* UserBitcoinEntityTests.swift in Sources */, 
+				7A6F792A2836BEC00030FE91 /* MockHomeInteractor.swift in Sources */,
+				99E33D6F2836E44700021460 /* MockURLProtocol.swift in Sources */,
+				57A0C7542836D57300AC0A39 /* UserBitcoinEntityTests.swift in Sources */,
 				57A0C7462836A49B00AC0A39 /* DatabaseServiceTests.swift in Sources */,
 				7A6F792C2836BEC00030FE91 /* HomePresenterTests.swift in Sources */,
 				57A0C71F28355CAC00AC0A39 /* BitcoinMillionaireTests.swift in Sources */,

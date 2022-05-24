@@ -10,7 +10,6 @@ import Combine
 @testable import BitcoinMillionaire
 
 class MockHomeInteractor: HomeInteractorProtocol {
-        
     var checkLatestBitcoinPriceInInteractorCalled: Bool = false
     var checkIfIAmAMillionaireInInteractorCalled: Bool = false
     var checkIfBitcoinAvailabilityInInteractorCalled: Bool = false
@@ -19,13 +18,20 @@ class MockHomeInteractor: HomeInteractorProtocol {
         checkIfIAmAMillionaireInInteractorCalled = true
     }
     
-    func checkLatestBitcoinPrice() -> AnyPublisher<BitcoinPrice, Error> {
+    func checkLatestBitcoinPrice() -> AnyPublisher<Double, Error> {
         checkLatestBitcoinPriceInInteractorCalled = true
-        return Just(BitcoinPrice(code: "USD", symbol: "&#36", rate: "29,379.0384", description: "United States Dollar", rateFloat: 29379.0384))
+        return Just(29379.0384)
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
     }
     
+    func checkLatestPriceFromDataBase() -> AnyPublisher<Double, Error> {
+        checkLatestBitcoinPriceInInteractorCalled = true
+        return Just(0.0)
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
+    }
+
     func checkBitcoinAvailability() -> CurrentValueSubject<UserBitcoinEntity, Error> {
         checkIfBitcoinAvailabilityInInteractorCalled = true
         let currentValueSubject = CurrentValueSubject<UserBitcoinEntity, Error>(UserBitcoinEntity(initialCoins: 10.0))

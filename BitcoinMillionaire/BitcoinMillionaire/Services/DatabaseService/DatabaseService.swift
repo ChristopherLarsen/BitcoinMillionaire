@@ -37,7 +37,7 @@ class DatabaseService: DatabaseServiceProtocol {
     // MARK: - CRUD Repository Functions
     
     func create(key: String, object: Any) -> Result<Bool, DatabaseError> {
-        
+        print("saving \(object) to \(key)")
         userDefaults.set(object, forKey: key)
         userDefaults.synchronize()
         

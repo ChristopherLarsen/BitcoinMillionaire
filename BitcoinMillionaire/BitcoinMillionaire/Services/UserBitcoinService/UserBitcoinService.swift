@@ -33,7 +33,7 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     ///
     var currentUserBitcoins = CurrentValueSubject<UserBitcoinEntity, Error>( UserBitcoinEntity(initialCoins: 0.0) )
     
-    private let database: DatabaseServiceProtocol
+    let database: DatabaseServiceProtocol
     
     init(database: DatabaseServiceProtocol) {
         
@@ -88,6 +88,5 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     func saveCurrentBitcoinsToDatabase() {
         // TODO:
     }
-    
 }
 
