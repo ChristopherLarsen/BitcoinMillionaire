@@ -12,7 +12,7 @@
 		57A0C71128355CAC00AC0A39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57A0C71028355CAC00AC0A39 /* Assets.xcassets */; };
 		57A0C71428355CAC00AC0A39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57A0C71228355CAC00AC0A39 /* LaunchScreen.storyboard */; };
 		57A0C71F28355CAC00AC0A39 /* BitcoinMillionaireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C71E28355CAC00AC0A39 /* BitcoinMillionaireTests.swift */; };
-		57A0C72928355CAC00AC0A39 /* BitcoinMillionaireUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C72828355CAC00AC0A39 /* BitcoinMillionaireUITests.swift */; };
+		57A0C72928355CAC00AC0A39 /* HomeViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C72828355CAC00AC0A39 /* HomeViewUITests.swift */; };
 		57A0C72B28355CAC00AC0A39 /* BitcoinMillionaireUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C72A28355CAC00AC0A39 /* BitcoinMillionaireUITestsLaunchTests.swift */; };
 		57A0C739283696AE00AC0A39 /* UserBitcoinEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C738283696AE00AC0A39 /* UserBitcoinEntity.swift */; };
 		57A0C73C283697F100AC0A39 /* UserBitcoinService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C73B283697F100AC0A39 /* UserBitcoinService.swift */; };
@@ -84,7 +84,7 @@
 		57A0C71A28355CAC00AC0A39 /* BitcoinMillionaireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitcoinMillionaireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57A0C71E28355CAC00AC0A39 /* BitcoinMillionaireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinMillionaireTests.swift; sourceTree = "<group>"; };
 		57A0C72428355CAC00AC0A39 /* BitcoinMillionaireUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitcoinMillionaireUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		57A0C72828355CAC00AC0A39 /* BitcoinMillionaireUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinMillionaireUITests.swift; sourceTree = "<group>"; };
+		57A0C72828355CAC00AC0A39 /* HomeViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewUITests.swift; sourceTree = "<group>"; };
 		57A0C72A28355CAC00AC0A39 /* BitcoinMillionaireUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinMillionaireUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		57A0C738283696AE00AC0A39 /* UserBitcoinEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBitcoinEntity.swift; sourceTree = "<group>"; };
 		57A0C73B283697F100AC0A39 /* UserBitcoinService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBitcoinService.swift; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 		57A0C72728355CAC00AC0A39 /* BitcoinMillionaireUITests */ = {
 			isa = PBXGroup;
 			children = (
-				57A0C72828355CAC00AC0A39 /* BitcoinMillionaireUITests.swift */,
+				57A0C72828355CAC00AC0A39 /* HomeViewUITests.swift */,
 				57A0C72A28355CAC00AC0A39 /* BitcoinMillionaireUITestsLaunchTests.swift */,
 			);
 			path = BitcoinMillionaireUITests;
@@ -576,7 +576,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57A0C72928355CAC00AC0A39 /* BitcoinMillionaireUITests.swift in Sources */,
+				57A0C72928355CAC00AC0A39 /* HomeViewUITests.swift in Sources */,
 				57A0C72B28355CAC00AC0A39 /* BitcoinMillionaireUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

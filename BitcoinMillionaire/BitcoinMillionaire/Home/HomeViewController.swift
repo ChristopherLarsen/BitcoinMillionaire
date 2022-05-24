@@ -103,6 +103,7 @@ extension HomeViewController {
     /// Method to create latest price labels
     func createLatestPriceLabel() {
         latestPriceLabel = UILabel()
+        latestPriceLabel.accessibilityIdentifier = "latestPriceLabel"
         latestPriceLabel.textAlignment = .center
         self.latestPriceLabel.text  =  "Latest Price: $0.0"
         latestPriceLabel.font = UIFont.preferredFont(forTextStyle: .title2)
@@ -139,6 +140,7 @@ extension HomeViewController {
         //Bitcoin Image
         let bitcoinImageView = UIImageView()
         bitcoinImageView.image = UIImage(named: "Bitcoin")
+        bitcoinImageView.accessibilityIdentifier = "bitcoinImageView"
         bitcoinContainerView.layer.cornerRadius = 5.0
         bitcoinImageView.translatesAutoresizingMaskIntoConstraints = false
         bitcoinContainerView.addSubview(bitcoinImageView)
@@ -152,6 +154,7 @@ extension HomeViewController {
         
         //Coins number label
         numberOfCoinsLabel = UILabel()
+        numberOfCoinsLabel.accessibilityIdentifier = "numberOfCoinsLabel"
         numberOfCoinsLabel.textAlignment = .center
         self.numberOfCoinsLabel.text = "Bitcoins: 0.0"
         numberOfCoinsLabel.font = UIFont.preferredFont(forTextStyle: .title3)
@@ -170,13 +173,16 @@ extension HomeViewController {
     
     /// Method to create action button stacks
     func createButtonsStack() {
-        let addBitCoinButton = ButtonUtility.createButton(title: "Add BitCoin")
+        let addBitCoinButton = ButtonUtility.createButton(title: "Add Bitcoin")
+        addBitCoinButton.accessibilityIdentifier = "addBitCoinButton"
         addBitCoinButton.addTarget(self, action: #selector(addBitCoin), for: .touchUpInside)
         
         let sellBitCoinButton = ButtonUtility.createButton(title: "Sell Bitcoin")
+        sellBitCoinButton.accessibilityIdentifier = "sellBitCoinButton"
         sellBitCoinButton.addTarget(self, action: #selector(sellBitCoin), for: .touchUpInside)
         
         let checkPriceButton = ButtonUtility.createButton(title: "Check Latest Price")
+        checkPriceButton.accessibilityIdentifier = "checkPriceButton"
         checkPriceButton.addTarget(self, action: #selector(checkPrice), for: .touchUpInside)
         
         buttonStack = UIStackView(arrangedSubviews: [addBitCoinButton, sellBitCoinButton, checkPriceButton])
@@ -199,6 +205,7 @@ extension HomeViewController {
     /// Method to create Check Millionair button
     func createCheckMillionaireButton() {
         millionaireButton = ButtonUtility.createButton(title: "Am I a Millionaire?", backgroundColor: .systemGreen)
+        millionaireButton.accessibilityIdentifier = "millionaireButton"
         millionaireButton.addTarget(self, action: #selector(checkForMillionaire), for: .touchUpInside)
         view.addSubview(millionaireButton)
         millionaireButton.translatesAutoresizingMaskIntoConstraints = false
