@@ -28,13 +28,13 @@ class HomePresenter: HomePresenterProtocol, ObservableObject {
     //MARK: Custom Methods
     
     /// Method to call router to open AddBitcoin View
-    func addBitCoin() {
-        router?.openAddBitCoinView()
+    func addBitcoin() {
+        router?.openAddBitcoinView()
     }
     
     /// Method to call router to open SellBitcoin View
-    func sellBitCoin() {
-        router?.openSellBitCoinView()
+    func sellBitcoin() {
+        router?.openSellBitcoinView()
     }
     
     /// Method to call interactor to check latest bitcoin price

@@ -28,24 +28,24 @@ class HomePresenterTests: XCTestCase {
         XCTAssertTrue(systemUnderTest.interactor != nil, "Home Interactor was supposed to be passed while initializing HomePresenter, but looks like its not there.")
     }
     
-    func testHomePresenter_WhenAddBitCoinMethodIsCalledByUI_AddBitCoinMethodOnRouterIsCalled() {
+    func testHomePresenter_WhenAddBitcoinMethodIsCalledByUI_AddBitcoinMethodOnRouterIsCalled() {
         systemUnderTest.interactor = homeInteractor
-        systemUnderTest.addBitCoin()
+        systemUnderTest.addBitcoin()
         guard let homeRouter = homeRouter as? MockHomeRouter else {
             XCTAssertTrue(homeRouter == nil)
             return
         }
-        XCTAssertTrue(homeRouter.addBitCoinViewOpened)
+        XCTAssertTrue(homeRouter.addBitcoinViewOpened)
     }
     
-    func testHomePresenter_WhenSellBitCoinMethodIsCalledByUI_SellBitCoinMethodOnRouterIsCalled() {
+    func testHomePresenter_WhenSellBitcoinMethodIsCalledByUI_SellBitcoinMethodOnRouterIsCalled() {
         systemUnderTest.interactor = homeInteractor
-        systemUnderTest.sellBitCoin()
+        systemUnderTest.sellBitcoin()
         guard let homeRouter = homeRouter as? MockHomeRouter else {
             XCTAssertTrue(homeRouter == nil)
             return
         }
-        XCTAssertTrue(homeRouter.sellBitCoinViewOpened)
+        XCTAssertTrue(homeRouter.sellBitcoinViewOpened)
     }
 
     func testHomePresenter_WhencheckLatestBitcoinPriceMethodIsCalledByUI_checkLatestBitcoinPriceMethodOnInetractorIsCalled() {

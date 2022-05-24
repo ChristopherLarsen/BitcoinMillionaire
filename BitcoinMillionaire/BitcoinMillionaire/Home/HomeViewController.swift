@@ -65,12 +65,12 @@ class HomeViewController: UIViewController {
     }
     
     //MARK: Actions performed by buttons
-    @objc func addBitCoin() {
-        presenter?.addBitCoin()
+    @objc func addBitcoin() {
+        presenter?.addBitcoin()
     }
     
     @objc func sellBitCoin() {
-        presenter?.sellBitCoin()
+        presenter?.addBitcoin()
     }
     
     @objc func checkPrice() {
@@ -175,7 +175,7 @@ extension HomeViewController {
     func createButtonsStack() {
         let addBitCoinButton = ButtonUtility.createButton(title: "Add Bitcoin")
         addBitCoinButton.accessibilityIdentifier = "addBitCoinButton"
-        addBitCoinButton.addTarget(self, action: #selector(addBitCoin), for: .touchUpInside)
+        addBitCoinButton.addTarget(self, action: #selector(addBitcoin), for: .touchUpInside)
         
         let sellBitCoinButton = ButtonUtility.createButton(title: "Sell Bitcoin")
         sellBitCoinButton.accessibilityIdentifier = "sellBitCoinButton"

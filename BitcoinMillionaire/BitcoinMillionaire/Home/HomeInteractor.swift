@@ -11,12 +11,12 @@ import Combine
 class HomeInteractor: HomeInteractorProtocol {
    
     //MARK: Variables & Constants
-    var bitCoinPriceRepository: BitcoinPriceRepository!
+    var bitCoinPriceRepository: BitcoinPriceService!
     var userBitcoinService: UserBitcoinServiceProtocol!
     private var subscription: AnyCancellable?
 
     //MARK: Lifecycle methods
-    init(with repository: BitcoinPriceRepository, userBitcoinService: UserBitcoinServiceProtocol = UserBitcoinService(database: DatabaseService(userDefaults: BitcoinUserDefaults()))) {
+    init(with repository: BitcoinPriceService, userBitcoinService: UserBitcoinServiceProtocol = UserBitcoinService(database: DatabaseService(userDefaults: BitcoinUserDefaults()))) {
         self.bitCoinPriceRepository = repository
         self.userBitcoinService = userBitcoinService
     }
@@ -26,8 +26,8 @@ class HomeInteractor: HomeInteractorProtocol {
     /// Method to call bitcoin repository to read latest price of bitcoin.
     /// - Returns: A Publisher containing Bitcoin Price entity or Error, if any.
     func checkLatestBitcoinPrice() -> AnyPublisher<BitcoinPrice,Error> {
-        print("Checking latest BitCoin Price")
-        return bitCoinPriceRepository.readLatest()
+        print("Checking latest Bitcoin Price")
+        return bitCoinPriceRepository.getLatest()
     }
     
     /// Method to call bitcoin user bitcoin service to fetch available number of bitcoins with the user.

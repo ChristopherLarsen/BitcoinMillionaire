@@ -8,11 +8,11 @@
 import Foundation
 
 class HomeRouter: HomeRouterProtocol {
-    func openAddBitCoinView() {
+    func openAddBitcoinView() {
         print("Opening Add Bitcoin View")
     }
     
-    func openSellBitCoinView() {
+    func openSellBitcoinView() {
         print("Opening Sell Bitcoin View")
     }
 }

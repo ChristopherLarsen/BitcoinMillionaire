@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        let navController = UINavigationController(rootViewController: HomeViewController(presenter: HomePresenter(interactor: HomeInteractor(with: BitcoinPriceRepository()))))
+        let navController = UINavigationController(rootViewController: HomeViewController(presenter: HomePresenter(interactor: HomeInteractor(with: BitcoinPriceService()))))
         window?.rootViewController = navController
         navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 35)]
         window?.makeKeyAndVisible()

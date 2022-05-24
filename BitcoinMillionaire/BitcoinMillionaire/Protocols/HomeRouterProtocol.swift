@@ -8,6 +8,6 @@
 import Foundation
 
 protocol HomeRouterProtocol {
-    func openAddBitCoinView()
-    func openSellBitCoinView()
+    func openAddBitcoinView()
+    func openSellBitcoinView()
 }

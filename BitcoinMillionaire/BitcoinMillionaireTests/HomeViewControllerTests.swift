@@ -40,7 +40,7 @@ class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(latestPriceLabel.text, "Latest Price: $0.0")
     }
     
-    func testHomeViewController_WhenCreated_hasCreatedBitCoinView() throws {
+    func testHomeViewController_WhenCreated_hasCreatedBitcoinView() throws {
         let bitcoinContainerView = try XCTUnwrap(systemUnderTest.bitcoinContainerView, "Container view not created")
         let numberOfCoinsLabel = try XCTUnwrap(systemUnderTest.numberOfCoinsLabel, "Number of coins Label not created")
         
@@ -89,21 +89,21 @@ class HomeViewControllerTests: XCTestCase {
         }
     }
     
-    func testHomeViewController_addBitCoinTapped_AddBitCoinInPresenterMethodIsCalled() throws {
+    func testHomeViewController_addBitcoinTapped_AddBitcoinInPresenterMethodIsCalled() throws {
         let stackView = try XCTUnwrap(systemUnderTest.buttonStack, "Button stack not created")
-        let addBitCoinButton = stackView.arrangedSubviews[0] as? UIButton
-        addBitCoinButton?.sendActions(for: .touchUpInside)
+        let addBitcoinButton = stackView.arrangedSubviews[0] as? UIButton
+        addBitcoinButton?.sendActions(for: .touchUpInside)
         if let presenter = homePresenter as? MockHomePresenter {
-            XCTAssertTrue(presenter.addBitCoinCalled)
+            XCTAssertTrue(presenter.addBitcoinCalled)
         }
     }
     
-    func testHomeViewController_WhensellBitCoinTapped_SellBitCoinInPresenterMethodIsCalled() throws {
+    func testHomeViewController_WhensellBitcoinTapped_SellBitcoinInPresenterMethodIsCalled() throws {
         let stackView = try XCTUnwrap(systemUnderTest.buttonStack, "Button stack not created")
-        let sellBitCoinButton = stackView.arrangedSubviews[1] as? UIButton
-        sellBitCoinButton?.sendActions(for: .touchUpInside)
+        let sellBitcoinButton = stackView.arrangedSubviews[1] as? UIButton
+        sellBitcoinButton?.sendActions(for: .touchUpInside)
         if let presenter = homePresenter as? MockHomePresenter {
-            XCTAssertTrue(presenter.sellBitCoinCalled)
+            XCTAssertTrue(presenter.sellBitcoinCalled)
         }
     }
 
