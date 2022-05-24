@@ -11,9 +11,7 @@ import Foundation
 // MARK: - DatabaseRepositoryProtocol
 
 protocol DatabaseRepositoryProtocol {
-    
-    init(userDefaults: UserDefaultsProtocol)
-    
+        
     func create(key: String, object: Any) -> Result<Bool, DatabaseError>
     func read(key: String) -> Result<Any, DatabaseError>
     func update(key: String, object: Any) -> Result<Bool, DatabaseError>
@@ -26,27 +24,27 @@ protocol DatabaseRepositoryProtocol {
 
 class DatabaseService: DatabaseRepositoryProtocol {
     
-    private let userDefaults: UserDefaultsProtocol
+    private let userBitcoinDefaults: BitcoinUserDefaults
 
     // MARK: - Init
     
-    required init(userDefaults: UserDefaultsProtocol) {
-        self.userDefaults = userDefaults
+    required init(userDefaults: BitcoinUserDefaults = BitcoinUserDefaults() ) {
+        self.userBitcoinDefaults = userDefaults
     }
     
     // MARK: - CRUD Repository Functions
     
     func create(key: String, object: Any) -> Result<Bool, DatabaseError> {
-        print("saving \(object) to \(key)")
-        userDefaults.set(object, forKey: key)
-        userDefaults.synchronize()
+
+        userBitcoinDefaults.set(object, forKey: key)
+        userBitcoinDefaults.synchronize()
         
         return .success(true)
     }
     
     func read(key: String) -> Result<Any, DatabaseError> {
         
-        if let object = userDefaults.object(forKey: key) {
+        if let object = userBitcoinDefaults.object(forKey: key) {
             return .success(object)
         }
         return .failure(.objectDoesNotExist)
@@ -54,26 +52,26 @@ class DatabaseService: DatabaseRepositoryProtocol {
     
     func update(key: String, object: Any) -> Result<Bool, DatabaseError> {
 
-        guard userDefaults.object(forKey: key) != nil else {
+        guard userBitcoinDefaults.object(forKey: key) != nil else {
             return .failure(.objectDoesNotExist)
         }
         
-        userDefaults.set(object, forKey: key)
-        userDefaults.synchronize()
+        userBitcoinDefaults.set(object, forKey: key)
+        userBitcoinDefaults.synchronize()
 
         return .success(true)
     }
     
     func delete(key: String) -> Result<Bool, DatabaseError> {
         
-        if userDefaults.object(forKey: key) == nil {
+        if userBitcoinDefaults.object(forKey: key) == nil {
             return .failure(.objectDoesNotExist)
         }
         
-        userDefaults.removeObject(forKey: key)
-        userDefaults.synchronize()
+        userBitcoinDefaults.removeObject(forKey: key)
+        userBitcoinDefaults.synchronize()
 
-        if userDefaults.object(forKey: key) != nil {
+        if userBitcoinDefaults.object(forKey: key) != nil {
             return .failure(.failedToDeleteObject)
         }
         

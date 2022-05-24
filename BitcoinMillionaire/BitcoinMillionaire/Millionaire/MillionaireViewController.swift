@@ -7,12 +7,12 @@
 
 import Foundation
 import UIKit
-
+import Combine
 
 // MARK: - MillionaireViewControllerProtocol
 
 protocol MillionaireViewControllerProtocol {
-    
+    var isBitcoinMillionaire: PassthroughSubject<Bool, Never> { get set }
 }
 
 // MARK: - MillionaireViewController
@@ -27,10 +27,25 @@ class MillionaireViewController : UIViewController, MillionaireViewControllerPro
     
     var millionairePresenter: MillionairePresenterProtocol
     
+    var isBitcoinMillionaire: PassthroughSubject<Bool, Never> = PassthroughSubject()
+    
+    var cancellables: Set<AnyCancellable> = []
+    
     init(withPresenter millionairePresenter: MillionairePresenterProtocol) {
         self.millionairePresenter = millionairePresenter
         super.init(nibName: nil, bundle: nil)
+        
         self.millionairePresenter.millionaireViewController = self
+        
+        self.isBitcoinMillionaire.sink { completion in
+            print("TODO")
+        } receiveValue: { [weak self] isMillionaire in
+            guard let self = self else {
+                return
+            }
+            self.updateView(isMillionaire: isMillionaire)
+        }.store(in: &cancellables)
+
     }
     
     required init?(coder: NSCoder) {
@@ -130,6 +145,16 @@ private extension MillionaireViewController {
     
     func setupBindings() {
         // TODO: 
+    }
+    
+}
+
+// MARK: - Private - Update
+
+private extension MillionaireViewController {
+    
+    func updateView(isMillionaire: Bool) {
+        // TODO:
     }
     
 }

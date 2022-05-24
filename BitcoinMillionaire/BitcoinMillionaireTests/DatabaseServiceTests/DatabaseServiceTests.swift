@@ -12,14 +12,14 @@ import XCTest
 class DatabaseServiceTests: XCTestCase {
 
     var sut: DatabaseRepositoryProtocol!
-    var mockUserDefaults: MockUserDefaults!
+    var mockBitcoinUserDefaults: MockBitcoinUserDefaults!
     
     let testKey = "TestKey"
 
     override func setUpWithError() throws {
     
-        mockUserDefaults = MockUserDefaults()
-        sut = DatabaseService(userDefaults: mockUserDefaults)
+        mockBitcoinUserDefaults = MockBitcoinUserDefaults()
+        sut = DatabaseService(userDefaults: mockBitcoinUserDefaults)
         
     }
 
@@ -53,7 +53,7 @@ class DatabaseServiceTests: XCTestCase {
         
         // Arrange
         
-        mockUserDefaults.clearUserDefaults()
+        mockBitcoinUserDefaults.clearUserDefaults()
         
         let testObject = "TestObject"
 
@@ -68,7 +68,7 @@ class DatabaseServiceTests: XCTestCase {
             return
         }
         
-        guard let retrieveObject = mockUserDefaults.object(forKey: testKey) as? String else {
+        guard let retrieveObject = mockBitcoinUserDefaults.object(forKey: testKey) as? String else {
             XCTFail("Failed - Did not store test object as correct type.")
             return
         }
@@ -83,8 +83,8 @@ class DatabaseServiceTests: XCTestCase {
         
         let testObject = "TestObject"
 
-        mockUserDefaults.clearUserDefaults()
-        mockUserDefaults.set(testObject, forKey: testKey)
+        mockBitcoinUserDefaults.clearUserDefaults()
+        mockBitcoinUserDefaults.set(testObject, forKey: testKey)
         
         // Act
         
@@ -109,7 +109,7 @@ class DatabaseServiceTests: XCTestCase {
         
         // Arrange
         
-        mockUserDefaults.clearUserDefaults()
+        mockBitcoinUserDefaults.clearUserDefaults()
         
         // Act
         
@@ -133,8 +133,8 @@ class DatabaseServiceTests: XCTestCase {
         let testObjectOld = "TestObjectOld"
         let testObjectNew = "TestObjectNew"
 
-        mockUserDefaults.clearUserDefaults()
-        mockUserDefaults.set(testObjectOld, forKey: testKey)
+        mockBitcoinUserDefaults.clearUserDefaults()
+        mockBitcoinUserDefaults.set(testObjectOld, forKey: testKey)
         
         // Act
         
@@ -147,7 +147,7 @@ class DatabaseServiceTests: XCTestCase {
             return
         }
         
-        guard let retrieveObject = mockUserDefaults.object(forKey: testKey) as? String else {
+        guard let retrieveObject = mockBitcoinUserDefaults.object(forKey: testKey) as? String else {
             XCTFail("Failed - Did not update test object as correct type.")
             return
         }
@@ -162,7 +162,7 @@ class DatabaseServiceTests: XCTestCase {
         
         let testObjectNew = "TestObjectNew"
 
-        mockUserDefaults.clearUserDefaults()
+        mockBitcoinUserDefaults.clearUserDefaults()
         
         // Act
         
@@ -177,7 +177,7 @@ class DatabaseServiceTests: XCTestCase {
             XCTAssertTrue(databaseError == .objectDoesNotExist, "Failed - Did not return the correct DatabaseError type.")
         }
         
-        if let retrieveObject = mockUserDefaults.object(forKey: testKey) as? String {
+        if let retrieveObject = mockBitcoinUserDefaults.object(forKey: testKey) as? String {
             XCTFail("Failed - Should not be an object in the MockUserDefaults after update. \(retrieveObject)")
         }
         
@@ -189,8 +189,8 @@ class DatabaseServiceTests: XCTestCase {
         
         let testObject = "TestObject"
 
-        mockUserDefaults.clearUserDefaults()
-        mockUserDefaults.set(testObject, forKey: testKey)
+        mockBitcoinUserDefaults.clearUserDefaults()
+        mockBitcoinUserDefaults.set(testObject, forKey: testKey)
         
         // Act
         
@@ -211,7 +211,7 @@ class DatabaseServiceTests: XCTestCase {
         
         // Arrange
         
-        mockUserDefaults.clearUserDefaults()
+        mockBitcoinUserDefaults.clearUserDefaults()
         
         // Act
         

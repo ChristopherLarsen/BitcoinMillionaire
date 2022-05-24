@@ -9,6 +9,10 @@ import Foundation
 @testable import BitcoinMillionaire
 
 class MockMillionairePresenter : MillionairePresenterProtocol {
+    
+    func checkIfUserIsBitcoinMillionaire() {
+        // TODO: checkIfUserIsBitcoinMillionaire
+    }
 
     var millionaireViewController: MillionaireViewControllerProtocol?
     
