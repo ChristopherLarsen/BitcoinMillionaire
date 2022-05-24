@@ -33,9 +33,9 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     ///
     var currentUserBitcoins = CurrentValueSubject<UserBitcoinEntity, Error>( UserBitcoinEntity(initialCoins: 0.0) )
     
-    let database: DatabaseServiceProtocol
+    private let database: DatabaseRepositoryProtocol
     
-    init(database: DatabaseServiceProtocol) {
+    init(database: DatabaseRepositoryProtocol) {
         
         self.database = database
         fetchLatestUserBitcoinsFromDatabase()

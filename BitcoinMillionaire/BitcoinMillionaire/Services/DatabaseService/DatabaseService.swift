@@ -8,9 +8,9 @@
 import Foundation
 
 
-// MARK: - DatabaseServiceProtocol
+// MARK: - DatabaseRepositoryProtocol
 
-protocol DatabaseServiceProtocol {
+protocol DatabaseRepositoryProtocol {
     
     init(userDefaults: UserDefaultsProtocol)
     
@@ -24,7 +24,7 @@ protocol DatabaseServiceProtocol {
 
 // MARK: - DatabaseService
 
-class DatabaseService: DatabaseServiceProtocol {
+class DatabaseService: DatabaseRepositoryProtocol {
     
     private let userDefaults: UserDefaultsProtocol
 
