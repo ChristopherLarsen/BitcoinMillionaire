@@ -41,19 +41,7 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
         fetchLatestUserBitcoinsFromDatabase()
     }
     
-    // MARK: - Published
-    
-    func fetchLatestUserBitcoinsFromDatabase() {
-        
-        if case .success(let readObject) = database.read(key: Constants.keyUserBitcoin) {
-            if let userBitcoinEntity = readObject as? UserBitcoinEntity {
-                self.currentUserBitcoins.value = userBitcoinEntity
-            }
-        } else {
-            // TODO: Handle a miss on the Database
-        }
-        
-    }
+    // MARK: - Public
     
     func addBitcoin(amountToAdd: Float) -> Result<Bool, UserBitcoinServiceError> {
         
@@ -67,9 +55,9 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
         
         return .success(true)
     }
-
+    
     func removeBitcoin(amountToRemove: Float) -> Result<Bool, UserBitcoinServiceError> {
-
+        
         let currentBitcoins: Float = currentUserBitcoins.value.bitcoins
         
         guard currentBitcoins > amountToRemove else {
@@ -84,9 +72,58 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
         
         return .success(true)
     }
-
-    func saveCurrentBitcoinsToDatabase() {
-        // TODO:
-    }
+    
 }
 
+// MARK: - Private
+
+private extension UserBitcoinService {
+    
+    func fetchLatestUserBitcoinsFromDatabase() {
+        
+        if case .success(let readObject) = database.read(key: Key.keyUserBitcoin) {
+            if let userBitcoinEntity = readObject as? UserBitcoinEntity {
+                self.currentUserBitcoins.value = userBitcoinEntity
+            }
+        } else {
+            
+            initializeUserBitcoinsWithZeroBitcoins()
+            
+            if case .success(let readObject) = database.read(key: Key.keyUserBitcoin) {
+                
+                guard let userBitcoinEntity = readObject as? UserBitcoinEntity else {
+                    print("Error - Failed to initialize the UserBitcoinEntity")
+                    return
+                }
+                
+                
+                self.currentUserBitcoins.value = userBitcoinEntity
+            }
+        }
+        
+    }
+    
+    func initializeUserBitcoinsWithZeroBitcoins() {
+        
+        print("Initializing the Database with a zero bitcoin UserBitcoinEntity")
+        
+        let initialCoins: Float = 0.0
+        
+        database.create(key: Key.keyUserBitcoin, object: initialCoins)
+    }
+    
+    func saveCurrentBitcoinsToDatabase() {
+        
+        let bitcoins: Float = currentUserBitcoins.value.bitcoins
+        
+        let resultDatabaseOperation = database.update(key: Key.keyUserBitcoin, object: bitcoins)
+        
+        switch resultDatabaseOperation {
+        case .success(let result):
+            print("Database - Saved user bitcoin to Database. \(result)")
+        case .failure(let databaseError):
+            print("Database Error - Failed to save user bitcoin to Database. \(databaseError)")
+        }
+        
+    }
+}
