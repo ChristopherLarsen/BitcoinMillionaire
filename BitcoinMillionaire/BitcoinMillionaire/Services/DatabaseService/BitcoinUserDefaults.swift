@@ -30,3 +30,14 @@ class BitcoinUserDefaults: UserDefaultsProtocol {
     
     
 }
+
+extension UserDefaults {
+    @objc var keyBitcoinPrice: Double {
+        get {
+            return Double(float(forKey: "keyBitcoinPrice"))
+        }
+        set {
+            set(newValue, forKey: "keyBitcoinPrice")
+        }
+    }
+}

@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class HomePresenter: HomePresenterProtocol, ObservableObject {
-    
+
     //MARK: Variables & Constants
     
     var interactor: HomeInteractorProtocol?
@@ -37,11 +37,22 @@ class HomePresenter: HomePresenterProtocol, ObservableObject {
         router?.openSellBitcoinView()
     }
     
-    /// Method to call interactor to check latest bitcoin price
-    func checkLatestBitcoinPrice() {
+    func checkLatestBitcoinPriceOnline() {
         subscriptions.insert(interactor?.checkLatestBitcoinPrice()
             .sink(receiveCompletion: { _ in}, receiveValue: { price in
-                self.latestPrice = Double(price.rateFloat)
+                    self.latestPrice = price
+                }))
+    }
+    
+    /// Method to call interactor to check latest bitcoin price
+    func checkLatestBitcoinPrice() {
+        subscriptions.insert(interactor?.checkLatestPriceFromDataBase()
+            .sink(receiveCompletion: { _ in}, receiveValue: { price in
+                if price == 0.0 {
+                    self.checkLatestBitcoinPriceOnline()
+                } else {
+                    self.latestPrice = price
+                }
             }))
     }
     

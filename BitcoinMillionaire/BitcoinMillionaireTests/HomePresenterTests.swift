@@ -50,7 +50,7 @@ class HomePresenterTests: XCTestCase {
 
     func testHomePresenter_WhencheckLatestBitcoinPriceMethodIsCalledByUI_checkLatestBitcoinPriceMethodOnInetractorIsCalled() {
         systemUnderTest.interactor = homeInteractor
-        systemUnderTest.checkLatestBitcoinPrice()
+        systemUnderTest.checkLatestBitcoinPriceOnline()
         guard let homeInteractor = homeInteractor as? MockHomeInteractor else {
             XCTAssertTrue(homeInteractor == nil)
             return
@@ -67,6 +67,4 @@ class HomePresenterTests: XCTestCase {
         }
         XCTAssertTrue(homeInteractor.checkIfIAmAMillionaireInInteractorCalled)
     }
-
-
 }

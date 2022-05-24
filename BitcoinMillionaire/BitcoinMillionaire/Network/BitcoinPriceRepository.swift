@@ -8,26 +8,20 @@
 import Foundation
 import Combine
 
-protocol BitcoinPriceServiceProtocol {
-    func getLatest() -> AnyPublisher<BitcoinPrice,Error>
-    func getLatestFromDataBase() -> AnyPublisher<Double,Error>
-}
 
-class BitcoinPriceService : BitcoinPriceServiceProtocol {
+class BitcoinPriceRepository : Repository {
     
-    let webService : WebServiceProtocol
-    
-    init(webService: WebServiceProtocol = WebService()) {
-        self.webService = webService
-    }
-    
-    func getLatest() -> AnyPublisher<BitcoinPrice,Error> { 
+    func readLatest() -> AnyPublisher<BitcoinPrice,Error> {
+        let webService = WebService()
         return webService.get(endpoint: Endpoint.getLatestBitcoinPrice, responseType: APIResponse.self)
-            .map({ $0.bpi.bitcoinPrice }) 
+            .map({
+                $0.bpi.bitcoinPrice
+                
+            })
             .eraseToAnyPublisher() 
     }
     
-    func getLatestFromDataBase() -> AnyPublisher<Double,Error> {
+    func readLatestFromDataBase() -> AnyPublisher<Double,Error> {
         return BitcoinUserDefaults().defaults
             .publisher(for: \.keyBitcoinPrice)
             .handleEvents(receiveOutput: { bitcoinPrice in

@@ -15,6 +15,7 @@ class MockHomePresenter: HomePresenterProtocol {
     var addBitcoinCalled: Bool = false
     var sellBitcoinCalled: Bool = false
     var checkLatestBitcoinPriceCalled: Bool = false
+    var checkLatestBitcoinPriceOnlineCalled: Bool = false
     var checkIfIAmAMillionaireCalled: Bool = false
 
     required init(interactor: HomeInteractorProtocol, router: HomeRouterProtocol = MockHomeRouter()) {
@@ -39,6 +40,10 @@ class MockHomePresenter: HomePresenterProtocol {
     
     func checkNumberOfCoinsAvailable() {
         
+    }
+    
+    func checkLatestBitcoinPriceOnline() {
+        checkLatestBitcoinPriceOnlineCalled = true
     }
     
 }
