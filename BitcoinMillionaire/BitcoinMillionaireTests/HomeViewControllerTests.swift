@@ -55,7 +55,7 @@ class HomeViewControllerTests: XCTestCase {
         XCTAssertTrue((stackView.arrangedSubviews[2] as? UIButton) != nil, "stackView Subview was supposed to be a button")
         
         let button1 = stackView.arrangedSubviews[0] as? UIButton
-        XCTAssertEqual(button1?.titleLabel?.text, "Add BitCoin")
+        XCTAssertEqual(button1?.titleLabel?.text, "Add Bitcoin")
         
         let button2 = stackView.arrangedSubviews[1] as? UIButton
         XCTAssertEqual(button2?.titleLabel?.text, "Sell Bitcoin")
