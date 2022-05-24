@@ -10,6 +10,10 @@ import Foundation
 
 class MockMillionairePresenter : MillionairePresenterProtocol {
     
+    func calculatedUser(isMillionaire: Bool) {
+        // TODO: calculatedUser
+    }
+    
     func checkIfUserIsBitcoinMillionaire() {
         // TODO: checkIfUserIsBitcoinMillionaire
     }
@@ -17,6 +21,7 @@ class MockMillionairePresenter : MillionairePresenterProtocol {
     var millionaireViewController: MillionaireViewControllerProtocol?
     
     init() {
+        // TODO: checkIfUserIsBitcoinMillionaire
     }
     
 }

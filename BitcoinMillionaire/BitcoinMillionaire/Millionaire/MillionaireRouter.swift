@@ -10,12 +10,14 @@ import Foundation
 // MARK: - MillionaireRouterProtocol
 
 protocol MillionaireRouterProtocol {
-    
+    var millionairePresenter: MillionairePresenterProtocol? { get set }
 }
 
 // MARK: - MillionaireRouter
 
 class MillionaireRouter : MillionaireRouterProtocol {
+    
+    var millionairePresenter: MillionairePresenterProtocol?
     
 }
 

@@ -144,7 +144,7 @@ private extension MillionaireViewController {
     }
     
     func setupBindings() {
-        // TODO: 
+        // TODO: setupBindings
     }
     
 }
