@@ -28,7 +28,7 @@
 		7A2A3F3128357E0500559CB4 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F3028357E0400559CB4 /* HomeInteractor.swift */; };
 		7A2A3F3328357E0E00559CB4 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F3228357E0E00559CB4 /* HomePresenter.swift */; };
 		7A2A3F3528357E1500559CB4 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F3428357E1500559CB4 /* HomeRouter.swift */; };
-		7A2A3F3828357E4300559CB4 /* AddBitCoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F3728357E4300559CB4 /* AddBitCoinViewController.swift */; };
+		7A2A3F3828357E4300559CB4 /* AddBitcoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F3728357E4300559CB4 /* AddBitcoinViewController.swift */; };
 		7A2A3F3A28357E4B00559CB4 /* AddBitcoinInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F3928357E4B00559CB4 /* AddBitcoinInteractor.swift */; };
 		7A2A3F3C28357E5300559CB4 /* AddBitcoinPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F3B28357E5300559CB4 /* AddBitcoinPresenter.swift */; };
 		7A2A3F3E28357E5A00559CB4 /* AddBitcoinRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F3D28357E5A00559CB4 /* AddBitcoinRouter.swift */; };
@@ -45,8 +45,9 @@
 		7A6F792A2836BEC00030FE91 /* MockHomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F79262836BEC00030FE91 /* MockHomeInteractor.swift */; };
 		7A6F792B2836BEC00030FE91 /* MockHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F79272836BEC00030FE91 /* MockHomeRouter.swift */; };
 		7A6F792C2836BEC00030FE91 /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F79282836BEC00030FE91 /* HomePresenterTests.swift */; };
+		7ADE5DE72837352F003C81CC /* BitcoinUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE5DE62837352F003C81CC /* BitcoinUserDefaults.swift */; };
+		9923FD94283C11030026F99D /* BorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9923FD93283C11030026F99D /* BorderedTextField.swift */; };
 		996B5DCE283BD12F00B18D14 /* WebServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B5DCD283BD12F00B18D14 /* WebServiceMock.swift */; };
-		7ADE5DE72837352F003C81CC /* BitcoinUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE5DE62837352F003C81CC /* BitcoinUserDefaults.swift */; }; 
 		99AFD77128368B1500BD7321 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AFD77028368B1500BD7321 /* APIResponse.swift */; };
 		99AFD77328368B7500BD7321 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AFD77228368B7500BD7321 /* Repository.swift */; };
 		99AFD77528368C6700BD7321 /* BitcoinPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AFD77428368C6700BD7321 /* BitcoinPrice.swift */; };
@@ -104,7 +105,7 @@
 		7A2A3F3028357E0400559CB4 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		7A2A3F3228357E0E00559CB4 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		7A2A3F3428357E1500559CB4 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
-		7A2A3F3728357E4300559CB4 /* AddBitCoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBitCoinViewController.swift; sourceTree = "<group>"; };
+		7A2A3F3728357E4300559CB4 /* AddBitcoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBitcoinViewController.swift; sourceTree = "<group>"; };
 		7A2A3F3928357E4B00559CB4 /* AddBitcoinInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBitcoinInteractor.swift; sourceTree = "<group>"; };
 		7A2A3F3B28357E5300559CB4 /* AddBitcoinPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBitcoinPresenter.swift; sourceTree = "<group>"; };
 		7A2A3F3D28357E5A00559CB4 /* AddBitcoinRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBitcoinRouter.swift; sourceTree = "<group>"; };
@@ -120,9 +121,10 @@
 		7A6F79252836BEC00030FE91 /* MockHomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockHomePresenter.swift; sourceTree = "<group>"; };
 		7A6F79262836BEC00030FE91 /* MockHomeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockHomeInteractor.swift; sourceTree = "<group>"; };
 		7A6F79272836BEC00030FE91 /* MockHomeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockHomeRouter.swift; sourceTree = "<group>"; };
-		7A6F79282836BEC00030FE91 /* HomePresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; }; 
-		996B5DCD283BD12F00B18D14 /* WebServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceMock.swift; sourceTree = "<group>"; }; 
-		7ADE5DE62837352F003C81CC /* BitcoinUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinUserDefaults.swift; sourceTree = "<group>"; }; 
+		7A6F79282836BEC00030FE91 /* HomePresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
+		7ADE5DE62837352F003C81CC /* BitcoinUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinUserDefaults.swift; sourceTree = "<group>"; };
+		9923FD93283C11030026F99D /* BorderedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextField.swift; sourceTree = "<group>"; };
+		996B5DCD283BD12F00B18D14 /* WebServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceMock.swift; sourceTree = "<group>"; };
 		99AFD77028368B1500BD7321 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		99AFD77228368B7500BD7321 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		99AFD77428368C6700BD7321 /* BitcoinPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinPrice.swift; sourceTree = "<group>"; };
@@ -188,8 +190,8 @@
 				99AFD76F28368AD000BD7321 /* Entities */,
 				7A6F78E22835929D0030FE91 /* Utilities */,
 				7A2A3F2D28357DC900559CB4 /* Home */,
-				7A2A3F3628357E2400559CB4 /* AddBitCoin */,
-				7A2A3F3F28357E6700559CB4 /* RemoveBitCoin */,
+				7A2A3F3628357E2400559CB4 /* AddBitcoin */,
+				7A2A3F3F28357E6700559CB4 /* RemoveBitcoin */,
 				57A0C7372836967500AC0A39 /* Entities */,
 				7A2A3F4828357EB200559CB4 /* Network */,
 				57A0C73A283697DD00AC0A39 /* Services */,
@@ -286,22 +288,23 @@
 				7A2A3F3028357E0400559CB4 /* HomeInteractor.swift */,
 				7A2A3F3228357E0E00559CB4 /* HomePresenter.swift */,
 				7A2A3F3428357E1500559CB4 /* HomeRouter.swift */,
+				9923FD93283C11030026F99D /* BorderedTextField.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		7A2A3F3628357E2400559CB4 /* AddBitCoin */ = {
+		7A2A3F3628357E2400559CB4 /* AddBitcoin */ = {
 			isa = PBXGroup;
 			children = (
-				7A2A3F3728357E4300559CB4 /* AddBitCoinViewController.swift */,
+				7A2A3F3728357E4300559CB4 /* AddBitcoinViewController.swift */,
 				7A2A3F3928357E4B00559CB4 /* AddBitcoinInteractor.swift */,
 				7A2A3F3B28357E5300559CB4 /* AddBitcoinPresenter.swift */,
 				7A2A3F3D28357E5A00559CB4 /* AddBitcoinRouter.swift */,
 			);
-			path = AddBitCoin;
+			path = AddBitcoin;
 			sourceTree = "<group>";
 		};
-		7A2A3F3F28357E6700559CB4 /* RemoveBitCoin */ = {
+		7A2A3F3F28357E6700559CB4 /* RemoveBitcoin */ = {
 			isa = PBXGroup;
 			children = (
 				7A2A3F4028357E7A00559CB4 /* RemoveBitcoinViewController.swift */,
@@ -309,7 +312,7 @@
 				7A2A3F4428357E9800559CB4 /* RemoveBitcoinPresenter.swift */,
 				7A2A3F4628357EA000559CB4 /* RemoveBitcoinRouter.swift */,
 			);
-			path = RemoveBitCoin;
+			path = RemoveBitcoin;
 			sourceTree = "<group>";
 		};
 		7A2A3F4828357EB200559CB4 /* Network */ = {
@@ -349,10 +352,10 @@
 			children = (
 				7A6F79252836BEC00030FE91 /* MockHomePresenter.swift */,
 				7A6F79262836BEC00030FE91 /* MockHomeInteractor.swift */,
-				7A6F79272836BEC00030FE91 /* MockHomeRouter.swift */, 
+				7A6F79272836BEC00030FE91 /* MockHomeRouter.swift */,
 				99E33D6E2836E44700021460 /* MockURLProtocol.swift */,
-				996B5DCD283BD12F00B18D14 /* WebServiceMock.swift */, 
-				57A0C74D2836CF8100AC0A39 /* MockDatabase.swift */, 
+				996B5DCD283BD12F00B18D14 /* WebServiceMock.swift */,
+				57A0C74D2836CF8100AC0A39 /* MockDatabase.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -535,7 +538,7 @@
 				99E33D632836AD9500021460 /* ResponseProtocol.swift in Sources */,
 				7A2A3F4328357E9100559CB4 /* RemoveBitcoinInteractor.swift in Sources */,
 				57A0C739283696AE00AC0A39 /* UserBitcoinEntity.swift in Sources */,
-				7A2A3F3828357E4300559CB4 /* AddBitCoinViewController.swift in Sources */,
+				7A2A3F3828357E4300559CB4 /* AddBitcoinViewController.swift in Sources */,
 				99AFD77E283693A300BD7321 /* BitcoinPriceService.swift in Sources */,
 				57A0C74A2836A78200AC0A39 /* UserDefaultsProtocol.swift in Sources */,
 				7A2A3F3E28357E5A00559CB4 /* AddBitcoinRouter.swift in Sources */,
@@ -547,6 +550,7 @@
 				57A0C7442836A22500AC0A39 /* DatabaseError.swift in Sources */,
 				7A2A3F4728357EA000559CB4 /* RemoveBitcoinRouter.swift in Sources */,
 				7A6F79212836BEB00030FE91 /* HomePresenterProtocol.swift in Sources */,
+				9923FD94283C11030026F99D /* BorderedTextField.swift in Sources */,
 				7ADE5DE72837352F003C81CC /* BitcoinUserDefaults.swift in Sources */,
 				57A0C70A28355CAA00AC0A39 /* SceneDelegate.swift in Sources */,
 				7A6F79222836BEB00030FE91 /* HomeInteractorProtocol.swift in Sources */,
@@ -569,9 +573,9 @@
 			files = (
 				996B5DCE283BD12F00B18D14 /* WebServiceMock.swift in Sources */,
 				7A6F79292836BEC00030FE91 /* MockHomePresenter.swift in Sources */,
-				7A6F792A2836BEC00030FE91 /* MockHomeInteractor.swift in Sources */, 
-				99E33D6F2836E44700021460 /* MockURLProtocol.swift in Sources */, 
-				57A0C7542836D57300AC0A39 /* UserBitcoinEntityTests.swift in Sources */, 
+				7A6F792A2836BEC00030FE91 /* MockHomeInteractor.swift in Sources */,
+				99E33D6F2836E44700021460 /* MockURLProtocol.swift in Sources */,
+				57A0C7542836D57300AC0A39 /* UserBitcoinEntityTests.swift in Sources */,
 				57A0C7462836A49B00AC0A39 /* DatabaseServiceTests.swift in Sources */,
 				7A6F792C2836BEC00030FE91 /* HomePresenterTests.swift in Sources */,
 				57A0C71F28355CAC00AC0A39 /* BitcoinMillionaireTests.swift in Sources */,
@@ -749,6 +753,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -777,6 +782,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
