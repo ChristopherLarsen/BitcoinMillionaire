@@ -8,19 +8,6 @@
 import Foundation
 
 
-
-// MARK: - MillionaireInteractorProtocol
-
-protocol MillionaireInteractorProtocol {
-    
-}
-
-// MARK: - MillionaireRouterProtocol
-
-protocol MillionaireRouterProtocol {
-    
-}
-
 // MARK: - MillionairePresenterProtocol
 
 protocol MillionairePresenterProtocol {
