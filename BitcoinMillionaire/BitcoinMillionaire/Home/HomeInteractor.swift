@@ -30,9 +30,10 @@ class HomeInteractor: HomeInteractorProtocol {
         return bitcoinPriceService.getLatest()
             .map { bitcoinPrice in
                 let doublePrice = Double(bitcoinPrice.rateFloat)
-                if let bitcoinService = self.userBitcoinService as? UserBitcoinService {
-                   let _ = bitcoinService.database.create(key: Constants.keyBitcoinPrice, object: doublePrice)
-                }
+                // NOTE: The bitcoin price service should save the value to the database directly.
+//                if let bitcoinService = self.userBitcoinService as? UserBitcoinService {
+//                   let _ = bitcoinService.database.create(key: Constants.keyBitcoinPrice, object: doublePrice)
+//                }
                 print("Price Online: \(doublePrice)")
                 return doublePrice
             }.eraseToAnyPublisher()

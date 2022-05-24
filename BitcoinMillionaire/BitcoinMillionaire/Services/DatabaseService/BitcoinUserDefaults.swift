@@ -28,7 +28,6 @@ class BitcoinUserDefaults: UserDefaultsProtocol {
         defaults.synchronize()
     }
     
-    
 }
 
 extension UserDefaults {

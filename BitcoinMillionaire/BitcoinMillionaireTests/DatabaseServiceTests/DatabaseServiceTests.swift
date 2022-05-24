@@ -11,7 +11,7 @@ import XCTest
 
 class DatabaseServiceTests: XCTestCase {
 
-    var sut: DatabaseServiceProtocol!
+    var sut: DatabaseRepositoryProtocol!
     var mockUserDefaults: MockUserDefaults!
     
     let testKey = "TestKey"
