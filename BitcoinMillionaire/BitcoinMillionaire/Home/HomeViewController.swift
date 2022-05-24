@@ -65,7 +65,7 @@ class HomeViewController: UIViewController {
     }
     
     //MARK: Actions performed by buttons
-    @objc func addBitcoin() {
+    @objc func addBitcoin() { 
         presenter?.addBitcoin()
     }
     
