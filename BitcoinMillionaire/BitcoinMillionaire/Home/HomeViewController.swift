@@ -66,11 +66,11 @@ class HomeViewController: UIViewController {
     
     //MARK: Actions performed by buttons
     @objc func addBitCoin() {
-        presenter?.addBitCoin()
+        presenter?.addBitcoin()
     }
     
     @objc func sellBitCoin() {
-        presenter?.sellBitCoin()
+        presenter?.sellBitcoin()
     }
     
     @objc func checkPrice() {
