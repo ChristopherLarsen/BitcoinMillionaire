@@ -14,34 +14,39 @@ import UIKit
 
 class MockUserDefaults: UserDefaultsProtocol {
         
-    var dictionary: [String: AnyObject] = [:]
+    var tempDictionary: Dictionary<String, Any> = [:]
+    var dictionary: Dictionary<String, Any> = [:]
     
     func object(forKey defaultName: String) -> Any? {
-        return dictionary[defaultName]
+        return tempDictionary[defaultName]
     }
     
     func set(_ value: Any?, forKey defaultName: String) {
         if let object = value as? AnyObject {
-            dictionary[defaultName] = object
+            tempDictionary[defaultName] = object
         } else {
             fatalError("Cannot mock non-object entities.")
         }
     }
     
     func removeObject(forKey defaultName: String) {
-        dictionary.removeValue(forKey: defaultName)
+        tempDictionary.removeValue(forKey: defaultName)
     }
     
     func synchronize() {
-        // TODO: Use two dictionaries, one temp state, one real.
+        dictionary = tempDictionary
+        tempDictionary = dictionary
     }
 
 }
 
+// MARK: - Test Helper Methods
+
 extension MockUserDefaults {
     
     func clearUserDefaults() {
-        dictionary = [:]
+        tempDictionary = [:]
+        synchronize()
     }
     
 }
