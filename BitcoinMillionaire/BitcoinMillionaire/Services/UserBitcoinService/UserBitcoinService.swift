@@ -53,6 +53,8 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
         
         currentUserBitcoins.value = userBitcoinEntity
         
+        saveCurrentBitcoinsToDatabase()
+        
         return .success(true)
     }
     
@@ -70,6 +72,8 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
         
         currentUserBitcoins.value = userBitcoinEntity
         
+        saveCurrentBitcoinsToDatabase()
+        
         return .success(true)
     }
     
@@ -82,8 +86,8 @@ private extension UserBitcoinService {
     func fetchLatestUserBitcoinsFromDatabase() {
         
         if case .success(let readObject) = database.read(key: Key.keyUserBitcoin) {
-            if let userBitcoinEntity = readObject as? UserBitcoinEntity {
-                self.currentUserBitcoins.value = userBitcoinEntity
+            if let initialCoins = readObject as? Float {
+                self.currentUserBitcoins.value = UserBitcoinEntity(initialCoins: initialCoins)
             }
         } else {
             
@@ -91,13 +95,13 @@ private extension UserBitcoinService {
             
             if case .success(let readObject) = database.read(key: Key.keyUserBitcoin) {
                 
-                guard let userBitcoinEntity = readObject as? UserBitcoinEntity else {
+                guard let initialCoins = readObject as? Float else {
                     print("Error - Failed to initialize the UserBitcoinEntity")
                     return
                 }
                 
                 
-                self.currentUserBitcoins.value = userBitcoinEntity
+                self.currentUserBitcoins.value = UserBitcoinEntity(initialCoins: initialCoins)
             }
         }
         
@@ -109,7 +113,12 @@ private extension UserBitcoinService {
         
         let initialCoins: Float = 0.0
         
-        database.create(key: Key.keyUserBitcoin, object: initialCoins)
+        let result = database.create(key: Key.keyUserBitcoin, object: initialCoins)
+        
+        guard case .success(let saved) = result else {
+            print("The database operation was not successful.")
+            return
+        }
     }
     
     func saveCurrentBitcoinsToDatabase() {

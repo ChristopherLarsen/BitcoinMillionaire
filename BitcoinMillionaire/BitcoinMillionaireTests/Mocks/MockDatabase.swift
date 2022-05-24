@@ -12,22 +12,22 @@ import Foundation
 class MockDatabase : DatabaseService {
     
     override func create(key: String, object: Any) -> Result<Bool, DatabaseError> {
-        print("Mocking the Database - Create")
+        print("MockDatabase - Create")
         return super.create(key: key, object: object)
     }
     
     override func read(key: String) -> Result<Any, DatabaseError> {
-        print("Mocking the Database - Read")
+        print("MockDatabase - Read")
         return super.read(key: key)
     }
     
     override func update(key: String, object: Any) -> Result<Bool, DatabaseError> {
-        print("Mocking the Database - Update")
+        print("MockDatabase - Update")
         return super.update(key: key, object: object)
     }
     
     override func delete(key: String) -> Result<Bool, DatabaseError> {
-        print("Mocking the Database - Delete")
+        print("MockDatabase - Delete")
         return super.delete(key: key)
     }
     

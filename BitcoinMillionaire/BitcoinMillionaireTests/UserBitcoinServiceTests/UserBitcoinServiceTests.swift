@@ -24,7 +24,9 @@ class UserBitcoinServiceTests: XCTestCase {
     }
     
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        mockUserDefaults = nil
+        mockDatabase = nil
+        sut = nil
     }
     
     func testUserBitcoinService_WhenCreated_HasZeroUserBitcoin() {
@@ -190,6 +192,102 @@ class UserBitcoinServiceTests: XCTestCase {
         let bitcoinsAfterRemoving: Float = sut.currentUserBitcoins.value.bitcoins
         
         XCTAssertTrue(bitcoinsAfterRemoving == expectedBitcoinsAfterRemovingBitcoins, "Failed - Should not have changed the amount of Bitcoin.")
+        
+    }
+    
+    func testUserBitcoinService_WhenAddingBitcoin_HasMoreBitcoin() {
+        
+        // Arrange
+
+        let initialBitcoin = Float.random(in: 0...1.0)
+        let addedBitcoin = Float.random(in: 0...1.0)
+        let accuracy: Float = 0.000001
+        let expectedBitcoin = initialBitcoin + addedBitcoin
+
+        mockUserDefaults.clearUserDefaults()
+        
+        let resultCreate = mockDatabase.create(key: Key.keyUserBitcoin, object: initialBitcoin)
+        
+        guard resultCreate == .success(true) else {
+            XCTFail("Failed - MockDatabase operation error. ")
+            return
+        }
+
+        sut = UserBitcoinService(database: mockDatabase)
+        
+        // Act
+
+        let resultAdd = sut.addBitcoin(amountToAdd: addedBitcoin)
+
+        // Assert
+
+        guard resultAdd == .success(true) else {
+            XCTFail("Failed - BitcoinsService operation error. ")
+            return
+        }
+                
+        let cancellable = sut.currentUserBitcoins.sink { error in
+            XCTFail("Should not have received an Error from the UserBitcoin publisher. Error: \(error)")
+        } receiveValue: { userBitcoinEntity in
+            XCTAssertEqual(userBitcoinEntity.bitcoins, expectedBitcoin, accuracy: accuracy, "Failed - Received \(userBitcoinEntity.bitcoins) bitcoins instead of \(expectedBitcoin) bitcoins.")
+        }
+        
+        XCTAssertNotNil(cancellable, "Failed - The Publisher should have provided a cancellable.")
+
+        guard let retrievedUserBitcoinValue = mockUserDefaults.object(forKey: Key.keyUserBitcoin) as? Float else {
+            XCTFail("Failed - Should have retrieved user bitcoin from mock user defaults.")
+            return
+        }
+        
+        XCTAssertEqual(retrievedUserBitcoinValue, expectedBitcoin, accuracy: accuracy, "Failed - Retrieved user bitcoin: \(retrievedUserBitcoinValue) should have been expected amount: \(expectedBitcoin)")
+        
+    }
+    
+    func testUserBitcoinService_WhenRemovingBitcoin_HasLessBitcoin() {
+        
+        // Arrange
+
+        let initialBitcoin = 1 + Float.random(in: 0...1.0)
+        let removedBitcoin = Float.random(in: 0...1.0)
+        let accuracy: Float = 0.000001
+        let expectedBitcoin = initialBitcoin - removedBitcoin
+
+        mockUserDefaults.clearUserDefaults()
+        
+        let resultCreate = mockDatabase.create(key: Key.keyUserBitcoin, object: initialBitcoin)
+        
+        guard resultCreate == .success(true) else {
+            XCTFail("Failed - MockDatabase operation error. ")
+            return
+        }
+
+        sut = UserBitcoinService(database: mockDatabase)
+        
+        // Act
+
+        let resultSubtract = sut.removeBitcoin(amountToRemove: removedBitcoin)
+
+        // Assert
+
+        guard resultSubtract == .success(true) else {
+            XCTFail("Failed - BitcoinsService operation error. ")
+            return
+        }
+                
+        let cancellable = sut.currentUserBitcoins.sink { error in
+            XCTFail("Should not have received an Error from the UserBitcoin publisher. Error: \(error)")
+        } receiveValue: { userBitcoinEntity in
+            XCTAssertEqual(userBitcoinEntity.bitcoins, expectedBitcoin, accuracy: accuracy, "Failed - Received \(userBitcoinEntity.bitcoins) bitcoins instead of \(expectedBitcoin) bitcoins.")
+        }
+        
+        XCTAssertNotNil(cancellable, "Failed - The Publisher should have provided a cancellable.")
+
+        guard let retrievedUserBitcoinValue = mockUserDefaults.object(forKey: Key.keyUserBitcoin) as? Float else {
+            XCTFail("Failed - Should have retrieved user bitcoin from mock user defaults.")
+            return
+        }
+        
+        XCTAssertEqual(retrievedUserBitcoinValue, expectedBitcoin, accuracy: accuracy, "Failed - Retrieved user bitcoin: \(retrievedUserBitcoinValue) should have been expected amount: \(expectedBitcoin)")
         
     }
     
