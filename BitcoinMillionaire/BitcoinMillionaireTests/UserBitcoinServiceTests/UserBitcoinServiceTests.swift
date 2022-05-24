@@ -67,18 +67,25 @@ class UserBitcoinServiceTests: XCTestCase {
         // Insert a random number of Bitcoins to start
         //
         let initialNumberOfBitcoins = Float.random(in: 0...1.0)
-        let userBitcoinEntity = UserBitcoinEntity(initialCoins: initialNumberOfBitcoins)
-
-        mockUserDefaults.set(userBitcoinEntity, forKey: Key.keyUserBitcoin)
+        
+        mockUserDefaults.set(initialNumberOfBitcoins, forKey: Key.keyUserBitcoin)
         let mockDatabase = MockDatabase(userDefaults: mockUserDefaults)
 
+        // Act
+        
         sut = UserBitcoinService(database: mockDatabase)
 
         // Assert
         
-        let numberOfBitcoinsWhenCreated = sut.currentUserBitcoins.value.bitcoins
-
-        XCTAssertTrue(numberOfBitcoinsWhenCreated == initialNumberOfBitcoins, "Failed - Service did not start with the number of Bitcoins in the Database")
+        let cancellable = sut.currentUserBitcoins.sink { error in
+            XCTFail("Should not have received an Error from the UserBitcoin publisher. Error: \(error)")
+        } receiveValue: { userBitcoinEntity in
+            let numberOfBitcoinsWhenCreated = userBitcoinEntity.bitcoins
+            XCTAssertTrue(numberOfBitcoinsWhenCreated == initialNumberOfBitcoins, "Failed - Initial bitcoins \(numberOfBitcoinsWhenCreated) did not start with the expected \(initialNumberOfBitcoins) number of Bitcoins in the Database")
+        }
+        
+        XCTAssertNotNil(cancellable, "Failed to recieve cancellable from the Publisher")
+        
     }
     
     func testUserBitcoinService_WhenBitcoinChanges_ShouldPublishToSubscribers() {

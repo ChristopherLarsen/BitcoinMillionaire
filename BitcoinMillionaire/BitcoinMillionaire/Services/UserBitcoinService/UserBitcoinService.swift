@@ -115,10 +115,11 @@ private extension UserBitcoinService {
         
         let result = database.create(key: Key.keyUserBitcoin, object: initialCoins)
         
-        guard case .success(let saved) = result else {
+        guard case .success(_) = result else {
             print("The database operation was not successful.")
             return
         }
+        
     }
     
     func saveCurrentBitcoinsToDatabase() {
