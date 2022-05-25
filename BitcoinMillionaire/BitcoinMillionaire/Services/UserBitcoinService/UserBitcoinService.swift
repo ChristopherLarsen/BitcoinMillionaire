@@ -35,7 +35,7 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     /// The current number of Bitcoins the User has.
     /// Subscribe to this Publisher to repond to changes in the current amount of Bitcoins the user has.
     ///
-    var currentUserBitcoins = CurrentValueSubject<UserBitcoinEntity, Error>( UserBitcoinEntity(initialCoins: 2.0) )
+    var currentUserBitcoins = CurrentValueSubject<UserBitcoinEntity, Error>( UserBitcoinEntity(initialCoins: 0.0) )
     
     private let database: DatabaseRepositoryProtocol
     
@@ -84,6 +84,7 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
 }
 
 // MARK: - Private
+
 extension UserBitcoinService {
     
     func fetchLatestUserBitcoinsFromDatabase() {
@@ -139,4 +140,5 @@ extension UserBitcoinService {
         }
         
     }
+    
 }

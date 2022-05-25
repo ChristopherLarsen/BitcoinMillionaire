@@ -18,6 +18,7 @@
 		573E8A1D283D9C0D00B4F21C /* MockMillionaireInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A1C283D9C0D00B4F21C /* MockMillionaireInteractor.swift */; };
 		573E8A1F283D9C2F00B4F21C /* MockMillionaireRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A1E283D9C2F00B4F21C /* MockMillionaireRouter.swift */; };
 		573E8A21283D9CFD00B4F21C /* MillionaireInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A20283D9CFD00B4F21C /* MillionaireInteractorTests.swift */; };
+		5755D505283EBD860080A761 /* MillionaireRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5755D504283EBD860080A761 /* MillionaireRouterTests.swift */; };
 		578A4210283E6827007EF0D8 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A420F283E6827007EF0D8 /* UINavigationController+Extensions.swift */; };
 		578A4216283E844E007EF0D8 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A4215283E844E007EF0D8 /* UIApplication+Extensions.swift */; };
 		57A0C70828355CAA00AC0A39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C70728355CAA00AC0A39 /* AppDelegate.swift */; };
@@ -108,6 +109,7 @@
 		573E8A1C283D9C0D00B4F21C /* MockMillionaireInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMillionaireInteractor.swift; sourceTree = "<group>"; };
 		573E8A1E283D9C2F00B4F21C /* MockMillionaireRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMillionaireRouter.swift; sourceTree = "<group>"; };
 		573E8A20283D9CFD00B4F21C /* MillionaireInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillionaireInteractorTests.swift; sourceTree = "<group>"; };
+		5755D504283EBD860080A761 /* MillionaireRouterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MillionaireRouterTests.swift; sourceTree = "<group>"; };
 		578A420F283E6827007EF0D8 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		578A4215283E844E007EF0D8 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		57A0C70428355CAA00AC0A39 /* BitcoinMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitcoinMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +219,7 @@
 				7A8FDDB4283EA24B00C13EBC /* AppReducerTests.swift */,
 				573E8A1A283D9B9200B4F21C /* MillionairePresenterTests.swift */,
 				573E8A20283D9CFD00B4F21C /* MillionaireInteractorTests.swift */,
+				5755D504283EBD860080A761 /* MillionaireRouterTests.swift */,
 				573E8A12283D81AD00B4F21C /* MockMillionairePresenter.swift */,
 				573E8A1C283D9C0D00B4F21C /* MockMillionaireInteractor.swift */,
 				573E8A1E283D9C2F00B4F21C /* MockMillionaireRouter.swift */,
@@ -670,6 +673,7 @@
 				573E8A0F283D7EEB00B4F21C /* MillionaireViewControllerTests.swift in Sources */,
 				7A6F79292836BEC00030FE91 /* MockHomePresenter.swift in Sources */,
 				7A6F792A2836BEC00030FE91 /* MockHomeInteractor.swift in Sources */,
+				5755D505283EBD860080A761 /* MillionaireRouterTests.swift in Sources */,
 				99E33D6F2836E44700021460 /* MockURLProtocol.swift in Sources */,
 				57A0C7542836D57300AC0A39 /* UserBitcoinEntityTests.swift in Sources */,
 				57A0C7462836A49B00AC0A39 /* DatabaseServiceTests.swift in Sources */,
