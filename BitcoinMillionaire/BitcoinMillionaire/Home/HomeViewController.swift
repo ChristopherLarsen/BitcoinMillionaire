@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import ReSwift
 
 class HomeViewController: UIViewController {
     
@@ -20,6 +21,7 @@ class HomeViewController: UIViewController {
     var buttonStack: UIStackView!
     var millionaireButton: UIButton!
     var presenter: HomePresenterProtocol?
+    var noticeLabel: UILabel!
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -37,6 +39,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUserInterface()
+        mainStore.subscribe(self)
         setupBindings()
         presenter?.checkNumberOfCoinsAvailable()
         presenter?.checkLatestBitcoinPrice()
@@ -46,6 +49,9 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         self.title = "Bitcoin Millionaire"
         view.backgroundColor = .systemBackground
+        if let presenter = presenter as? HomePresenter {
+            mainStore.dispatch(BitcoinAction(bitcoins: presenter.bitcoinsAvailable ?? 0.0))
+        }
     }
     
     //MARK: Custom methods
@@ -96,8 +102,13 @@ extension HomeViewController {
         //Add Button Stack
         createButtonsStack()
         
+        //Notice label
+        createNoticeLabel()
+        
         //Check millionair button
         createCheckMillionaireButton()
+        
+        
     }
     
     
@@ -212,10 +223,38 @@ extension HomeViewController {
         millionaireButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            millionaireButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
+            millionaireButton.bottomAnchor.constraint(equalTo: noticeLabel.topAnchor, constant: -10),
             millionaireButton.heightAnchor.constraint(equalToConstant: 63.3),
             millionaireButton.leadingAnchor.constraint(equalTo: bitcoinContainerView.leadingAnchor),
             millionaireButton.trailingAnchor.constraint(equalTo: bitcoinContainerView.trailingAnchor)
         ])
+    }
+    
+    func createNoticeLabel() {
+        noticeLabel = UILabel()
+        noticeLabel.accessibilityIdentifier = "noticeLabel"
+        noticeLabel.textAlignment = .center
+        self.noticeLabel.text  =  ""
+        noticeLabel.numberOfLines = 2
+        noticeLabel.font = UIFont.preferredFont(forTextStyle: .title2)
+        noticeLabel.adjustsFontForContentSizeCategory = true
+        noticeLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(noticeLabel)
+        
+        NSLayoutConstraint.activate([
+            noticeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
+            noticeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            noticeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            noticeLabel.heightAnchor.constraint(equalToConstant: 60)
+        ])
+    }
+}
+
+extension HomeViewController: StoreSubscriber {
+    typealias StoreSubscriberStateType = State
+    func newState(state: State) {
+        if noticeLabel != nil {
+            noticeLabel.text = state.message
+        }
     }
 }
