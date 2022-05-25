@@ -6,13 +6,26 @@
 //
 
 import Foundation
+import UIKit
 
 class HomeRouter: HomeRouterProtocol {
+    
     func openAddBitcoinView() {
-        print("Opening Add Bitcoin View")
+        let rootNavigationController = UINavigationController.rootNavigationController
+        let addBitcoinViewController = AddBitcoinViewController()
+        rootNavigationController.pushViewController(addBitcoinViewController, animated: true)
     }
     
     func openSellBitcoinView() {
-        print("Opening Sell Bitcoin View")
+        let rootNavigationController = UINavigationController.rootNavigationController
+        let removeBitcoinViewController = RemoveBitcoinViewController()
+        rootNavigationController.pushViewController(removeBitcoinViewController, animated: true)
     }
+    
+    func openMillionaireView() {
+        let rootNavigationController = UINavigationController.rootNavigationController
+        let millionaireViewController = MillionaireViewController()
+        rootNavigationController.pushViewController(millionaireViewController, animated: true)
+    }
+    
 }

@@ -18,6 +18,7 @@
 		573E8A1D283D9C0D00B4F21C /* MockMillionaireInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A1C283D9C0D00B4F21C /* MockMillionaireInteractor.swift */; };
 		573E8A1F283D9C2F00B4F21C /* MockMillionaireRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A1E283D9C2F00B4F21C /* MockMillionaireRouter.swift */; };
 		573E8A21283D9CFD00B4F21C /* MillionaireInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A20283D9CFD00B4F21C /* MillionaireInteractorTests.swift */; };
+		578A4210283E6827007EF0D8 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A420F283E6827007EF0D8 /* UINavigationController+Extensions.swift */; };
 		57A0C70828355CAA00AC0A39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C70728355CAA00AC0A39 /* AppDelegate.swift */; };
 		57A0C70A28355CAA00AC0A39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C70928355CAA00AC0A39 /* SceneDelegate.swift */; };
 		57A0C71128355CAC00AC0A39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57A0C71028355CAC00AC0A39 /* Assets.xcassets */; };
@@ -101,6 +102,7 @@
 		573E8A1C283D9C0D00B4F21C /* MockMillionaireInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMillionaireInteractor.swift; sourceTree = "<group>"; };
 		573E8A1E283D9C2F00B4F21C /* MockMillionaireRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMillionaireRouter.swift; sourceTree = "<group>"; };
 		573E8A20283D9CFD00B4F21C /* MillionaireInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillionaireInteractorTests.swift; sourceTree = "<group>"; };
+		578A420F283E6827007EF0D8 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		57A0C70428355CAA00AC0A39 /* BitcoinMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitcoinMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57A0C70728355CAA00AC0A39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57A0C70928355CAA00AC0A39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +211,14 @@
 			path = MillionaireTests;
 			sourceTree = "<group>";
 		};
+		578A420E283E6811007EF0D8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				578A420F283E6827007EF0D8 /* UINavigationController+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		57A0C6FB28355CAA00AC0A39 = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +242,7 @@
 		57A0C70628355CAA00AC0A39 /* BitcoinMillionaire */ = {
 			isa = PBXGroup;
 			children = (
+				578A420E283E6811007EF0D8 /* Extensions */,
 				573E8A0A283D7E8B00B4F21C /* Millionaire */,
 				7A6F791D2836BEB00030FE91 /* Protocols */,
 				99AFD76F28368AD000BD7321 /* Entities */,
@@ -602,6 +613,7 @@
 				7A6F79212836BEB00030FE91 /* HomePresenterProtocol.swift in Sources */,
 				9923FD94283C11030026F99D /* BorderedTextField.swift in Sources */,
 				57A0C70A28355CAA00AC0A39 /* SceneDelegate.swift in Sources */,
+				578A4210283E6827007EF0D8 /* UINavigationController+Extensions.swift in Sources */,
 				7A6F79222836BEB00030FE91 /* HomeInteractorProtocol.swift in Sources */,
 				7A2A3F3328357E0E00559CB4 /* HomePresenter.swift in Sources */,
 				7A2A3F3128357E0500559CB4 /* HomeInteractor.swift in Sources */,

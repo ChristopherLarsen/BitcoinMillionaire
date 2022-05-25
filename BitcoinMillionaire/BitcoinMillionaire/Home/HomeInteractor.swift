@@ -51,8 +51,4 @@ class HomeInteractor: HomeInteractorProtocol {
         return userBitcoinService.currentUserBitcoins
     }
     
-    /// Method to check if the user is millionaire
-    func checkIfIAmAMillionaire() {
-        print("Check If I am a Millionaire")
-    }
 }
