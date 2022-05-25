@@ -28,7 +28,7 @@ enum UserBitcoinServiceError: Error {
 
 class UserBitcoinService: UserBitcoinServiceProtocol {
     
-    /// The curreny number of Bitcoins the User has.
+    /// The current number of Bitcoins the User has.
     /// Subscribe to this Publisher to repond to changes in the current amount of Bitcoins the user has.
     ///
     var currentUserBitcoins = CurrentValueSubject<UserBitcoinEntity, Error>( UserBitcoinEntity(initialCoins: 0.0) )

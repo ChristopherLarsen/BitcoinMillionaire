@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 // MARK: - MillionaireInteractorProtocol
 
@@ -17,53 +18,36 @@ protocol MillionaireInteractorProtocol {
 // MARK: - MillionaireInteractor
 
 class MillionaireInteractor : MillionaireInteractorProtocol {
-        
+    
     var millionairePresenter: MillionairePresenterProtocol?
-
+    
+    private var cancellables: Set<AnyCancellable> = []
+    
     func calculateUserBitcoinMillionaireStatus() {
         
         let userBitcoinService = UserBitcoinService()
         let bitcoins = userBitcoinService.currentUserBitcoins.value.bitcoins
-        checkCurrentBitcoinPrice(forUserBitcoins: bitcoins)
-        
-    }
-        
-    func checkCurrentBitcoinPrice(forUserBitcoins bitcoins: Float) {
-    
+
         let webservice = WebService()
         let bitcoinPriceService = BitcoinPriceService(webService: webservice)
-        
-        let latestBitcoinPricePublisher = bitcoinPriceService.getLatestFromDataBase()
-        
-        let _ = latestBitcoinPricePublisher.sink { [weak self] error in
+        let bitcoinPrice = bitcoinPriceService.currentBitcoinPrice.value
 
-            guard let self = self else {
-                return
-            }
-            
-            guard let millionairePresenter = self.millionairePresenter else {
-                return
-            }
-
-            // TODO: Handle failure to fetch price better
-            
-            millionairePresenter.calculatedUser(isMillionaire: false)
-            
-        } receiveValue: { [weak self] bitcoinPrice in
-            
-            guard let self = self else {
-                return
-            }
-            
-            guard let millionairePresenter = self.millionairePresenter else {
-                return
-            }
-            
-            let isMillionaire = bitcoins * Float(bitcoinPrice) > Constants.oneMillionDollars
-            millionairePresenter.calculatedUser(isMillionaire: isMillionaire)
-            
+        let calculatedValueOfUserBitcoing = calculateCurrentBitcoinValue(forUserBitcoins: bitcoins, bitcoinPrice: bitcoinPrice)
+        
+        let isMillionaire = calculatedValueOfUserBitcoing > Constants.oneMillionDollars
+        
+        guard let millionairePresenter = self.millionairePresenter else {
+            print("Error - No Presenter assigned")
+            return
         }
+
+        millionairePresenter.calculatedUser(isMillionaire: isMillionaire)
         
+    }
+    
+    func calculateCurrentBitcoinValue(forUserBitcoins bitcoins: Float, bitcoinPrice: Float) -> Float {
+        let valueOfUserBitcoin = bitcoins * bitcoinPrice
+        return valueOfUserBitcoin
     }
     
 }
