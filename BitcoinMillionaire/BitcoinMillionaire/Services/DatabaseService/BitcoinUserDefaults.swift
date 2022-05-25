@@ -8,6 +8,7 @@
 import UIKit
 
 class BitcoinUserDefaults: UserDefaultsProtocol {
+    
     let defaults = UserDefaults.standard
     
     func object(forKey defaultName: String) -> Any? {

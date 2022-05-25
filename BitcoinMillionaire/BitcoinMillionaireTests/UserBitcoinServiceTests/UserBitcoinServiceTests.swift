@@ -11,20 +11,20 @@ import XCTest
 
 class UserBitcoinServiceTests: XCTestCase {
     
-    var mockUserDefaults: MockUserDefaults!
+    var mockBitcoinUserDefaults: MockBitcoinUserDefaults!
     var mockDatabase: MockDatabase!
     var sut: UserBitcoinService!
     
     override func setUpWithError() throws {
         
-        mockUserDefaults = MockUserDefaults()
-        mockDatabase = MockDatabase(userDefaults: mockUserDefaults)
+        mockBitcoinUserDefaults = MockBitcoinUserDefaults()
+        mockDatabase = MockDatabase(userDefaults: mockBitcoinUserDefaults)
         sut = UserBitcoinService(database: mockDatabase)
         
     }
     
     override func tearDownWithError() throws {
-        mockUserDefaults = nil
+        mockBitcoinUserDefaults = nil
         mockDatabase = nil
         sut = nil
     }
@@ -33,7 +33,7 @@ class UserBitcoinServiceTests: XCTestCase {
         
         // Arrange
 
-        mockUserDefaults.clearUserDefaults()
+        mockBitcoinUserDefaults.clearUserDefaults()
 
         // Assert
 
@@ -47,7 +47,7 @@ class UserBitcoinServiceTests: XCTestCase {
 
         XCTAssertNotNil(cancellable, "Failed - The Publisher should have provided a cancellable.")
         
-        guard let retrieveStoredBitcoinEntry = mockUserDefaults.object(forKey: Key.keyUserBitcoin) else {
+        guard let retrieveStoredBitcoinEntry = mockBitcoinUserDefaults.object(forKey: Key.keyUserBitcoin) else {
             XCTFail("Failed - Should have retrieved user bitcoin from mock user defaults.")
             return
         }
@@ -68,8 +68,8 @@ class UserBitcoinServiceTests: XCTestCase {
         //
         let initialNumberOfBitcoins = Float.random(in: 0...1.0)
         
-        mockUserDefaults.set(initialNumberOfBitcoins, forKey: Key.keyUserBitcoin)
-        let mockDatabase = MockDatabase(userDefaults: mockUserDefaults)
+        mockBitcoinUserDefaults.set(initialNumberOfBitcoins, forKey: Key.keyUserBitcoin)
+        let mockDatabase = MockDatabase(userDefaults: mockBitcoinUserDefaults)
 
         // Act
         
@@ -211,7 +211,7 @@ class UserBitcoinServiceTests: XCTestCase {
         let accuracy: Float = 0.000001
         let expectedBitcoin = initialBitcoin + addedBitcoin
 
-        mockUserDefaults.clearUserDefaults()
+        mockBitcoinUserDefaults.clearUserDefaults()
         
         let resultCreate = mockDatabase.create(key: Key.keyUserBitcoin, object: initialBitcoin)
         
@@ -241,7 +241,7 @@ class UserBitcoinServiceTests: XCTestCase {
         
         XCTAssertNotNil(cancellable, "Failed - The Publisher should have provided a cancellable.")
 
-        guard let retrievedUserBitcoinValue = mockUserDefaults.object(forKey: Key.keyUserBitcoin) as? Float else {
+        guard let retrievedUserBitcoinValue = mockBitcoinUserDefaults.object(forKey: Key.keyUserBitcoin) as? Float else {
             XCTFail("Failed - Should have retrieved user bitcoin from mock user defaults.")
             return
         }
@@ -259,7 +259,7 @@ class UserBitcoinServiceTests: XCTestCase {
         let accuracy: Float = 0.000001
         let expectedBitcoin = initialBitcoin - removedBitcoin
 
-        mockUserDefaults.clearUserDefaults()
+        mockBitcoinUserDefaults.clearUserDefaults()
         
         let resultCreate = mockDatabase.create(key: Key.keyUserBitcoin, object: initialBitcoin)
         
@@ -289,7 +289,7 @@ class UserBitcoinServiceTests: XCTestCase {
         
         XCTAssertNotNil(cancellable, "Failed - The Publisher should have provided a cancellable.")
 
-        guard let retrievedUserBitcoinValue = mockUserDefaults.object(forKey: Key.keyUserBitcoin) as? Float else {
+        guard let retrievedUserBitcoinValue = mockBitcoinUserDefaults.object(forKey: Key.keyUserBitcoin) as? Float else {
             XCTFail("Failed - Should have retrieved user bitcoin from mock user defaults.")
             return
         }

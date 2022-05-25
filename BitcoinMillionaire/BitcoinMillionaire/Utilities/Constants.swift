@@ -13,6 +13,8 @@ struct Constants {
         static let bitcoinPriceEndpoint = "https://api.coindesk.com/v1/bpi/currentprice.json"
     }
     
+    static let oneMillionDollars: Float = 1_000_000
+    
 }
 
 struct Key {

@@ -1,5 +1,5 @@
 //
-//  MockUserDefaults.swift
+//  MockBitcoinUserDefaults.swift
 //  BitcoinMillionaireTests
 //
 //  Created by Christopher Larsen on 2022-05-19.
@@ -10,18 +10,18 @@ import UIKit
 @testable import BitcoinMillionaire
 
 
-// MARK: - MockUserDefaults
+// MARK: - MockBitcoinUserDefaults
 
-class MockUserDefaults: UserDefaultsProtocol {
+class MockBitcoinUserDefaults : BitcoinUserDefaults {
         
     var tempDictionary: Dictionary<String, Any> = [:]
     var dictionary: Dictionary<String, Any> = [:]
     
-    func object(forKey defaultName: String) -> Any? {
+    override func object(forKey defaultName: String) -> Any? {
         return tempDictionary[defaultName]
     }
     
-    func set(_ value: Any?, forKey defaultName: String) {
+    override func set(_ value: Any?, forKey defaultName: String) {
         if let object = value as? AnyObject {
             tempDictionary[defaultName] = object
         } else {
@@ -29,11 +29,11 @@ class MockUserDefaults: UserDefaultsProtocol {
         }
     }
     
-    func removeObject(forKey defaultName: String) {
+    override func removeObject(forKey defaultName: String) {
         tempDictionary.removeValue(forKey: defaultName)
     }
     
-    func synchronize() {
+    override func synchronize() {
         dictionary = tempDictionary
         tempDictionary = dictionary
     }
@@ -42,7 +42,7 @@ class MockUserDefaults: UserDefaultsProtocol {
 
 // MARK: - Test Helper Methods
 
-extension MockUserDefaults {
+extension MockBitcoinUserDefaults {
     
     func clearUserDefaults() {
         tempDictionary = [:]

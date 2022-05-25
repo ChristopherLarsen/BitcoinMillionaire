@@ -8,6 +8,7 @@
 import UIKit
 
 class ButtonUtility {
+    
     static func createButton(title: String, backgroundColor: UIColor = .blue) -> UIButton {
         let button = UIButton()
         button.layer.cornerRadius = 5.0
@@ -16,4 +17,5 @@ class ButtonUtility {
         button.backgroundColor = backgroundColor
         return button
     }
+    
 }

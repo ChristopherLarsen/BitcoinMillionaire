@@ -35,7 +35,7 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     
     private let database: DatabaseRepositoryProtocol
     
-    init(database: DatabaseRepositoryProtocol) {
+    init(database: DatabaseRepositoryProtocol = DatabaseService() ) {
         
         self.database = database
         fetchLatestUserBitcoinsFromDatabase()
