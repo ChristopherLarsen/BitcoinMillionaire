@@ -7,7 +7,9 @@
 
 import Foundation
 
-protocol AddBitcoinRouterProtocol { }
+protocol AddBitcoinRouterProtocol {
+    func dismiss(viewController : AddBitcoinViewController)
+}
 
 class AddBitcoinRouter : AddBitcoinRouterProtocol {
     
