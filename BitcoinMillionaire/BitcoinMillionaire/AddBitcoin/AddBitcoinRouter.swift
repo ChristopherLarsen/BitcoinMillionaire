@@ -9,4 +9,15 @@ import Foundation
 
 protocol AddBitcoinRouterProtocol { }
 
-class AddBitcoinRouter : AddBitcoinRouterProtocol {}
+class AddBitcoinRouter : AddBitcoinRouterProtocol {
+    
+    func dismiss(viewController : AddBitcoinViewController) {
+        viewController.navigationController?.popViewController(animated: true)
+    }
+    
+    
+}
+
+
+
+

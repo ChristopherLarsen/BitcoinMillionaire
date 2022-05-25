@@ -7,7 +7,14 @@
 
 import Foundation
 
-protocol AddBitcoinInteractorProtocol { }
+protocol AddBitcoinInteractorProtocol {
+    
+    func addBitcoin(amount:Float)
+}
 
-class AddBitcoinInteractor : AddBitcoinInteractorProtocol {}
+class AddBitcoinInteractor : AddBitcoinInteractorProtocol {
+    func addBitcoin(amount:Float) {
+        
+    }
+}
 
