@@ -10,4 +10,5 @@ import Foundation
 protocol HomeRouterProtocol {
     func openAddBitcoinView()
     func openSellBitcoinView()
+    func openMillionaireView()
 }

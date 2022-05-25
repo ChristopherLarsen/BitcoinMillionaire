@@ -67,6 +67,7 @@ class HomePresenter: HomePresenterProtocol, ObservableObject {
     
     /// Method to call interactor to check if user is a millionaire
     func checkIfIAmAMillionaire() {
-        interactor?.checkIfIAmAMillionaire()
+        router?.openMillionaireView()
     }
+    
 }

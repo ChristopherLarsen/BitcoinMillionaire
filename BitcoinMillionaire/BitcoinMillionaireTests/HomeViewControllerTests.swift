@@ -107,4 +107,18 @@ class HomeViewControllerTests: XCTestCase {
         }
     }
 
+    // MARK: - Navigation Tests
+    
+    func testHomeViewController_WhenTapBuyBitcoin_ShouldNavigateToAddBitcoinScreen() {
+        XCTFail("Failed - Should have navigated to AddBitcoin Screen")
+    }
+
+    func testHomeViewController_WhenTapRemoveBitcoin_ShouldNavigateToRemoveBitcoinScreen() {
+        XCTFail("Failed - Should have navigated to RemoveBitcoin Screen")
+    }
+
+    func testHomeViewController_WhenTapMillionaire_ShouldNavigateToMillionaireScreen() {
+        XCTFail("Failed - Should have navigated to Millionaire Screen")
+    }
+
 }
