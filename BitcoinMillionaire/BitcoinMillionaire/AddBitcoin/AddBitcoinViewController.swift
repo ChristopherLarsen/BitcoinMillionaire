@@ -10,6 +10,7 @@ import SwiftUI
 import Combine
 
 class AddBitcoinViewController : UIViewController {
+    
     var cancellables : Set<AnyCancellable> = []
     var textFieldText : CurrentValueSubject<String, Never> = .init("")
     var presenter : AddBitcoinPresenterProtocol
@@ -23,25 +24,50 @@ class AddBitcoinViewController : UIViewController {
         return nil
     }
     
-    
     override func loadView() {
         configureView()
     }
     
 }
 
-//MARK:Setup Actions
+// MARK: - Actions
+
 extension AddBitcoinViewController {
     
     @objc func addBitcoin() {
+       
+        let _ = textFieldText.sink { [weak self] string in
+            
+            guard let self = self else {
+                return
+            }
+            
+            guard let amountToAdd: Float = Float(string) else {
+                print("Error - Invalid text field content. Not a Float value.")
+                return
+            }
+            
+            let userBitcoinService = UserBitcoinService()
+            
+            let result = userBitcoinService.addBitcoin(amountToAdd: amountToAdd)
+
+            switch result {
+            case .failure(let userBitcoinServiceError):
+                // TODO: Handle the failure.
+                print("Error - Failed to add Bitcoin. \(userBitcoinServiceError)")
+            case .success(_):
+                self.presenter.finishedAddingBitcoin()
+            }
+            
+        }
         
-        print("Add Bitcoin")
     }
     
 }
 
 
 //MARK: CreateView
+
 extension AddBitcoinViewController {
     
     func configureView() {

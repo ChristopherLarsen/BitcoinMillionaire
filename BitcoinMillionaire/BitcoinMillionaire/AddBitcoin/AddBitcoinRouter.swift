@@ -7,6 +7,10 @@
 
 import Foundation
 
-protocol AddBitcoinRouterProtocol { }
+protocol AddBitcoinRouterProtocol {
+    
+}
 
-class AddBitcoinRouter : AddBitcoinRouterProtocol {}
+class AddBitcoinRouter : AddBitcoinRouterProtocol {
+    
+}

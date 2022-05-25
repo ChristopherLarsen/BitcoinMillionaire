@@ -7,7 +7,13 @@
 
 import Foundation
 
-protocol AddBitcoinPresenterProtocol { }
+// MARK: - AddBitcoinPresenterProtocol
+
+protocol AddBitcoinPresenterProtocol {
+    func finishedAddingBitcoin()
+}
+
+// MARK: - AddBitcoinPresenter
 
 class AddBitcoinPresenter : AddBitcoinPresenterProtocol {
     
@@ -16,6 +22,9 @@ class AddBitcoinPresenter : AddBitcoinPresenterProtocol {
     init(interactor : AddBitcoinInteractorProtocol = AddBitcoinInteractor()) {
         self.interactor = interactor
     }
-    
-    
+
+    func finishedAddingBitcoin() {
+        //TODO: router?.goBack()
+    }
+
 }

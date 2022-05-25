@@ -18,6 +18,14 @@
 		573E8A1D283D9C0D00B4F21C /* MockMillionaireInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A1C283D9C0D00B4F21C /* MockMillionaireInteractor.swift */; };
 		573E8A1F283D9C2F00B4F21C /* MockMillionaireRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A1E283D9C2F00B4F21C /* MockMillionaireRouter.swift */; };
 		573E8A21283D9CFD00B4F21C /* MillionaireInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A20283D9CFD00B4F21C /* MillionaireInteractorTests.swift */; };
+		5755D4EF283EA50B0080A761 /* AddBitcoinViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5755D4EE283EA50B0080A761 /* AddBitcoinViewControllerTests.swift */; };
+		5755D4F2283EA5450080A761 /* AddBitcoinPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5755D4F1283EA5450080A761 /* AddBitcoinPresenterTests.swift */; };
+		5755D4F4283EA5540080A761 /* AddBitcoinInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5755D4F3283EA5540080A761 /* AddBitcoinInteractorTests.swift */; };
+		5755D4F6283EA5610080A761 /* AddBitcoinRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5755D4F5283EA5610080A761 /* AddBitcoinRouterTests.swift */; };
+		5755D4FB283EA6010080A761 /* RemoveBitcoinViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5755D4FA283EA6010080A761 /* RemoveBitcoinViewControllerTests.swift */; };
+		5755D4FD283EA6110080A761 /* RemoveBitcoinPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5755D4FC283EA6110080A761 /* RemoveBitcoinPresenterTests.swift */; };
+		5755D4FF283EA6390080A761 /* RemoveBitcoinInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5755D4FE283EA6390080A761 /* RemoveBitcoinInteractorTests.swift */; };
+		5755D501283EA66E0080A761 /* RemoveBitcoinRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5755D500283EA66E0080A761 /* RemoveBitcoinRouterTests.swift */; };
 		578A4210283E6827007EF0D8 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A420F283E6827007EF0D8 /* UINavigationController+Extensions.swift */; };
 		578A4216283E844E007EF0D8 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A4215283E844E007EF0D8 /* UIApplication+Extensions.swift */; };
 		57A0C70828355CAA00AC0A39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C70728355CAA00AC0A39 /* AppDelegate.swift */; };
@@ -106,6 +114,14 @@
 		573E8A1C283D9C0D00B4F21C /* MockMillionaireInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMillionaireInteractor.swift; sourceTree = "<group>"; };
 		573E8A1E283D9C2F00B4F21C /* MockMillionaireRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMillionaireRouter.swift; sourceTree = "<group>"; };
 		573E8A20283D9CFD00B4F21C /* MillionaireInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillionaireInteractorTests.swift; sourceTree = "<group>"; };
+		5755D4EE283EA50B0080A761 /* AddBitcoinViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBitcoinViewControllerTests.swift; sourceTree = "<group>"; };
+		5755D4F1283EA5450080A761 /* AddBitcoinPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBitcoinPresenterTests.swift; sourceTree = "<group>"; };
+		5755D4F3283EA5540080A761 /* AddBitcoinInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBitcoinInteractorTests.swift; sourceTree = "<group>"; };
+		5755D4F5283EA5610080A761 /* AddBitcoinRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBitcoinRouterTests.swift; sourceTree = "<group>"; };
+		5755D4FA283EA6010080A761 /* RemoveBitcoinViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBitcoinViewControllerTests.swift; sourceTree = "<group>"; };
+		5755D4FC283EA6110080A761 /* RemoveBitcoinPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBitcoinPresenterTests.swift; sourceTree = "<group>"; };
+		5755D4FE283EA6390080A761 /* RemoveBitcoinInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBitcoinInteractorTests.swift; sourceTree = "<group>"; };
+		5755D500283EA66E0080A761 /* RemoveBitcoinRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBitcoinRouterTests.swift; sourceTree = "<group>"; };
 		578A420F283E6827007EF0D8 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		578A4215283E844E007EF0D8 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		57A0C70428355CAA00AC0A39 /* BitcoinMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitcoinMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,6 +236,28 @@
 			path = MillionaireTests;
 			sourceTree = "<group>";
 		};
+		5755D4F0283EA5180080A761 /* AddBitcoinTests */ = {
+			isa = PBXGroup;
+			children = (
+				5755D4EE283EA50B0080A761 /* AddBitcoinViewControllerTests.swift */,
+				5755D4F1283EA5450080A761 /* AddBitcoinPresenterTests.swift */,
+				5755D4F3283EA5540080A761 /* AddBitcoinInteractorTests.swift */,
+				5755D4F5283EA5610080A761 /* AddBitcoinRouterTests.swift */,
+			);
+			path = AddBitcoinTests;
+			sourceTree = "<group>";
+		};
+		5755D4F9283EA5E60080A761 /* RemoveBitcoinTests */ = {
+			isa = PBXGroup;
+			children = (
+				5755D4FA283EA6010080A761 /* RemoveBitcoinViewControllerTests.swift */,
+				5755D4FC283EA6110080A761 /* RemoveBitcoinPresenterTests.swift */,
+				5755D4FE283EA6390080A761 /* RemoveBitcoinInteractorTests.swift */,
+				5755D500283EA66E0080A761 /* RemoveBitcoinRouterTests.swift */,
+			);
+			path = RemoveBitcoinTests;
+			sourceTree = "<group>";
+		};
 		578A420E283E6811007EF0D8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +321,8 @@
 				7A6F79242836BEC00030FE91 /* Mocks */,
 				99AFD778283691EB00BD7321 /* Network */,
 				7A6F78E52835C6A10030FE91 /* HomeViewControllerTests.swift */,
+				5755D4F0283EA5180080A761 /* AddBitcoinTests */,
+				5755D4F9283EA5E60080A761 /* RemoveBitcoinTests */,
 				57A0C7512836D50700AC0A39 /* UserBitcoinServiceTests */,
 				57A0C7522836D51000AC0A39 /* DatabaseServiceTests */,
 				57A0C7532836D57300AC0A39 /* UserBitcoinEntityTests.swift */,
@@ -658,25 +698,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				573E8A13283D81AD00B4F21C /* MockMillionairePresenter.swift in Sources */,
+				5755D4EF283EA50B0080A761 /* AddBitcoinViewControllerTests.swift in Sources */,
 				996B5DCE283BD12F00B18D14 /* WebServiceMock.swift in Sources */,
 				7A8FDDB5283EA24B00C13EBC /* AppReducerTests.swift in Sources */,
 				573E8A0F283D7EEB00B4F21C /* MillionaireViewControllerTests.swift in Sources */,
 				7A6F79292836BEC00030FE91 /* MockHomePresenter.swift in Sources */,
 				7A6F792A2836BEC00030FE91 /* MockHomeInteractor.swift in Sources */,
+				5755D4F2283EA5450080A761 /* AddBitcoinPresenterTests.swift in Sources */,
+				5755D4FB283EA6010080A761 /* RemoveBitcoinViewControllerTests.swift in Sources */,
 				99E33D6F2836E44700021460 /* MockURLProtocol.swift in Sources */,
 				57A0C7542836D57300AC0A39 /* UserBitcoinEntityTests.swift in Sources */,
 				57A0C7462836A49B00AC0A39 /* DatabaseServiceTests.swift in Sources */,
 				573E8A1D283D9C0D00B4F21C /* MockMillionaireInteractor.swift in Sources */,
 				7A6F792C2836BEC00030FE91 /* HomePresenterTests.swift in Sources */,
+				5755D4F4283EA5540080A761 /* AddBitcoinInteractorTests.swift in Sources */,
+				5755D501283EA66E0080A761 /* RemoveBitcoinRouterTests.swift in Sources */,
 				99AFD77C2836922D00BD7321 /* BitcoinPriceServiceTests.swift in Sources */,
 				573E8A21283D9CFD00B4F21C /* MillionaireInteractorTests.swift in Sources */,
 				57A0C7482836A50100AC0A39 /* MockBitcoinUserDefaults.swift in Sources */,
 				7A6F78E62835C6A10030FE91 /* HomeViewControllerTests.swift in Sources */,
 				7A6F792B2836BEC00030FE91 /* MockHomeRouter.swift in Sources */,
+				5755D4F6283EA5610080A761 /* AddBitcoinRouterTests.swift in Sources */,
 				57A0C74028369BD600AC0A39 /* UserBitcoinServiceTests.swift in Sources */,
 				57A0C74E2836CF8100AC0A39 /* MockDatabase.swift in Sources */,
+				5755D4FF283EA6390080A761 /* RemoveBitcoinInteractorTests.swift in Sources */,
 				573E8A1F283D9C2F00B4F21C /* MockMillionaireRouter.swift in Sources */,
 				573E8A1B283D9B9200B4F21C /* MillionairePresenterTests.swift in Sources */,
+				5755D4FD283EA6110080A761 /* RemoveBitcoinPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
