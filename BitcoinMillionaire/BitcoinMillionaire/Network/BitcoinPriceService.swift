@@ -1,5 +1,5 @@
 //
-//  BitcoinPriceRepository.swift
+//  BitcoinPriceService.swift
 //  BitcoinMillionaire
 //
 //  Created by Jorge Mattei on 5/19/22.
@@ -16,14 +16,21 @@ protocol BitcoinPriceServiceProtocol {
 class BitcoinPriceService : BitcoinPriceServiceProtocol {
     
     let webService : WebServiceProtocol
+    let databaseService : DatabaseRepositoryProtocol
     
-    init(webService: WebServiceProtocol = WebService()) {
+    init(webService: WebServiceProtocol = WebService(), databaseService: DatabaseRepositoryProtocol = DatabaseService()) {
         self.webService = webService
+        self.databaseService = databaseService
     }
     
     func getLatest() -> AnyPublisher<BitcoinPrice,Error> { 
         return webService.get(endpoint: Endpoint.getLatestBitcoinPrice, responseType: APIResponse.self)
-            .map({ $0.bpi.bitcoinPrice }) 
+            .map({ $0.bpi.bitcoinPrice })
+            .handleEvents(receiveOutput: { bitcoinPriceObject in
+                // NOTE: The bitcoin price service should save the value to the database directly.
+                print("Saving \(bitcoinPriceObject.rateFloat) in database")
+                let _ = self.databaseService.create(key: Key.keyBitcoinPrice, object: Double(bitcoinPriceObject.rateFloat))
+            })
             .eraseToAnyPublisher() 
     }
     
