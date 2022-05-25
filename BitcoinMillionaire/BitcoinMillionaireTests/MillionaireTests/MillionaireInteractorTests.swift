@@ -35,5 +35,30 @@ class MillionaireInteractorTests: XCTestCase {
         XCTAssertNotNil(sut.millionairePresenter, "Failed - Expected MillionaireInteractor to have a Presenter reference.")
         
     }
+    
+    func testMillionaireInteractor_WhenCalculatingBitcoinValue_ShouldReturnCorrectValue() {
+        
+        // Arrange
+
+        let mockMillionairePresenter = MockMillionairePresenter()
+        
+        // Act
+
+        let sut = MillionaireInteractor()
+        sut.millionairePresenter = mockMillionairePresenter
+
+        let bitcoinPrice: Float = 30_000.0
+        
+        let calculatedBitcoinValue1 = sut.calculateCurrentBitcoinValue(forUserBitcoins: 24.0, bitcoinPrice: bitcoinPrice)
+        let calculatedBitcoinValue2 = sut.calculateCurrentBitcoinValue(forUserBitcoins: 34.0, bitcoinPrice: bitcoinPrice)
+        let calculatedBitcoinValue3 = sut.calculateCurrentBitcoinValue(forUserBitcoins: 44.0, bitcoinPrice: bitcoinPrice)
+
+        // Assert
+
+        XCTAssertEqual(calculatedBitcoinValue1, 720000.0, accuracy: 0.001, "Failed - Incorrect value calculation. \(calculatedBitcoinValue1)")
+        XCTAssertEqual(calculatedBitcoinValue2, 1020000.0, accuracy: 0.001, "Failed - Incorrect value calculation. \(calculatedBitcoinValue2)")
+        XCTAssertEqual(calculatedBitcoinValue3, 1320000.0, accuracy: 0.001, "Failed - Incorrect value calculation. \(calculatedBitcoinValue3)")
+
+    }
 
 }

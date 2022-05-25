@@ -36,6 +36,24 @@ class MillionairePresenterTests: XCTestCase {
         XCTAssertNotNil(sut.millionaireRouter, "Failed - Expected MillionairePresenter to have a Router.")
         
     }
+    
+    func testMillionairePresenter_WhenCreated_AssignsReferenceOnInteractor() {
+        
+        // Arrange
+
+        let mockMillionaireInteractor = MockMillionaireInteractor()
+        let mockMillionaireRouter = MockMillionaireRouter()
+        
+        // Act
+
+        let sut = MillionairePresenter(interactor: mockMillionaireInteractor, router: mockMillionaireRouter)
+
+        // Assert
+
+        XCTAssertNotNil(sut.millionaireInteractor.millionairePresenter, "Failed - Expected MillionairePresenter to assign a reference back to MillionairePresenter.")
+        XCTAssertNotNil(sut.millionaireRouter, "Failed - Expected MillionairePresenter to have a Router.")
+        
+    }
 
     func testMillionairePresenter_WhenCalledToCheckMillionaireByPresenter_ShouldCallInteractorToCalculatedUserMillionaire() {
         
@@ -54,5 +72,7 @@ class MillionairePresenterTests: XCTestCase {
         XCTAssertTrue(mockMillionaireInteractor.isCalledCalculateUserBitcoinMillionaireStatus, "Failed - Expected call to CalculateUserBitcoinMillionaireStatus.")
         
     }
+    
+    
     
 }

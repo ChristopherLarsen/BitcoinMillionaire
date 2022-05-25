@@ -36,6 +36,25 @@ class MillionaireViewControllerTests: XCTestCase {
 
     }
     
+    func testMillionaireView_WhenCreated_ShouldHaveUIBindings() {
+        
+        // Arrange
+
+        let mockPresenter = MockMillionairePresenter()
+        
+        // Act
+        
+        let sut = MillionaireViewController(withPresenter: mockPresenter)
+        sut.loadViewIfNeeded()
+        
+        // Assert
+
+        XCTAssertNotNil(sut.labelResult, "Failed - Presenter not created with MillionaireViewController.")
+        XCTAssertNotNil(sut.imageView, "Failed - Presenter not created with MillionaireViewController.")
+        XCTAssertNotNil(sut.labelCheer, "Failed - Presenter not created with MillionaireViewController.")
+
+    }
+    
     func testMillionaireView_WhenLoaded_CallsCheckMillionaireOnPresenter() {
         
         // Arrange

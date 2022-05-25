@@ -11,19 +11,28 @@ import UIKit
 class HomeRouter: HomeRouterProtocol {
     
     func openAddBitcoinView() {
-        let rootNavigationController = UINavigationController.rootNavigationController
+        guard let rootNavigationController = UINavigationController.rootNavigationController else {
+            print("Error - Invalid Application Architecture, no root UINavigationController.")
+            return
+        }
         let addBitcoinViewController = AddBitcoinViewController()
         rootNavigationController.pushViewController(addBitcoinViewController, animated: true)
     }
     
     func openSellBitcoinView() {
-        let rootNavigationController = UINavigationController.rootNavigationController
+        guard let rootNavigationController = UINavigationController.rootNavigationController else {
+            print("Error - Invalid Application Architecture, no root UINavigationController.")
+            return
+        }
         let removeBitcoinViewController = RemoveBitcoinViewController()
         rootNavigationController.pushViewController(removeBitcoinViewController, animated: true)
     }
     
     func openMillionaireView() {
-        let rootNavigationController = UINavigationController.rootNavigationController
+        guard let rootNavigationController = UINavigationController.rootNavigationController else {
+            print("Error - Invalid Application Architecture, no root UINavigationController.")
+            return
+        }
         let millionaireViewController = MillionaireViewController()
         rootNavigationController.pushViewController(millionaireViewController, animated: true)
     }

@@ -23,13 +23,12 @@ class MillionaireViewController : UIViewController, MillionaireViewControllerPro
     var labelResult: UILabel!
     var imageView: UIImageView!
     var labelCheer: UILabel!
-    var buttonDone: UIButton!
     
     var millionairePresenter: MillionairePresenterProtocol
     
     var isBitcoinMillionaire: PassthroughSubject<Bool, Never> = PassthroughSubject()
     
-    var cancellables: Set<AnyCancellable> = []
+    private var cancellables: Set<AnyCancellable> = []
     
     init(withPresenter millionairePresenter: MillionairePresenterProtocol = MillionairePresenter() ) {
         self.millionairePresenter = millionairePresenter
@@ -38,7 +37,7 @@ class MillionaireViewController : UIViewController, MillionaireViewControllerPro
         self.millionairePresenter.millionaireViewController = self
         
         self.isBitcoinMillionaire.sink { completion in
-            print("TODO")
+            // Completion
         } receiveValue: { [weak self] isMillionaire in
             guard let self = self else {
                 return
@@ -54,10 +53,9 @@ class MillionaireViewController : UIViewController, MillionaireViewControllerPro
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         setUpUserInterface()
-        setupBindings()
-        
+
         millionairePresenter.checkIfUserIsBitcoinMillionaire()
     }
     
@@ -76,93 +74,61 @@ private extension MillionaireViewController {
     
     func setUpUserInterface() {
         
-        let containerFrame: CGRect = UIScreen.main.bounds.inset(by: UIEdgeInsets(top: 120.0, left: 40.0, bottom: 40.0, right: 40.0))
+        let containerFrame: CGRect = UIScreen.main.bounds.inset(by: UIEdgeInsets(top: 150.0, left: 40.0, bottom: 40.0, right: 40.0))
         containerView = UIView(frame: containerFrame)
         containerView.accessibilityIdentifier = "containerView"
-        containerView.backgroundColor = .lightGray
         view.addSubview(containerView)
         
         let labelResult = UILabel()
         labelResult.accessibilityIdentifier = "labelResult"
         labelResult.textAlignment = .center
-        labelResult.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        labelResult.font = UIFont.preferredFont(forTextStyle: .title1)
         labelResult.adjustsFontForContentSizeCategory = true
         labelResult.translatesAutoresizingMaskIntoConstraints = false
-        labelResult.backgroundColor = .brown
         containerView.addSubview(labelResult)
 
-        let topConstaint = NSLayoutConstraint(item: labelResult, attribute: .top, relatedBy: .equal, toItem: containerView, attribute: .top, multiplier: 1.0, constant: 0.0)
-        let leftConstaint = NSLayoutConstraint(item: labelResult, attribute: .left, relatedBy: .equal, toItem: containerView, attribute: .left, multiplier: 1.0, constant: 0.0)
-        let rightConstaint = NSLayoutConstraint(item: labelResult, attribute: .right, relatedBy: .equal, toItem: containerView, attribute: .right, multiplier: 1.0, constant: 0.0)
-        containerView.addConstraints([topConstaint, leftConstaint, rightConstaint])
+        let topConstraintResult = NSLayoutConstraint(item: labelResult, attribute: .top, relatedBy: .equal, toItem: containerView, attribute: .top, multiplier: 1.0, constant: 0.0)
+        let leftConstraintResult = NSLayoutConstraint(item: labelResult, attribute: .left, relatedBy: .equal, toItem: containerView, attribute: .left, multiplier: 1.0, constant: 0.0)
+        let rightConstraintResult = NSLayoutConstraint(item: labelResult, attribute: .right, relatedBy: .equal, toItem: containerView, attribute: .right, multiplier: 1.0, constant: 0.0)
+        containerView.addConstraints([topConstraintResult, leftConstraintResult, rightConstraintResult])
 
-        let heightConstaint = NSLayoutConstraint(item: labelResult, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute,  multiplier: 1.0, constant: 80.0)
-        labelResult.addConstraint(heightConstaint)
+        let heightConstraintResult = NSLayoutConstraint(item: labelResult, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute,  multiplier: 1.0, constant: 80.0)
+        labelResult.addConstraint(heightConstraintResult)
 
         self.labelResult = labelResult
         
-//        NSLayoutConstraint.activate([
-//            labelResult.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0.0),
-//            labelResult.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0.0),
-//            labelResult.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0.0),
-//            labelResult.heightAnchor.constraint(equalToConstant: 40)
-//        ])
+        let imageView = UIImageView(image: UIImage(systemName: "hands.wave") )
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(imageView)
 
-//        imageView = UIImageView(image: UIImage(systemName: "hands.wave") )
-//        imageView.backgroundColor = .orange
-//        containerView.addSubview(imageView)
-//
-//        NSLayoutConstraint.activate([
-//            imageView.topAnchor.constraint(equalTo: labelResult.bottomAnchor, constant: 0.0),
-//            imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0.0),
-//            imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0.0)
-//        ])
+        let topConstaintImageView = NSLayoutConstraint(item: imageView, attribute: .top, relatedBy: .equal, toItem: labelResult, attribute: .bottom, multiplier: 1.0, constant: 10.0)
+        let leftConstaintImageView = NSLayoutConstraint(item: imageView, attribute: .left, relatedBy: .equal, toItem: containerView, attribute: .left, multiplier: 1.0, constant: 10.0)
+        let rightConstaintImageView = NSLayoutConstraint(item: imageView, attribute: .right, relatedBy: .equal, toItem: containerView, attribute: .right, multiplier: 1.0, constant: 10.0)
+        containerView.addConstraints([topConstaintImageView, leftConstaintImageView, rightConstaintImageView])
 
-//        guard let imageView: UIImageView = imageView else {
-//            return
-//        }
+        let heightConstraintImageView = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width,  multiplier: 1.0, constant: 1.0)
+        imageView.addConstraint(heightConstraintImageView)
+        self.imageView = imageView
         
-//        let proportionalWidthConstraint = NSLayoutConstraint(item: imageView,
-//                                                             attribute: .width,
-//                                                             relatedBy: .equal,
-//                                                             toItem: imageView,
-//                                                             attribute: .height,
-//                                                             multiplier: 1.0,
-//                                                             constant: 1.0)
-//
-//        imageView.addConstraint(proportionalWidthConstraint)
-    
-//        labelCheer = UILabel()
-//        labelCheer.accessibilityIdentifier = "labelCheer"
-//        labelCheer.textAlignment = .center
-//        labelCheer.font = UIFont.preferredFont(forTextStyle: .title3)
-//        labelCheer.adjustsFontForContentSizeCategory = true
-//        labelCheer.translatesAutoresizingMaskIntoConstraints = false
-//        labelCheer.backgroundColor = .blue
-//        containerView.addSubview(labelCheer)
-//
-//        NSLayoutConstraint.activate([
-//            labelCheer.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 0.0),
-//            labelCheer.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0.0),
-//            labelCheer.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0.0),
-//            labelCheer.heightAnchor.constraint(equalToConstant: 40)
-//        ])
-//
-//        buttonDone = ButtonUtility.createButton(title: "")
-//        containerView.addSubview(buttonDone)
-//
-//        NSLayoutConstraint.activate([
-//            buttonDone.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 0.0),
-//            buttonDone.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0.0),
-//            buttonDone.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0.0),
-//            buttonDone.heightAnchor.constraint(equalToConstant: 40)
-//        ])
+        let labelCheer = UILabel()
+        labelCheer.accessibilityIdentifier = "labelCheer"
+        labelCheer.textAlignment = .center
+        labelCheer.font = UIFont.preferredFont(forTextStyle: .title3)
+        labelCheer.adjustsFontForContentSizeCategory = true
+        labelCheer.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(labelCheer)
 
+        let topConstraintCheer = NSLayoutConstraint(item: labelCheer, attribute: .top, relatedBy: .equal, toItem: imageView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        let leftConstraintCheer = NSLayoutConstraint(item: labelCheer, attribute: .left, relatedBy: .equal, toItem: containerView, attribute: .left, multiplier: 1.0, constant: 0.0)
+        let rightConstraintCheer = NSLayoutConstraint(item: labelCheer, attribute: .right, relatedBy: .equal, toItem: containerView, attribute: .right, multiplier: 1.0, constant: 0.0)
+        containerView.addConstraints([topConstraintCheer, leftConstraintCheer, rightConstraintCheer])
+
+        let heightConstraintCheer = NSLayoutConstraint(item: labelCheer, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute,  multiplier: 1.0, constant: 80.0)
+        labelCheer.addConstraint(heightConstraintCheer)
+        
+        self.labelCheer = labelCheer
+        
         view.setNeedsLayout()
-    }
-    
-    func setupBindings() {
-        // TODO: setupBindings
     }
     
 }
@@ -175,12 +141,16 @@ private extension MillionaireViewController {
         
         if isMillionaire {
             labelResult.text = "YES!"
-            imageView.image = UIImage(systemName: "hands.thumbsup")
+            let symbolConfig = UIImage.SymbolConfiguration(hierarchicalColor: UIColor.black)
+            let symbol = UIImage(systemName: "hand.thumbsup", withConfiguration: symbolConfig)
+            imageView.image = symbol
             labelCheer.text = "You're a Bitcoin Millionaire!"
         } else {
             labelResult.text = "NO"
-            imageView.image = UIImage(systemName: "hands.thumbsdown")
-            labelCheer.text = "Keep buying bitcoin, you're on your way!"
+            let symbolConfig = UIImage.SymbolConfiguration(hierarchicalColor: UIColor.black)
+            let symbol = UIImage(systemName: "hand.thumbsdown", withConfiguration: symbolConfig)
+            imageView.image = symbol
+            labelCheer.text = "But you're on your way!"
         }
         
     }

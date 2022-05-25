@@ -25,10 +25,10 @@ class MillionairePresenter : MillionairePresenterProtocol {
             
     var millionaireViewController: MillionaireViewControllerProtocol?
 
-    required init(interactor: MillionaireInteractorProtocol = MillionaireInteractor(),
-                  router: MillionaireRouterProtocol = MillionaireRouter() ) {
+    required init(interactor: MillionaireInteractorProtocol = MillionaireInteractor(), router: MillionaireRouterProtocol = MillionaireRouter() ) {
         self.millionaireInteractor = interactor
         self.millionaireRouter = router
+        self.millionaireInteractor.millionairePresenter = self
     }
 
     func checkIfUserIsBitcoinMillionaire() {
