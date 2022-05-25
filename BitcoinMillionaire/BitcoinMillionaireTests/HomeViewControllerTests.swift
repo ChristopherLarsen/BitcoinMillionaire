@@ -36,7 +36,7 @@ class HomeViewControllerTests: XCTestCase {
     
     func testHomeViewController_WhenCreated_HasCreatedLatestPriceLabel() throws {
         let latestPriceLabel = try XCTUnwrap(systemUnderTest.latestPriceLabel, "Label not created")
-        sleep(5)
+        sleep(1)
         XCTAssertEqual(latestPriceLabel.text, "Latest Price: $0.0")
     }
     

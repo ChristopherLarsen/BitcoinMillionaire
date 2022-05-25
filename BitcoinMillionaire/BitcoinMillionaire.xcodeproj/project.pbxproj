@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		573E8A0C283D7EB300B4F21C /* MillionaireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A0B283D7EB300B4F21C /* MillionaireViewController.swift */; };
-		573E8A0F283D7EEB00B4F21C /* MillionaireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A0E283D7EEB00B4F21C /* MillionaireTests.swift */; };
+		573E8A0F283D7EEB00B4F21C /* MillionaireViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A0E283D7EEB00B4F21C /* MillionaireViewControllerTests.swift */; };
 		573E8A11283D7F9D00B4F21C /* MillionairePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A10283D7F9D00B4F21C /* MillionairePresenter.swift */; };
 		573E8A13283D81AD00B4F21C /* MockMillionairePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A12283D81AD00B4F21C /* MockMillionairePresenter.swift */; };
 		573E8A15283D89C500B4F21C /* MillionaireInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A14283D89C500B4F21C /* MillionaireInteractor.swift */; };
 		573E8A17283D8A2100B4F21C /* MillionaireRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A16283D8A2100B4F21C /* MillionaireRouter.swift */; };
 		573E8A19283D956F00B4F21C /* BitcoinUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A18283D956F00B4F21C /* BitcoinUserDefaults.swift */; };
+		573E8A1B283D9B9200B4F21C /* MillionairePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A1A283D9B9200B4F21C /* MillionairePresenterTests.swift */; };
+		573E8A1D283D9C0D00B4F21C /* MockMillionaireInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A1C283D9C0D00B4F21C /* MockMillionaireInteractor.swift */; };
+		573E8A1F283D9C2F00B4F21C /* MockMillionaireRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A1E283D9C2F00B4F21C /* MockMillionaireRouter.swift */; };
+		573E8A21283D9CFD00B4F21C /* MillionaireInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E8A20283D9CFD00B4F21C /* MillionaireInteractorTests.swift */; };
 		57A0C70828355CAA00AC0A39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C70728355CAA00AC0A39 /* AppDelegate.swift */; };
 		57A0C70A28355CAA00AC0A39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C70928355CAA00AC0A39 /* SceneDelegate.swift */; };
 		57A0C71128355CAC00AC0A39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57A0C71028355CAC00AC0A39 /* Assets.xcassets */; };
@@ -87,12 +91,16 @@
 
 /* Begin PBXFileReference section */
 		573E8A0B283D7EB300B4F21C /* MillionaireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillionaireViewController.swift; sourceTree = "<group>"; };
-		573E8A0E283D7EEB00B4F21C /* MillionaireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillionaireTests.swift; sourceTree = "<group>"; };
+		573E8A0E283D7EEB00B4F21C /* MillionaireViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillionaireViewControllerTests.swift; sourceTree = "<group>"; };
 		573E8A10283D7F9D00B4F21C /* MillionairePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillionairePresenter.swift; sourceTree = "<group>"; };
 		573E8A12283D81AD00B4F21C /* MockMillionairePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMillionairePresenter.swift; sourceTree = "<group>"; };
 		573E8A14283D89C500B4F21C /* MillionaireInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillionaireInteractor.swift; sourceTree = "<group>"; };
 		573E8A16283D8A2100B4F21C /* MillionaireRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillionaireRouter.swift; sourceTree = "<group>"; };
 		573E8A18283D956F00B4F21C /* BitcoinUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinUserDefaults.swift; sourceTree = "<group>"; };
+		573E8A1A283D9B9200B4F21C /* MillionairePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillionairePresenterTests.swift; sourceTree = "<group>"; };
+		573E8A1C283D9C0D00B4F21C /* MockMillionaireInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMillionaireInteractor.swift; sourceTree = "<group>"; };
+		573E8A1E283D9C2F00B4F21C /* MockMillionaireRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMillionaireRouter.swift; sourceTree = "<group>"; };
+		573E8A20283D9CFD00B4F21C /* MillionaireInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillionaireInteractorTests.swift; sourceTree = "<group>"; };
 		57A0C70428355CAA00AC0A39 /* BitcoinMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitcoinMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57A0C70728355CAA00AC0A39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57A0C70928355CAA00AC0A39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,8 +199,12 @@
 		573E8A0D283D7ECC00B4F21C /* MillionaireTests */ = {
 			isa = PBXGroup;
 			children = (
-				573E8A0E283D7EEB00B4F21C /* MillionaireTests.swift */,
+				573E8A0E283D7EEB00B4F21C /* MillionaireViewControllerTests.swift */,
+				573E8A1A283D9B9200B4F21C /* MillionairePresenterTests.swift */,
 				573E8A12283D81AD00B4F21C /* MockMillionairePresenter.swift */,
+				573E8A1C283D9C0D00B4F21C /* MockMillionaireInteractor.swift */,
+				573E8A1E283D9C2F00B4F21C /* MockMillionaireRouter.swift */,
+				573E8A20283D9CFD00B4F21C /* MillionaireInteractorTests.swift */,
 			);
 			path = MillionaireTests;
 			sourceTree = "<group>";
@@ -615,20 +627,24 @@
 			files = (
 				573E8A13283D81AD00B4F21C /* MockMillionairePresenter.swift in Sources */,
 				996B5DCE283BD12F00B18D14 /* WebServiceMock.swift in Sources */,
-				573E8A0F283D7EEB00B4F21C /* MillionaireTests.swift in Sources */,
+				573E8A0F283D7EEB00B4F21C /* MillionaireViewControllerTests.swift in Sources */,
 				7A6F79292836BEC00030FE91 /* MockHomePresenter.swift in Sources */,
 				7A6F792A2836BEC00030FE91 /* MockHomeInteractor.swift in Sources */,
 				99E33D6F2836E44700021460 /* MockURLProtocol.swift in Sources */,
 				57A0C7542836D57300AC0A39 /* UserBitcoinEntityTests.swift in Sources */,
 				57A0C7462836A49B00AC0A39 /* DatabaseServiceTests.swift in Sources */,
+				573E8A1D283D9C0D00B4F21C /* MockMillionaireInteractor.swift in Sources */,
 				7A6F792C2836BEC00030FE91 /* HomePresenterTests.swift in Sources */,
 				57A0C71F28355CAC00AC0A39 /* BitcoinMillionaireTests.swift in Sources */,
 				99AFD77C2836922D00BD7321 /* BitcoinPriceServiceTests.swift in Sources */,
+				573E8A21283D9CFD00B4F21C /* MillionaireInteractorTests.swift in Sources */,
 				57A0C7482836A50100AC0A39 /* MockBitcoinUserDefaults.swift in Sources */,
 				7A6F78E62835C6A10030FE91 /* HomeViewControllerTests.swift in Sources */,
 				7A6F792B2836BEC00030FE91 /* MockHomeRouter.swift in Sources */,
 				57A0C74028369BD600AC0A39 /* UserBitcoinServiceTests.swift in Sources */,
 				57A0C74E2836CF8100AC0A39 /* MockDatabase.swift in Sources */,
+				573E8A1F283D9C2F00B4F21C /* MockMillionaireRouter.swift in Sources */,
+				573E8A1B283D9B9200B4F21C /* MillionairePresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

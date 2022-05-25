@@ -10,18 +10,22 @@ import Foundation
 
 class MockMillionairePresenter : MillionairePresenterProtocol {
     
+    var millionaireViewController: MillionaireViewControllerProtocol?
+
+    // MARK: - Is Called Variables
+    //
+    var isCalledCheckIfUserIsBitcoinMillionaire: Bool = false
+    var isCalledCalculatedUser: Bool = false
+
     func calculatedUser(isMillionaire: Bool) {
-        // TODO: calculatedUser
+        isCalledCalculatedUser = true
     }
     
     func checkIfUserIsBitcoinMillionaire() {
-        // TODO: checkIfUserIsBitcoinMillionaire
+        isCalledCheckIfUserIsBitcoinMillionaire = true
     }
-
-    var millionaireViewController: MillionaireViewControllerProtocol?
     
     init() {
-        // TODO: checkIfUserIsBitcoinMillionaire
     }
     
 }

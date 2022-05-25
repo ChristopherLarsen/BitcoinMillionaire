@@ -11,16 +11,16 @@ import Foundation
 
 protocol MillionaireInteractorProtocol {
     var millionairePresenter: MillionairePresenterProtocol? { get set }
-    func checkIfUserIsBitcoinMillionaire()
+    func calculateUserBitcoinMillionaireStatus()
 }
 
 // MARK: - MillionaireInteractor
 
 class MillionaireInteractor : MillionaireInteractorProtocol {
-    
+        
     var millionairePresenter: MillionairePresenterProtocol?
-    
-    func checkIfUserIsBitcoinMillionaire() {
+
+    func calculateUserBitcoinMillionaireStatus() {
         
         let userBitcoinService = UserBitcoinService()
         let bitcoins = userBitcoinService.currentUserBitcoins.value.bitcoins
