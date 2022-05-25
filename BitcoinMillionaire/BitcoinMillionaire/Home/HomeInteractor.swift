@@ -7,6 +7,8 @@
 
 import Foundation
 import Combine
+import ReSwift
+import SwiftUI
 
 class HomeInteractor: HomeInteractorProtocol {
     
@@ -46,5 +48,4 @@ class HomeInteractor: HomeInteractorProtocol {
     func checkBitcoinAvailability() -> CurrentValueSubject<UserBitcoinEntity, Error> {
         return userBitcoinService.currentUserBitcoins
     }
-    
 }
