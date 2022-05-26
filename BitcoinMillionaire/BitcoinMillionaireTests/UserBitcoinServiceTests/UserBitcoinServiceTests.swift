@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Combine
 @testable import BitcoinMillionaire
 
 
@@ -14,6 +15,7 @@ class UserBitcoinServiceTests: XCTestCase {
     var mockBitcoinUserDefaults: MockBitcoinUserDefaults!
     var mockDatabase: MockDatabase!
     var sut: UserBitcoinServiceProtocol!
+    var cancellables: Set<AnyCancellable> = []
     
     override func setUpWithError() throws {
         
@@ -27,6 +29,7 @@ class UserBitcoinServiceTests: XCTestCase {
         mockBitcoinUserDefaults = nil
         mockDatabase = nil
         sut = nil
+        cancellables = []
     }
     
     func testUserBitcoinService_WhenCreated_HasZeroUserBitcoin() {
@@ -251,6 +254,14 @@ class UserBitcoinServiceTests: XCTestCase {
         
     }
     
+    func testUserBitcoinService_BitcoinError_HasLocalizedDescription() {
+        
+        XCTAssertTrue(UserBitcoinServiceError.unknownError.localizedDescription?.count ?? 0 > 0, "Failed - Missing Localized description for unknownError.")
+        XCTAssertTrue(UserBitcoinServiceError.cannotAddZeroOrNegativeAmount.localizedDescription?.count ?? 0 > 0, "Failed - Missing Localized description for cannotAddZeroOrNegativeAmount.")
+        XCTAssertTrue(UserBitcoinServiceError.insufficientBitcoinToRemove.localizedDescription?.count ?? 0 > 0, "Failed - Missing Localized description for insufficientBitcoinToRemove.")
+        
+    }
+    
     func testUserBitcoinService_WhenRemovingBitcoin_HasLessBitcoin() {
         
         // Arrange
@@ -295,6 +306,81 @@ class UserBitcoinServiceTests: XCTestCase {
         }
         
         XCTAssertEqual(retrievedUserBitcoinValue, expectedBitcoin, accuracy: accuracy, "Failed - Retrieved user bitcoin: \(retrievedUserBitcoinValue) should have been expected amount: \(expectedBitcoin)")
+        
+    }
+    
+    func testUserBitcoinService_WhenCreated_ShouldSubscribeToChangesInUserBitcoin() {
+        
+        // Arrange
+
+        let expection = self.expectation(description: "Should recieve Notification")
+        var isNotificationRecieved = false
+
+        mockBitcoinUserDefaults.clearUserDefaults()
+        sut = UserBitcoinService(database: mockDatabase)
+        
+        NotificationCenter.default.publisher(for: .userBitcoinChanged).sink { notification in
+            isNotificationRecieved = true
+            expection.fulfill()
+        }.store(in: &cancellables)
+        
+        // Act
+        
+        _ = sut.addBitcoin(amountToAdd: 1.0)
+        
+        // Assert
+
+        self.waitForExpectations(timeout: 1.0) { error in
+            
+            guard error == nil else {
+                return
+            }
+            
+            XCTAssertTrue(isNotificationRecieved, "Failed - Did not recieve userBitcoinChanged Notification.")
+        }
+        
+    }
+    
+    func testUserBitcoinService_WhenOneIsChanged_ShouldChangeForAllSeriveObjects() {
+        
+        // Arrange
+
+        let expection1 = self.expectation(description: "UserBitcoinServices")
+        var isNotificationRecieved = false
+
+        let userBitcoinService1 = UserBitcoinService(database: mockDatabase)
+        let userBitcoinService2 = UserBitcoinService(database: mockDatabase)
+
+        NotificationCenter.default.publisher(for: .userBitcoinChanged).sink { notification in
+            guard let obj = notification.object as? UserBitcoinService else {
+                return
+            }
+            if obj === userBitcoinService2 {
+                isNotificationRecieved = true
+                expection1.fulfill()
+            }
+        }.store(in: &cancellables)
+        
+        // Act
+        
+        _ = userBitcoinService1.addBitcoin(amountToAdd: 1.0)
+        
+        // Assert
+
+        self.waitForExpectations(timeout: 1.0) { error in
+            
+            guard error == nil else {
+                return
+            }
+            
+            XCTAssertTrue(isNotificationRecieved, "Failed - Did not recieve userBitcoinChanged Notification.")
+            
+            let bitcoin1 = userBitcoinService1.currentUserBitcoins.value.bitcoins
+            let bitcoin2 = userBitcoinService2.currentUserBitcoins.value.bitcoins
+            
+            XCTAssertTrue(bitcoin1 == bitcoin2, "Failed - UserBitcoinServices out of sync. \(bitcoin1) \(bitcoin2)")
+
+        }
         
     }
     

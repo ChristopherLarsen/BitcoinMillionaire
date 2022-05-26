@@ -65,7 +65,7 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     
     func addBitcoin(amountToAdd: Double) -> Result<Bool, Error> {
         
-        guard amountToAdd > 0 else  {
+        guard amountToAdd > 0.0 else  {
             return .failure(UserBitcoinServiceError.cannotAddZeroOrNegativeAmount)
         }
         
@@ -100,13 +100,7 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     // MARK: - deinit
     
     deinit {
-        
         print("deinit UserBitcoinService")
-        
-        for cancellable in cancellables {
-            cancellable.cancel()
-        }
-        
     }
     
 }
@@ -162,9 +156,11 @@ extension UserBitcoinService {
     
     func subscribeToNotificationsOfChangesToCurrentUserBitcoin() {
         
-        NotificationCenter.default.publisher(for: .userBitcoinUpdate).sink { complete in
+        NotificationCenter.default.publisher(for: .userBitcoinChanged).sink { complete in
             // Complete
         } receiveValue: { [weak self] notification in
+
+            print("Received Notification: userBitcoinChanged")
             
             guard let self = self else {
                 return
@@ -180,7 +176,7 @@ extension UserBitcoinService {
                 return
             }
             
-            print("Notification: UserBitcoins changed. Updating UserBitcoins from database.")
+            print("Updating UserBitcoins from database")
             
             self.fetchLatestUserBitcoinsFromDatabase()
             
@@ -189,7 +185,8 @@ extension UserBitcoinService {
     }
         
     func postNotificationWhenUserBitcoinChanges() {
-        NotificationCenter.default.post(name: .userBitcoinUpdate, object: self)
+        print("Notification: UserBitcoins changed: \(currentUserBitcoins.value.bitcoins)")
+        NotificationCenter.default.post(name: .userBitcoinChanged, object: self)
     }
     
     func initializeUserBitcoinsWithZeroBitcoins() {
