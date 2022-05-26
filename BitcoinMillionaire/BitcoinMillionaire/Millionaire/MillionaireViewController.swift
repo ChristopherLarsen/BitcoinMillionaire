@@ -11,7 +11,7 @@ import Combine
 
 // MARK: - MillionaireViewControllerProtocol
 
-protocol MillionaireViewControllerProtocol {
+protocol MillionaireViewControllerProtocol : AnyObject {
     var isBitcoinMillionaire: PassthroughSubject<Bool, Never> { get set }
 }
 
@@ -23,6 +23,7 @@ class MillionaireViewController : UIViewController, MillionaireViewControllerPro
     var labelResult: UILabel!
     var imageView: UIImageView!
     var labelCheer: UILabel!
+    var buttonDone: UIButton!
     
     var millionairePresenter: MillionairePresenterProtocol
     
@@ -47,6 +48,8 @@ class MillionaireViewController : UIViewController, MillionaireViewControllerPro
 
     }
     
+    // MARK: - Life Cycle methods
+    
     required init?(coder: NSCoder) {
         return nil
     }
@@ -66,6 +69,10 @@ class MillionaireViewController : UIViewController, MillionaireViewControllerPro
         view.backgroundColor = .systemBackground
     }
     
+    deinit {
+        print("deinit MillionaireViewController")
+    }
+    
 }
 
 // MARK: - Private
@@ -74,7 +81,7 @@ private extension MillionaireViewController {
     
     func setUpUserInterface() {
         
-        let containerFrame: CGRect = UIScreen.main.bounds.inset(by: UIEdgeInsets(top: 150.0, left: 40.0, bottom: 40.0, right: 40.0))
+        let containerFrame: CGRect = UIScreen.main.bounds.inset(by: UIEdgeInsets(top: 150.0, left: 40.0, bottom: 80.0, right: 40.0))
         containerView = UIView(frame: containerFrame)
         containerView.accessibilityIdentifier = "containerView"
         view.addSubview(containerView)
@@ -82,7 +89,7 @@ private extension MillionaireViewController {
         let labelResult = UILabel()
         labelResult.accessibilityIdentifier = "labelResult"
         labelResult.textAlignment = .center
-        labelResult.font = UIFont.preferredFont(forTextStyle: .title1)
+        labelResult.font = UIFont.systemFont(ofSize: 60.0, weight: .bold)
         labelResult.adjustsFontForContentSizeCategory = true
         labelResult.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(labelResult)
@@ -99,11 +106,12 @@ private extension MillionaireViewController {
         
         let imageView = UIImageView(image: UIImage(systemName: "hands.wave") )
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
         containerView.addSubview(imageView)
 
-        let topConstaintImageView = NSLayoutConstraint(item: imageView, attribute: .top, relatedBy: .equal, toItem: labelResult, attribute: .bottom, multiplier: 1.0, constant: 10.0)
-        let leftConstaintImageView = NSLayoutConstraint(item: imageView, attribute: .left, relatedBy: .equal, toItem: containerView, attribute: .left, multiplier: 1.0, constant: 10.0)
-        let rightConstaintImageView = NSLayoutConstraint(item: imageView, attribute: .right, relatedBy: .equal, toItem: containerView, attribute: .right, multiplier: 1.0, constant: 10.0)
+        let topConstaintImageView = NSLayoutConstraint(item: imageView, attribute: .top, relatedBy: .equal, toItem: labelResult, attribute: .bottom, multiplier: 1.0, constant: 20.0)
+        let leftConstaintImageView = NSLayoutConstraint(item: imageView, attribute: .left, relatedBy: .equal, toItem: containerView, attribute: .left, multiplier: 1.0, constant: 50.0)
+        let rightConstaintImageView = NSLayoutConstraint(item: imageView, attribute: .right, relatedBy: .equal, toItem: containerView, attribute: .right, multiplier: 1.0, constant: -50.0)
         containerView.addConstraints([topConstaintImageView, leftConstaintImageView, rightConstaintImageView])
 
         let heightConstraintImageView = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width,  multiplier: 1.0, constant: 1.0)
@@ -113,7 +121,7 @@ private extension MillionaireViewController {
         let labelCheer = UILabel()
         labelCheer.accessibilityIdentifier = "labelCheer"
         labelCheer.textAlignment = .center
-        labelCheer.font = UIFont.preferredFont(forTextStyle: .title3)
+        labelCheer.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
         labelCheer.adjustsFontForContentSizeCategory = true
         labelCheer.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(labelCheer)
@@ -127,6 +135,22 @@ private extension MillionaireViewController {
         labelCheer.addConstraint(heightConstraintCheer)
         
         self.labelCheer = labelCheer
+
+        let buttonDone = ButtonUtility.createButton(title: "Yay!")
+        buttonDone.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(buttonDone)
+        
+        let bottomConstraintButtonDone = NSLayoutConstraint(item: buttonDone, attribute: .bottom, relatedBy: .equal, toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        let leftConstraintButtonDone = NSLayoutConstraint(item: buttonDone, attribute: .left, relatedBy: .equal, toItem: containerView, attribute: .left, multiplier: 1.0, constant: 0.0)
+        let rightConstraintButtonDone = NSLayoutConstraint(item: buttonDone, attribute: .right, relatedBy: .equal, toItem: containerView, attribute: .right, multiplier: 1.0, constant: 0.0)
+        containerView.addConstraints([bottomConstraintButtonDone, leftConstraintButtonDone, rightConstraintButtonDone])
+
+        let heightConstraintButtonDone = NSLayoutConstraint(item: buttonDone, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute,  multiplier: 1.0, constant: 60.0)
+        buttonDone.addConstraint(heightConstraintButtonDone)
+        
+        buttonDone.addTarget(self, action: #selector(actionDone), for: .touchUpInside)
+        
+        self.buttonDone = buttonDone
         
         view.setNeedsLayout()
     }
@@ -145,14 +169,26 @@ private extension MillionaireViewController {
             let symbol = UIImage(systemName: "hand.thumbsup", withConfiguration: symbolConfig)
             imageView.image = symbol
             labelCheer.text = "You're a Bitcoin Millionaire!"
+            buttonDone.setTitle("Yay!", for: .normal)
         } else {
             labelResult.text = "NO"
             let symbolConfig = UIImage.SymbolConfiguration(hierarchicalColor: UIColor.black)
             let symbol = UIImage(systemName: "hand.thumbsdown", withConfiguration: symbolConfig)
             imageView.image = symbol
             labelCheer.text = "But you're on your way!"
+            buttonDone.setTitle("Collect more Bitcoin!", for: .normal)
         }
         
+    }
+    
+}
+
+// MARK: - Actions
+
+extension MillionaireViewController {
+        
+    @objc func actionDone() {
+        millionairePresenter.actionDone()
     }
     
 }

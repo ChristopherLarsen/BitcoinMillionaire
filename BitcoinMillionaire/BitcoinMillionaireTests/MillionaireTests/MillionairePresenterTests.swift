@@ -61,10 +61,10 @@ class MillionairePresenterTests: XCTestCase {
 
         let mockMillionaireInteractor = MockMillionaireInteractor()
         let mockMillionaireRouter = MockMillionaireRouter()
+        let sut = MillionairePresenter(interactor: mockMillionaireInteractor, router: mockMillionaireRouter)
         
         // Act
 
-        let sut = MillionairePresenter(interactor: mockMillionaireInteractor, router: mockMillionaireRouter)
         sut.checkIfUserIsBitcoinMillionaire()
         
         // Assert
@@ -73,6 +73,24 @@ class MillionairePresenterTests: XCTestCase {
         
     }
     
-    
+    func testMillionairePresenter_WhenMillionaireStatusCalculated_ShouldCallViewControllerToUpdate() {
+        
+        // Arrange
+
+        let mockMillionaireViewController = MockMillionaireViewController()
+        let mockMillionaireInteractor = MockMillionaireInteractor()
+        let mockMillionaireRouter = MockMillionaireRouter()
+        let sut = MillionairePresenter(interactor: mockMillionaireInteractor, router: mockMillionaireRouter)
+        sut.millionaireViewController = mockMillionaireViewController
+        
+        // Act
+
+        sut.calculatedUser(isMillionaire: true)
+        
+        // Assert
+
+        XCTAssertTrue(mockMillionaireViewController.isCalledIsBitcoinMillionaire, "Failed - Expected call to CalculateUserBitcoinMillionaireStatus.")
+        
+    }
     
 }

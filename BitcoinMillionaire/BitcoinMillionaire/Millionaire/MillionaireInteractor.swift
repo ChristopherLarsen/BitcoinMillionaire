@@ -10,7 +10,7 @@ import Combine
 
 // MARK: - MillionaireInteractorProtocol
 
-protocol MillionaireInteractorProtocol {
+protocol MillionaireInteractorProtocol : AnyObject {
     var millionairePresenter: MillionairePresenterProtocol? { get set }
     func calculateUserBitcoinMillionaireStatus()
 }
@@ -19,7 +19,7 @@ protocol MillionaireInteractorProtocol {
 
 class MillionaireInteractor : MillionaireInteractorProtocol {
     
-    var millionairePresenter: MillionairePresenterProtocol?
+    weak var millionairePresenter: MillionairePresenterProtocol?
     
     private var cancellables: Set<AnyCancellable> = []
     
@@ -36,12 +36,7 @@ class MillionaireInteractor : MillionaireInteractorProtocol {
         
         let isMillionaire = calculatedValueOfUserBitcoing > Constants.oneMillionDollars
         
-        guard let millionairePresenter = self.millionairePresenter else {
-            print("Error - No Presenter assigned")
-            return
-        }
-
-        millionairePresenter.calculatedUser(isMillionaire: isMillionaire)
+        millionairePresenter?.calculatedUser(isMillionaire: isMillionaire)
         
     }
     

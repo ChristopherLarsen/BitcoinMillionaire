@@ -12,7 +12,8 @@ class MockMillionaireInteractor : MillionaireInteractorProtocol {
     
     var millionairePresenter: MillionairePresenterProtocol?
     
-    // MARK: - Is Called Methods
+    // MARK: -  Is Called Methods
+    //          These record whether the method referred to was called on the mock object.
     //
     var isCalledCalculateUserBitcoinMillionaireStatus = false
     
@@ -23,6 +24,5 @@ class MockMillionaireInteractor : MillionaireInteractorProtocol {
     func calculateUserBitcoinMillionaireStatus() {
         isCalledCalculateUserBitcoinMillionaireStatus = true
     }
-    
     
 }

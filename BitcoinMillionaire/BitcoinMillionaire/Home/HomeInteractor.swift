@@ -45,7 +45,7 @@ class HomeInteractor: HomeInteractorProtocol {
     
     /// Method to call bitcoin user bitcoin service to fetch available number of bitcoins with the user.
     /// - Returns: A Subject publishing UserBitcoinEntity or Error, if any
-    func checkBitcoinAvailability() -> CurrentValueSubject<UserBitcoinEntity, Error> {
+    func checkBitcoinAvailability() -> CurrentValueSubject<UserBitcoinEntity, Never> {
         if let userBitcoinService = userBitcoinService as? UserBitcoinService {
             userBitcoinService.fetchLatestUserBitcoinsFromDatabase()
         }

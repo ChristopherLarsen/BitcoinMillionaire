@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
     
     //MARK: Lifecycle methods
     
-    init(presenter: HomePresenterProtocol) {
+    init(presenter: HomePresenterProtocol)  {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }

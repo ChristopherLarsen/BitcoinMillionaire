@@ -32,9 +32,9 @@ class MockHomeInteractor: HomeInteractorProtocol {
             .eraseToAnyPublisher()
     }
 
-    func checkBitcoinAvailability() -> CurrentValueSubject<UserBitcoinEntity, Error> {
+    func checkBitcoinAvailability() -> CurrentValueSubject<UserBitcoinEntity, Never> {
         checkIfBitcoinAvailabilityInInteractorCalled = true
-        let currentValueSubject = CurrentValueSubject<UserBitcoinEntity, Error>(UserBitcoinEntity(initialCoins: 10.0))
+        let currentValueSubject = CurrentValueSubject<UserBitcoinEntity, Never>(UserBitcoinEntity(initialCoins: 10.0))
         return currentValueSubject
     }
 

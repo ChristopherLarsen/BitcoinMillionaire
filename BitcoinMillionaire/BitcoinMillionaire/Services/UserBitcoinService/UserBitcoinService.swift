@@ -11,15 +11,13 @@ import Combine
 
 
 // MARK: - UserBitcoinServiceProtocol
-
-protocol UserBitcoinServiceProtocol {
-    var currentUserBitcoins: CurrentValueSubject<UserBitcoinEntity, Error> { get }
-    
-    func addBitcoin(amountToAdd: Float) -> Result<Bool, Error>
-    func removeBitcoin(amountToRemove: Float) -> Result<Bool, Error>
-    func fetchLatestUserBitcoinsFromDatabase()
+ 
+protocol UserBitcoinServiceProtocol : AnyObject {
+    var currentUserBitcoins: CurrentValueSubject<UserBitcoinEntity, Never> { get }
+    func addBitcoin(amountToAdd: Float) -> Result<Bool, UserBitcoinServiceError>
+    func removeBitcoin(amountToRemove: Float) -> Result<Bool, UserBitcoinServiceError>
+    func fetchLatestUserBitcoinsFromDatabase() 
 }
-
 
 // MARK: - UserBitcoinServiceError
 
@@ -47,14 +45,20 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     /// The current number of Bitcoins the User has.
     /// Subscribe to this Publisher to repond to changes in the current amount of Bitcoins the user has.
     ///
-    var currentUserBitcoins = CurrentValueSubject<UserBitcoinEntity, Error>( UserBitcoinEntity(initialCoins: 2.0) )
+    var currentUserBitcoins = CurrentValueSubject<UserBitcoinEntity, Never>( UserBitcoinEntity(initialCoins: 0.0) )
     
     private let database: DatabaseRepositoryProtocol
+    private var cancellables: Set<AnyCancellable> = []
     
     init(database: DatabaseRepositoryProtocol = DatabaseService() ) {
         
         self.database = database
+        
         fetchLatestUserBitcoinsFromDatabase()
+        
+        subscribeToChangesToCurrentUserBitcoin()
+        subscribeToNotificationsOfChangesToCurrentUserBitcoin()
+        
     }
     
     // MARK: - Public
@@ -72,9 +76,7 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
         let userBitcoinEntity = UserBitcoinEntity(initialCoins: newValue)
         
         currentUserBitcoins.value = userBitcoinEntity
-        
-        saveCurrentBitcoinsToDatabase()
-        
+                
         return .success(true)
     }
     
@@ -92,22 +94,39 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
         
         currentUserBitcoins.value = userBitcoinEntity
         
-        saveCurrentBitcoinsToDatabase()
-        
         return .success(true)
+    }
+
+    // MARK: - deinit
+    
+    deinit {
+        
+        print("deinit UserBitcoinService")
+        
+        for cancellable in cancellables {
+            cancellable.cancel()
+        }
+        
     }
     
 }
 
 // MARK: - Private
+
 extension UserBitcoinService {
     
     func fetchLatestUserBitcoinsFromDatabase() {
         
         if case .success(let readObject) = database.read(key: Key.keyUserBitcoin) {
+            
             if let initialCoins = readObject as? Float {
-                self.currentUserBitcoins.value = UserBitcoinEntity(initialCoins: initialCoins)
+                
+                if initialCoins != self.currentUserBitcoins.value.bitcoins {
+                    self.currentUserBitcoins.value = UserBitcoinEntity(initialCoins: initialCoins)
+                }
+                
             }
+            
         } else {
             
             initializeUserBitcoinsWithZeroBitcoins()
@@ -124,6 +143,53 @@ extension UserBitcoinService {
             }
         }
         
+    }
+    
+    func subscribeToChangesToCurrentUserBitcoin() {
+        
+        currentUserBitcoins.sink { [weak self] userBitcoinEntity in
+            
+            guard let self = self else {
+                return
+            }
+            
+            self.saveCurrentBitcoinsToDatabase()
+            self.postNotificationWhenUserBitcoinChanges()
+            
+        }.store(in: &cancellables)
+        
+    }
+    
+    func subscribeToNotificationsOfChangesToCurrentUserBitcoin() {
+        
+        NotificationCenter.default.publisher(for: .userBitcoinUpdate).sink { complete in
+            // Complete
+        } receiveValue: { [weak self] notification in
+            
+            guard let self = self else {
+                return
+            }
+            
+            guard let postingUserBitcoinService = notification.object as? UserBitcoinService else {
+                return
+            }
+            
+            guard postingUserBitcoinService !== self else {
+                // Notification as posted by this UserBitcoinService
+                // so we prevent a feedback loop here.
+                return
+            }
+            
+            print("Notification: UserBitcoins changed. Updating UserBitcoins from database.")
+            
+            self.fetchLatestUserBitcoinsFromDatabase()
+            
+        }.store(in: &cancellables)
+        
+    }
+        
+    func postNotificationWhenUserBitcoinChanges() {
+        NotificationCenter.default.post(name: .userBitcoinUpdate, object: self)
     }
     
     func initializeUserBitcoinsWithZeroBitcoins() {
@@ -149,10 +215,11 @@ extension UserBitcoinService {
         
         switch resultDatabaseOperation {
         case .success(let result):
-            print("Database - Saved user bitcoin to Database. \(result)")
+            print("Database - Saved user bitcoin to Database: \(result).")
         case .failure(let databaseError):
-            print("Database Error - Failed to save user bitcoin to Database. \(databaseError)")
+            print("Database Error - Failed to save user bitcoin to Database: \(databaseError).")
         }
         
     }
+     
 }
