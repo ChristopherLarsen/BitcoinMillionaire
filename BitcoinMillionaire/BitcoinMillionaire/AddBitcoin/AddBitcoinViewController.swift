@@ -35,11 +35,11 @@ extension AddBitcoinViewController {
     @objc func addBitcoin() {
         let amountText = textFieldText.value
         guard let amount = Float(amountText) else { return }
-        do {
-            try presenter.addBitcoin(amount: amount)
-            presenter.dismiss(self)
-        } catch {
-            presenter.showErrorMessage(error, on: self)
+        switch presenter.addBitcoin(amount: amount) {
+        case .success(_):
+            presenter.dismiss(self, animated: true)
+        case .failure(let error):
+            presenter.showErrorMessage(error, on: self, animated: true)
         }
     }
     
