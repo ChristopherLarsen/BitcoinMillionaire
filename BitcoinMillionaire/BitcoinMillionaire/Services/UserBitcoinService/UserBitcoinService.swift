@@ -16,6 +16,8 @@ protocol UserBitcoinServiceProtocol {
     var currentUserBitcoins: CurrentValueSubject<UserBitcoinEntity, Error> { get }
     
     func addBitcoin(amountToAdd: Float) -> Result<Bool, UserBitcoinServiceError>
+    
+    func removeBitcoin(amountToRemove: Float) -> Result<Bool, UserBitcoinServiceError>
 }
 
 

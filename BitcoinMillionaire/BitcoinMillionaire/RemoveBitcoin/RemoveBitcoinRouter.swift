@@ -7,6 +7,12 @@
 
 import Foundation
 
-protocol RemoveBitcoinRouterProtocol { }
+protocol RemoveBitcoinRouterProtocol {
+    func dismiss(viewController : RemoveBitcoinViewController)
+}
 
-class RemoveBitcoinRouter : RemoveBitcoinRouterProtocol {}
+class RemoveBitcoinRouter : RemoveBitcoinRouterProtocol {
+    func dismiss(viewController : RemoveBitcoinViewController) {
+        viewController.navigationController?.popViewController(animated: true)
+    }
+}

@@ -7,7 +7,24 @@
 
 import Foundation
 
-protocol RemoveBitcoinInteractorProtocol { }
+protocol RemoveBitcoinInteractorProtocol {
+    func removeBitcoin(amount:Float) throws
+}
 
-class RemoveBitcoinInteractor : RemoveBitcoinInteractorProtocol {}
+class RemoveBitcoinInteractor : RemoveBitcoinInteractorProtocol {
+    
+    var userBitcoinService: UserBitcoinServiceProtocol
+    
+    init(userBitcoinService: UserBitcoinServiceProtocol = UserBitcoinService(database: DatabaseService(userDefaults: BitcoinUserDefaults()))) {
+        self.userBitcoinService = userBitcoinService
+    }
+    
+    func removeBitcoin(amount: Float) throws {
+        switch self.userBitcoinService.removeBitcoin(amountToRemove: amount) {
+        case .success( _ ): break
+        case .failure(let error) :
+            throw error
+        }
+    }
+}
 
