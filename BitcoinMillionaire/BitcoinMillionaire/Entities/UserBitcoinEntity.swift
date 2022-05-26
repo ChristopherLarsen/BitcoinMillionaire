@@ -11,8 +11,8 @@ import Foundation
 // MARK: - UserBitcoinEntityProtocol
 
 protocol UserBitcoinEntityProtocol {
-    var bitcoins: Float { get }
-    init(initialCoins: Float)
+    var bitcoins: Double { get }
+    init(initialCoins: Double)
 }
 
 
@@ -22,11 +22,11 @@ class UserBitcoinEntity: UserBitcoinEntityProtocol {
 
     /// Private members
 
-    private let _bitcoins: Float
+    private let _bitcoins: Double
     
     /// Public
     
-    var bitcoins: Float {
+    var bitcoins: Double {
         get {
             return _bitcoins
         }
@@ -34,7 +34,7 @@ class UserBitcoinEntity: UserBitcoinEntityProtocol {
     
     /// Designated Initializer
     
-    required init(initialCoins: Float) {
+    required init(initialCoins: Double) {
         
         if initialCoins < 0.0 {
             print("ERROR: You cannot have less than zero Bitcoins.")

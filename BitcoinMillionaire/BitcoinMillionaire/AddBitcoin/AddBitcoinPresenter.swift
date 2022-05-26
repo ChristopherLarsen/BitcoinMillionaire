@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol AddBitcoinPresenterProtocol {
-    func addBitcoin(amount: Float) -> Result<Bool, Error>
+    func addBitcoin(amount: Double) -> Result<Bool, Error>
     func showErrorMessage(_ error: Error, on viewController: UIViewController, animated : Bool)
     func dismiss(_ viewController: AddBitcoinViewController, animated: Bool)
 }
@@ -24,8 +24,8 @@ class AddBitcoinPresenter : AddBitcoinPresenterProtocol {
         self.router = router
     }
     
-    func addBitcoin(amount: Float) -> Result<Bool, Error> {
-        return interactor.addBitcoin(amount:amount)
+    func addBitcoin(amount: Double) -> Result<Bool, Error> {
+        return interactor.addBitcoin(amount: amount)
     }
     
     func dismiss(_ viewController: AddBitcoinViewController, animated : Bool) {

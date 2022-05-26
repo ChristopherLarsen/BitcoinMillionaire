@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AddBitcoinInteractorProtocol {
-    func addBitcoin(amount:Float) -> Result<Bool,Error>
+    func addBitcoin(amount: Double) -> Result<Bool,Error>
 }
 
 class AddBitcoinInteractor : AddBitcoinInteractorProtocol {
@@ -19,7 +19,7 @@ class AddBitcoinInteractor : AddBitcoinInteractorProtocol {
         self.userBitcoinService = userBitcoinService
     }
     
-    func addBitcoin(amount:Float) -> Result<Bool,Error> {
+    func addBitcoin(amount: Double) -> Result<Bool,Error> {
         return self.userBitcoinService.addBitcoin(amountToAdd: amount)
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol RemoveBitcoinPresenterProtocol {
-    func removeBitcoin(amount: Float) throws
+    func removeBitcoin(amount: Double) throws
     func showErrorMessage(_ error: Error, on viewController: RemoveBitcoinViewController)
     func dismiss(_ viewController: RemoveBitcoinViewController)
 }
@@ -33,7 +33,7 @@ class RemoveBitcoinPresenter : RemoveBitcoinPresenterProtocol {
         viewController.present(alert, animated: true)
     }
     
-    func removeBitcoin(amount: Float) throws {
+    func removeBitcoin(amount: Double) throws {
         try interactor.removeBitcoin(amount:amount)
     }
     

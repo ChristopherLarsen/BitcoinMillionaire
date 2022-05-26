@@ -14,8 +14,8 @@ import Combine
  
 protocol UserBitcoinServiceProtocol : AnyObject {
     var currentUserBitcoins: CurrentValueSubject<UserBitcoinEntity, Never> { get }
-    func addBitcoin(amountToAdd: Float) -> Result<Bool, Error>
-    func removeBitcoin(amountToRemove: Float) -> Result<Bool, Error>
+    func addBitcoin(amountToAdd: Double) -> Result<Bool, Error>
+    func removeBitcoin(amountToRemove: Double) -> Result<Bool, Error>
     func fetchLatestUserBitcoinsFromDatabase() 
 }
 
@@ -63,13 +63,13 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     
     // MARK: - Public
     
-    func addBitcoin(amountToAdd: Float) -> Result<Bool, Error> {
+    func addBitcoin(amountToAdd: Double) -> Result<Bool, Error> {
         
         guard amountToAdd > 0 else  {
             return .failure(UserBitcoinServiceError.cannotAddZeroOrNegativeAmount)
         }
         
-        let currentBitcoins: Float = currentUserBitcoins.value.bitcoins
+        let currentBitcoins: Double = currentUserBitcoins.value.bitcoins
         
         let newValue = currentBitcoins + amountToAdd
         
@@ -80,9 +80,9 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
         return .success(true)
     }
     
-    func removeBitcoin(amountToRemove: Float) -> Result<Bool, Error> {
+    func removeBitcoin(amountToRemove: Double) -> Result<Bool, Error> {
         
-        let currentBitcoins: Float = currentUserBitcoins.value.bitcoins
+        let currentBitcoins: Double = currentUserBitcoins.value.bitcoins
         
         guard currentBitcoins > amountToRemove else {
             return .failure(UserBitcoinServiceError.insufficientBitcoinToRemove)
@@ -119,7 +119,7 @@ extension UserBitcoinService {
         
         if case .success(let readObject) = database.read(key: Key.keyUserBitcoin) {
             
-            if let initialCoins = readObject as? Float {
+            if let initialCoins = readObject as? Double {
                 
                 if initialCoins != self.currentUserBitcoins.value.bitcoins {
                     self.currentUserBitcoins.value = UserBitcoinEntity(initialCoins: initialCoins)
@@ -133,7 +133,7 @@ extension UserBitcoinService {
             
             if case .success(let readObject) = database.read(key: Key.keyUserBitcoin) {
                 
-                guard let initialCoins = readObject as? Float else {
+                guard let initialCoins = readObject as? Double else {
                     print("Error - Failed to initialize the UserBitcoinEntity")
                     return
                 }
@@ -209,7 +209,7 @@ extension UserBitcoinService {
     
     func saveCurrentBitcoinsToDatabase() {
         
-        let bitcoins: Float = currentUserBitcoins.value.bitcoins
+        let bitcoins: Double = currentUserBitcoins.value.bitcoins
         
         let resultDatabaseOperation = database.update(key: Key.keyUserBitcoin, object: bitcoins)
         

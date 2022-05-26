@@ -66,7 +66,7 @@ class UserBitcoinServiceTests: XCTestCase {
         
         // Insert a random number of Bitcoins to start
         //
-        let initialNumberOfBitcoins = Float.random(in: 0...1.0)
+        let initialNumberOfBitcoins = Double.random(in: 0...1.0)
         
         mockBitcoinUserDefaults.set(initialNumberOfBitcoins, forKey: Key.keyUserBitcoin)
         let mockDatabase = MockDatabase(userDefaults: mockBitcoinUserDefaults)
@@ -123,8 +123,8 @@ class UserBitcoinServiceTests: XCTestCase {
         
         // Arrange
         
-        let previousBitcoins: Float = sut.currentUserBitcoins.value.bitcoins
-        let bitcoinsToAdd: Float = Float.random(in: 0...1.0)
+        let previousBitcoins: Double = sut.currentUserBitcoins.value.bitcoins
+        let bitcoinsToAdd: Double = Double.random(in: 0...1.0)
         let expectedBitcoinsAfterAddingBitcoins = previousBitcoins + bitcoinsToAdd
         
         // Act
@@ -138,7 +138,7 @@ class UserBitcoinServiceTests: XCTestCase {
         case .failure(let error):   XCTFail("Failed - Unable to perform Add Bitcoin operation \(error)")
         }
         
-        let bitcoinsAfterAdding: Float = sut.currentUserBitcoins.value.bitcoins
+        let bitcoinsAfterAdding: Double = sut.currentUserBitcoins.value.bitcoins
         
         XCTAssertTrue(bitcoinsAfterAdding == expectedBitcoinsAfterAddingBitcoins, "Failed - Did not add the correct amount of Bitcoin.")
         
@@ -148,11 +148,11 @@ class UserBitcoinServiceTests: XCTestCase {
         
         // Arrange
         
-        let initialCoins: Float = 1.0 + Float.random(in: 0...1.0)
+        let initialCoins: Double = 1.0 + Double.random(in: 0...1.0)
         
         sut.currentUserBitcoins.value = UserBitcoinEntity(initialCoins: initialCoins)
         
-        let bitcoinsToRemove: Float = Float.random(in: 0...1.0)
+        let bitcoinsToRemove: Double = Double.random(in: 0...1.0)
         let expectedBitcoinsAfterRemovingBitcoins = initialCoins - bitcoinsToRemove
         
         // Act
@@ -166,7 +166,7 @@ class UserBitcoinServiceTests: XCTestCase {
         case .failure(let error):   XCTFail("Failed - Unable to perform Add Bitcoin operation \(error)")
         }
         
-        let bitcoinsAfterRemoving: Float = sut.currentUserBitcoins.value.bitcoins
+        let bitcoinsAfterRemoving: Double = sut.currentUserBitcoins.value.bitcoins
         
         XCTAssertTrue(bitcoinsAfterRemoving == expectedBitcoinsAfterRemovingBitcoins, "Failed - Did not add the correct amount of Bitcoin.")
         
@@ -176,11 +176,11 @@ class UserBitcoinServiceTests: XCTestCase {
         
         // Arrange
         
-        let initialCoins: Float = Float.random(in: 0...1.0)
+        let initialCoins: Double = Double.random(in: 0...1.0)
         
         sut.currentUserBitcoins.value = UserBitcoinEntity(initialCoins: initialCoins)
         
-        let bitcoinsToRemove: Float = 1.0 + Float.random(in: 0...1.0)
+        let bitcoinsToRemove: Double = 1.0 + Double.random(in: 0...1.0)
         let expectedBitcoinsAfterRemovingBitcoins = initialCoins
         
         // Act
@@ -196,7 +196,7 @@ class UserBitcoinServiceTests: XCTestCase {
             XCTAssertTrue(true, "Failed - Expect an insufficient Bitcoin error")
         }
         
-        let bitcoinsAfterRemoving: Float = sut.currentUserBitcoins.value.bitcoins
+        let bitcoinsAfterRemoving: Double = sut.currentUserBitcoins.value.bitcoins
         
         XCTAssertTrue(bitcoinsAfterRemoving == expectedBitcoinsAfterRemovingBitcoins, "Failed - Should not have changed the amount of Bitcoin.")
         
@@ -206,9 +206,9 @@ class UserBitcoinServiceTests: XCTestCase {
         
         // Arrange
 
-        let initialBitcoin = Float.random(in: 0...1.0)
-        let addedBitcoin = Float.random(in: 0...1.0)
-        let accuracy: Float = 0.000001
+        let initialBitcoin = Double.random(in: 0...1.0)
+        let addedBitcoin = Double.random(in: 0...1.0)
+        let accuracy: Double = 0.000001
         let expectedBitcoin = initialBitcoin + addedBitcoin
 
         mockBitcoinUserDefaults.clearUserDefaults()
@@ -242,7 +242,7 @@ class UserBitcoinServiceTests: XCTestCase {
         
         XCTAssertNotNil(cancellable, "Failed - The Publisher should have provided a cancellable.")
 
-        guard let retrievedUserBitcoinValue = mockBitcoinUserDefaults.object(forKey: Key.keyUserBitcoin) as? Float else {
+        guard let retrievedUserBitcoinValue = mockBitcoinUserDefaults.object(forKey: Key.keyUserBitcoin) as? Double else {
             XCTFail("Failed - Should have retrieved user bitcoin from mock user defaults.")
             return
         }
@@ -255,9 +255,9 @@ class UserBitcoinServiceTests: XCTestCase {
         
         // Arrange
 
-        let initialBitcoin = 1 + Float.random(in: 0...1.0)
-        let removedBitcoin = Float.random(in: 0...1.0)
-        let accuracy: Float = 0.000001
+        let initialBitcoin = 1 + Double.random(in: 0...1.0)
+        let removedBitcoin = Double.random(in: 0...1.0)
+        let accuracy: Double = 0.000001
         let expectedBitcoin = initialBitcoin - removedBitcoin
 
         mockBitcoinUserDefaults.clearUserDefaults()
@@ -289,7 +289,7 @@ class UserBitcoinServiceTests: XCTestCase {
         
         XCTAssertNotNil(cancellable, "Failed - The Publisher should have provided a cancellable.")
 
-        guard let retrievedUserBitcoinValue = mockBitcoinUserDefaults.object(forKey: Key.keyUserBitcoin) as? Float else {
+        guard let retrievedUserBitcoinValue = mockBitcoinUserDefaults.object(forKey: Key.keyUserBitcoin) as? Double else {
             XCTFail("Failed - Should have retrieved user bitcoin from mock user defaults.")
             return
         }
