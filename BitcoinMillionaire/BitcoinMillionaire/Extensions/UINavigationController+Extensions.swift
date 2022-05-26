@@ -13,12 +13,12 @@ extension UINavigationController {
     
     static var rootNavigationController: UINavigationController? {
         
-        guard let keyWindow = UIApplication.shared.keyWindow else {
+        guard let keySceneWindow = UIApplication.shared.keySceneWindow else {
             print("Failed to get the Root NavigationController")
             return nil
         }
         
-        guard let rootViewController = keyWindow.rootViewController else {
+        guard let rootViewController = keySceneWindow.rootViewController else {
             print("Failed to get the Root NavigationController")
             return nil
         }

@@ -36,12 +36,7 @@ class MillionaireInteractor : MillionaireInteractorProtocol {
         
         let isMillionaire = calculatedValueOfUserBitcoing > Constants.oneMillionDollars
         
-        guard let millionairePresenter = self.millionairePresenter else {
-            print("Error - No Presenter assigned")
-            return
-        }
-
-        millionairePresenter.calculatedUser(isMillionaire: isMillionaire)
+        millionairePresenter?.calculatedUser(isMillionaire: isMillionaire)
         
     }
     
