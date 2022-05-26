@@ -62,5 +62,4 @@ class BitcoinPriceService : BitcoinPriceServiceProtocol {
             }).setFailureType(to: Error.self)
             .eraseToAnyPublisher()
     }
-    
 }

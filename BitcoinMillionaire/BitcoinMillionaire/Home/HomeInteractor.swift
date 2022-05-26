@@ -13,11 +13,11 @@ import SwiftUI
 class HomeInteractor: HomeInteractorProtocol {
     
     //MARK: Variables & Constants
-    var bitcoinPriceService: BitcoinPriceService!
+    var bitcoinPriceService: BitcoinPriceServiceProtocol!
     var userBitcoinService: UserBitcoinServiceProtocol!
 
     //MARK: Lifecycle methods
-    init(with bitcoinPriceService: BitcoinPriceService, userBitcoinService: UserBitcoinServiceProtocol = UserBitcoinService(database: DatabaseService(userDefaults: BitcoinUserDefaults()))) {
+    init(with bitcoinPriceService: BitcoinPriceServiceProtocol = BitcoinPriceService(), userBitcoinService: UserBitcoinServiceProtocol = UserBitcoinService(database: DatabaseService(userDefaults: BitcoinUserDefaults()))) {
         self.bitcoinPriceService = bitcoinPriceService
         self.userBitcoinService = userBitcoinService
     }
@@ -46,6 +46,9 @@ class HomeInteractor: HomeInteractorProtocol {
     /// Method to call bitcoin user bitcoin service to fetch available number of bitcoins with the user.
     /// - Returns: A Subject publishing UserBitcoinEntity or Error, if any
     func checkBitcoinAvailability() -> CurrentValueSubject<UserBitcoinEntity, Error> {
+        if let userBitcoinService = userBitcoinService as? UserBitcoinService {
+            userBitcoinService.fetchLatestUserBitcoinsFromDatabase()
+        }
         return userBitcoinService.currentUserBitcoins
     }
 }
