@@ -15,7 +15,6 @@ import Combine
 protocol UserBitcoinServiceProtocol : AnyObject {
     var currentUserBitcoins: CurrentValueSubject<UserBitcoinEntity, Never> { get }
     func addBitcoin(amountToAdd: Float) -> Result<Bool, UserBitcoinServiceError>
-    
     func removeBitcoin(amountToRemove: Float) -> Result<Bool, UserBitcoinServiceError>
 }
 
@@ -91,7 +90,6 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
             cancellable.cancel()
         }
         
-        NotificationCenter.default.removeObserver(self)
     }
     
 }
@@ -165,7 +163,7 @@ extension UserBitcoinService {
                 return
             }
             
-            print("UserBitcoins changed Notifications. Updating from database ...")
+            print("Notification: UserBitcoins changed. Updating UserBitcoins from database.")
             
             self.fetchLatestUserBitcoinsFromDatabase()
             
