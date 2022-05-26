@@ -11,7 +11,7 @@ import Combine
 
 // MARK: - MillionaireViewControllerProtocol
 
-protocol MillionaireViewControllerProtocol {
+protocol MillionaireViewControllerProtocol : AnyObject {
     var isBitcoinMillionaire: PassthroughSubject<Bool, Never> { get set }
 }
 
@@ -67,6 +67,10 @@ class MillionaireViewController : UIViewController, MillionaireViewControllerPro
         
         self.title = "Bitcoin Millionaire"
         view.backgroundColor = .systemBackground
+    }
+    
+    deinit {
+        print("deinit MillionaireViewController")
     }
     
 }

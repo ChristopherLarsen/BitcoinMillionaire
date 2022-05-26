@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - MillionairePresenterProtocol
 
-protocol MillionairePresenterProtocol {
+protocol MillionairePresenterProtocol : AnyObject {
     var millionaireViewController: MillionaireViewControllerProtocol? { get set }
     func checkIfUserIsBitcoinMillionaire()
     func calculatedUser(isMillionaire: Bool)
@@ -24,7 +24,7 @@ class MillionairePresenter : MillionairePresenterProtocol {
     var millionaireInteractor: MillionaireInteractorProtocol
     var millionaireRouter: MillionaireRouterProtocol
             
-    var millionaireViewController: MillionaireViewControllerProtocol?
+    weak var millionaireViewController: MillionaireViewControllerProtocol?
 
     // Mark: init
     

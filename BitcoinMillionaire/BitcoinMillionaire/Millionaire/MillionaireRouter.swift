@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - MillionaireRouterProtocol
 
-protocol MillionaireRouterProtocol {
+protocol MillionaireRouterProtocol : AnyObject  {
     var millionairePresenter: MillionairePresenterProtocol? { get set }
     func navigateBack()
 }
@@ -19,7 +19,7 @@ protocol MillionaireRouterProtocol {
 
 class MillionaireRouter : MillionaireRouterProtocol {
     
-    var millionairePresenter: MillionairePresenterProtocol?
+    weak var millionairePresenter: MillionairePresenterProtocol?
 
     func navigateBack() {
 

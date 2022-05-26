@@ -12,7 +12,7 @@ import Combine
 
 // MARK: - UserBitcoinServiceProtocol
 
-protocol UserBitcoinServiceProtocol {
+protocol UserBitcoinServiceProtocol : AnyObject {
     var currentUserBitcoins: CurrentValueSubject<UserBitcoinEntity, Never> { get }
     func addBitcoin(amountToAdd: Float) -> Result<Bool, UserBitcoinServiceError>
     
@@ -85,7 +85,7 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     
     deinit {
         
-        print("deinit")
+        print("deinit UserBitcoinService")
         
         for cancellable in cancellables {
             cancellable.cancel()
