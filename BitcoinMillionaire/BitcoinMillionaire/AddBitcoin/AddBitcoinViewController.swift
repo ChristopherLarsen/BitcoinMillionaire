@@ -10,6 +10,7 @@ import SwiftUI
 import Combine
 
 class AddBitcoinViewController : UIViewController {
+    
     var cancellables : Set<AnyCancellable> = []
     var textFieldText : CurrentValueSubject<String, Never> = .init("")
     var presenter : AddBitcoinPresenterProtocol
@@ -27,6 +28,12 @@ class AddBitcoinViewController : UIViewController {
         configureView()
     }
     
+    // MARK: - deinit
+    
+    deinit {
+        print("deinit AddBitcoinViewController")
+    }
+
 }
 
 //MARK:Setup Actions
