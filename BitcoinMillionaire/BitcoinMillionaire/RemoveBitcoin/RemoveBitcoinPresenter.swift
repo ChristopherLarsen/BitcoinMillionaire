@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 protocol RemoveBitcoinPresenterProtocol {
-    func removeBitcoin(amount: Float) throws
-    func showErrorMessage(_ error: Error, on viewController: RemoveBitcoinViewController)
-    func dismiss(_ viewController: RemoveBitcoinViewController)
+    func removeBitcoin(amount: Float) -> Result<Bool, Error>
+    func showErrorMessage(_ error: Error, on viewController: UIViewController, animated : Bool)
+    func dismiss(_ viewController: RemoveBitcoinViewController, animated: Bool)
 }
 
 class RemoveBitcoinPresenter : RemoveBitcoinPresenterProtocol {
@@ -23,7 +23,7 @@ class RemoveBitcoinPresenter : RemoveBitcoinPresenterProtocol {
         self.interactor = interactor
     }
     
-    func showErrorMessage(_ error: Error, on viewController: RemoveBitcoinViewController) {
+    func showErrorMessage(_ error: Error, on viewController: UIViewController, animated: Bool) {
         let message = error.localizedDescription
         //create alert message
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
@@ -33,11 +33,11 @@ class RemoveBitcoinPresenter : RemoveBitcoinPresenterProtocol {
         viewController.present(alert, animated: true)
     }
     
-    func removeBitcoin(amount: Float) throws {
-        try interactor.removeBitcoin(amount:amount)
+    func removeBitcoin(amount: Float) -> Result<Bool, Error> {
+//        try interactor.removeBitcoin(amount: amount)
     }
     
-    func dismiss(_ viewController: RemoveBitcoinViewController) {
+    func dismiss(_ viewController: RemoveBitcoinViewController, animated: Bool) {
         router.dismiss(viewController: viewController)
     }
 }
