@@ -14,8 +14,8 @@ import Combine
  
 protocol UserBitcoinServiceProtocol : AnyObject {
     var currentUserBitcoins: CurrentValueSubject<UserBitcoinEntity, Never> { get }
-    func addBitcoin(amountToAdd: Float) -> Result<Bool, UserBitcoinServiceError>
-    func removeBitcoin(amountToRemove: Float) -> Result<Bool, UserBitcoinServiceError>
+    func addBitcoin(amountToAdd: Float) -> Result<Bool, Error>
+    func removeBitcoin(amountToRemove: Float) -> Result<Bool, Error>
     func fetchLatestUserBitcoinsFromDatabase() 
 }
 
