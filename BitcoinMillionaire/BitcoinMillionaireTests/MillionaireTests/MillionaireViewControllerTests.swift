@@ -12,11 +12,9 @@ import XCTest
 class MillionaireViewControllerTests: XCTestCase {
     
     override func setUpWithError() throws {
-                
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
     func testMillionaireView_WhenCreated_ShouldHavePresenterAndReferenceBackToViewController() {
@@ -69,6 +67,25 @@ class MillionaireViewControllerTests: XCTestCase {
         // Assert
 
         XCTAssertTrue(mockPresenter.isCalledCheckIfUserIsBitcoinMillionaire, "Failed - Presenter not called for CheckIfUserIsBitcoinMillionaire")
+
+    }
+    
+    func testMillionaireView_WhenDropped_ShouldNotCauseRetainCycle() {
+        
+        // Arrange
+
+        weak var weakReferenceToPresenter: MillionairePresenter? = nil
+        
+        // Act
+        
+        var sut: MillionaireViewController? = MillionaireViewController()
+        weakReferenceToPresenter = sut?.millionairePresenter as? MillionairePresenter
+        
+        sut = nil
+        
+        // Assert
+
+        XCTAssertNil(weakReferenceToPresenter, "Failed - Presenter not deallocated when Module dropped.")
 
     }
 

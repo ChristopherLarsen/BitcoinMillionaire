@@ -18,7 +18,7 @@ class AddBitcoinInteractorMock : AddBitcoinInteractorProtocol {
     }
     
     
-    func addBitcoin(amount: Float) -> Result<Bool, Error> {
+    func addBitcoin(amount: Double) -> Result<Bool, Error> {
         if shouldThrowError {
             return .failure(UserBitcoinServiceError.cannotAddZeroOrNegativeAmount)
         } else {

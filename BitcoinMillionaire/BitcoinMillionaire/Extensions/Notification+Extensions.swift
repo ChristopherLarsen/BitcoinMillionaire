@@ -10,7 +10,7 @@ import Foundation
 
 extension Notification.Name {
     
-    static let userBitcoinUpdate: Notification.Name  = Notification.Name(rawValue: "userBitcoinUpdate")
+    static let userBitcoinChanged: Notification.Name  = Notification.Name(rawValue: "userBitcoinChanged")
     static let bitcoinPriceUpdate: Notification.Name  = Notification.Name(rawValue: "bitcoinPriceUpdate")
 
 }

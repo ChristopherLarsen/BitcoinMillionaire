@@ -14,8 +14,8 @@ import Combine
  
 protocol UserBitcoinServiceProtocol : AnyObject {
     var currentUserBitcoins: CurrentValueSubject<UserBitcoinEntity, Never> { get }
-    func addBitcoin(amountToAdd: Float) -> Result<Bool, Error>
-    func removeBitcoin(amountToRemove: Float) -> Result<Bool, Error>
+    func addBitcoin(amountToAdd: Double) -> Result<Bool, Error>
+    func removeBitcoin(amountToRemove: Double) -> Result<Bool, Error>
     func fetchLatestUserBitcoinsFromDatabase() 
 }
 
@@ -63,13 +63,13 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     
     // MARK: - Public
     
-    func addBitcoin(amountToAdd: Float) -> Result<Bool, Error> {
+    func addBitcoin(amountToAdd: Double) -> Result<Bool, Error> {
         
-        guard amountToAdd > 0 else  {
+        guard amountToAdd > 0.0 else  {
             return .failure(UserBitcoinServiceError.cannotAddZeroOrNegativeAmount)
         }
         
-        let currentBitcoins: Float = currentUserBitcoins.value.bitcoins
+        let currentBitcoins: Double = currentUserBitcoins.value.bitcoins
         
         let newValue = currentBitcoins + amountToAdd
         
@@ -80,9 +80,9 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
         return .success(true)
     }
     
-    func removeBitcoin(amountToRemove: Float) -> Result<Bool, Error> {
+    func removeBitcoin(amountToRemove: Double) -> Result<Bool, Error> {
         
-        let currentBitcoins: Float = currentUserBitcoins.value.bitcoins
+        let currentBitcoins: Double = currentUserBitcoins.value.bitcoins
         
         guard currentBitcoins > amountToRemove else {
             return .failure(UserBitcoinServiceError.insufficientBitcoinToRemove)
@@ -100,13 +100,7 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     // MARK: - deinit
     
     deinit {
-        
         print("deinit UserBitcoinService")
-        
-        for cancellable in cancellables {
-            cancellable.cancel()
-        }
-        
     }
     
 }
@@ -119,7 +113,7 @@ extension UserBitcoinService {
         
         if case .success(let readObject) = database.read(key: Key.keyUserBitcoin) {
             
-            if let initialCoins = readObject as? Float {
+            if let initialCoins = readObject as? Double {
                 
                 if initialCoins != self.currentUserBitcoins.value.bitcoins {
                     self.currentUserBitcoins.value = UserBitcoinEntity(initialCoins: initialCoins)
@@ -133,7 +127,7 @@ extension UserBitcoinService {
             
             if case .success(let readObject) = database.read(key: Key.keyUserBitcoin) {
                 
-                guard let initialCoins = readObject as? Float else {
+                guard let initialCoins = readObject as? Double else {
                     print("Error - Failed to initialize the UserBitcoinEntity")
                     return
                 }
@@ -162,9 +156,11 @@ extension UserBitcoinService {
     
     func subscribeToNotificationsOfChangesToCurrentUserBitcoin() {
         
-        NotificationCenter.default.publisher(for: .userBitcoinUpdate).sink { complete in
+        NotificationCenter.default.publisher(for: .userBitcoinChanged).sink { complete in
             // Complete
         } receiveValue: { [weak self] notification in
+
+            print("Received Notification: userBitcoinChanged")
             
             guard let self = self else {
                 return
@@ -180,7 +176,7 @@ extension UserBitcoinService {
                 return
             }
             
-            print("Notification: UserBitcoins changed. Updating UserBitcoins from database.")
+            print("Updating UserBitcoins from database")
             
             self.fetchLatestUserBitcoinsFromDatabase()
             
@@ -189,7 +185,8 @@ extension UserBitcoinService {
     }
         
     func postNotificationWhenUserBitcoinChanges() {
-        NotificationCenter.default.post(name: .userBitcoinUpdate, object: self)
+        print("Notification: UserBitcoins changed: \(currentUserBitcoins.value.bitcoins)")
+        NotificationCenter.default.post(name: .userBitcoinChanged, object: self)
     }
     
     func initializeUserBitcoinsWithZeroBitcoins() {
@@ -209,7 +206,7 @@ extension UserBitcoinService {
     
     func saveCurrentBitcoinsToDatabase() {
         
-        let bitcoins: Float = currentUserBitcoins.value.bitcoins
+        let bitcoins: Double = currentUserBitcoins.value.bitcoins
         
         let resultDatabaseOperation = database.update(key: Key.keyUserBitcoin, object: bitcoins)
         

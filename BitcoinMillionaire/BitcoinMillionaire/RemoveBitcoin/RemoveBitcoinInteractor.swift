@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RemoveBitcoinInteractorProtocol {
-    func removeBitcoin(amount:Float) throws
+    func removeBitcoin(amount: Double) throws
 }
 
 class RemoveBitcoinInteractor : RemoveBitcoinInteractorProtocol {
@@ -19,7 +19,7 @@ class RemoveBitcoinInteractor : RemoveBitcoinInteractorProtocol {
         self.userBitcoinService = userBitcoinService
     }
     
-    func removeBitcoin(amount: Float) throws {
+    func removeBitcoin(amount: Double) throws {
         switch self.userBitcoinService.removeBitcoin(amountToRemove: amount) {
         case .success( _ ): break
         case .failure(let error) :
