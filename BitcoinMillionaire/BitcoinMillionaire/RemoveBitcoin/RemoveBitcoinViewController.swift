@@ -41,7 +41,7 @@ extension RemoveBitcoinViewController {
     @objc func removeBitcoin() {
         let amountText = textFieldText.value
         guard let amount = Float(amountText) else { return }
-        switch presenter.removeBitcoin(amount: amount) {
+        switch presenter.removeBitcoin(amount: Double(amount)) {
         case .success(_):
             presenter.dismiss(self, animated: true)
         case .failure(let error):

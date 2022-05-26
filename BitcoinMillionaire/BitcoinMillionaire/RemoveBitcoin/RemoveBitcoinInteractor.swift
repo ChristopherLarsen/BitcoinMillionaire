@@ -8,23 +8,18 @@
 import Foundation
 
 protocol RemoveBitcoinInteractorProtocol {
-    func removeBitcoin(amount: Double) throws
+    func removeBitcoin(amount: Double) -> Result<Bool,Error>
 }
 
 class RemoveBitcoinInteractor : RemoveBitcoinInteractorProtocol {
+    func removeBitcoin(amount: Double) -> Result<Bool, Error> {
+        return self.userBitcoinService.removeBitcoin(amountToRemove: amount)
+    }
     
     var userBitcoinService: UserBitcoinServiceProtocol
     
     init(userBitcoinService: UserBitcoinServiceProtocol = UserBitcoinService(database: DatabaseService(userDefaults: BitcoinUserDefaults()))) {
         self.userBitcoinService = userBitcoinService
-    }
-    
-    func removeBitcoin(amount: Double) throws {
-        switch self.userBitcoinService.removeBitcoin(amountToRemove: amount) {
-        case .success( _ ): break
-        case .failure(let error) :
-            throw error
-        }
     }
 }
 
