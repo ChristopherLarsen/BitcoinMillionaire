@@ -23,7 +23,6 @@ class AddBitcoinViewController : UIViewController {
         return nil
     }
     
-    
     override func loadView() {
         configureView()
     }
@@ -34,8 +33,14 @@ class AddBitcoinViewController : UIViewController {
 extension AddBitcoinViewController {
     
     @objc func addBitcoin() {
-        
-        print("Add Bitcoin")
+        let amountText = textFieldText.value
+        guard let amount = Float(amountText) else { return }
+        do {
+            try presenter.addBitcoin(amount: amount)
+            presenter.dismiss(self)
+        } catch {
+            presenter.showErrorMessage(error, on: self)
+        }
     }
     
 }
