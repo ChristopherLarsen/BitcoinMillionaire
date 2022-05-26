@@ -6,18 +6,54 @@
 //
 
 import XCTest
+@testable import BitcoinMillionaire
+
+
+// MARK: - MillionaireRouterTests
 
 class MillionaireRouterTests: XCTestCase {
 
+    var sut: MillionaireRouter!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        sut = MillionaireRouter()
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testMillionaireRouter(){
+    func testMillionaireRouter_WhenCreated_ShouldHaveAssignablePresenter(){
+        
+        // Arrange
+
+        let mockMillionairePresenter = MockMillionairePresenter()
+        
+        // Act
+        
+        sut.millionairePresenter = mockMillionairePresenter
+
+        // Assert
+
+        XCTAssertNotNil(sut.millionairePresenter, "Failed - MillionairePresenter not assignable.")
+        
+    }
+
+    func testMillionaireRouter_WhenCalledNavigateBack_ShouldReturnToHomeScreen(){
+        
+        // Arrange
+
+        let mockMillionairePresenter = MockMillionairePresenter()
+        sut.millionairePresenter = mockMillionairePresenter
+        
+        // Act
+        
+        sut.navigateBack()
+        
+        // Assert
+
+        XCTAssertTrue(mockMillionairePresenter.isCalledMillionaireViewController, "Failed - Should have called for the Presenters ViewController.")
+        
     }
 
 }

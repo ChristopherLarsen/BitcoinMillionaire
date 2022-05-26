@@ -55,9 +55,29 @@ class MillionaireInteractorTests: XCTestCase {
 
         // Assert
 
-        XCTAssertEqual(calculatedBitcoinValue1, 720000.0, accuracy: 0.001, "Failed - Incorrect value calculation. \(calculatedBitcoinValue1)")
-        XCTAssertEqual(calculatedBitcoinValue2, 1020000.0, accuracy: 0.001, "Failed - Incorrect value calculation. \(calculatedBitcoinValue2)")
-        XCTAssertEqual(calculatedBitcoinValue3, 1320000.0, accuracy: 0.001, "Failed - Incorrect value calculation. \(calculatedBitcoinValue3)")
+        XCTAssertEqual(calculatedBitcoinValue1, 720_000.0, accuracy: 0.001, "Failed - Incorrect value calculation. \(calculatedBitcoinValue1)")
+        XCTAssertEqual(calculatedBitcoinValue2, 1_020_000.0, accuracy: 0.001, "Failed - Incorrect value calculation. \(calculatedBitcoinValue2)")
+        XCTAssertEqual(calculatedBitcoinValue3, 1_320_000.0, accuracy: 0.001, "Failed - Incorrect value calculation. \(calculatedBitcoinValue3)")
+
+    }
+    
+    func testMillionaireInteractor_WhenCalculatingMillionaireStatus_ShouldCallPresenterWithResult() {
+        
+        // Arrange
+
+        let mockMillionairePresenter = MockMillionairePresenter()
+        let sut = MillionaireInteractor()
+        sut.millionairePresenter = mockMillionairePresenter
+        
+        // Act
+
+        sut.calculateUserBitcoinMillionaireStatus()
+
+        // Assert
+
+        let isCalledCalculatedUser = mockMillionairePresenter.isCalledCalculatedUser
+        
+        XCTAssertTrue(isCalledCalculatedUser, "Failed - Interactor did not call Presenter with calculated status.")
 
     }
 

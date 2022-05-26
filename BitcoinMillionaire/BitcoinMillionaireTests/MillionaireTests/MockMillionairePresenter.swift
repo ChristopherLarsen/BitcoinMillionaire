@@ -10,7 +10,17 @@ import Foundation
 
 class MockMillionairePresenter : MillionairePresenterProtocol {
     
-    var millionaireViewController: MillionaireViewControllerProtocol?
+    var millionaireViewController: MillionaireViewControllerProtocol? {
+        get {
+            isCalledMillionaireViewController = true
+            return _millionaireViewController
+        }
+        set {
+            _millionaireViewController = newValue
+        }
+    }
+    
+    private var _millionaireViewController: MillionaireViewControllerProtocol?
 
     // MARK: - Is Called Methods
     //         These record whether the method referred to was called on the mock object.
@@ -18,6 +28,7 @@ class MockMillionairePresenter : MillionairePresenterProtocol {
     var isCalledCheckIfUserIsBitcoinMillionaire: Bool = false
     var isCalledCalculatedUser: Bool = false
     var isCalledActionDone: Bool = false
+    var isCalledMillionaireViewController = false
 
     func calculatedUser(isMillionaire: Bool) {
         isCalledCalculatedUser = true
