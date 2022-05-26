@@ -20,7 +20,7 @@ class MockMillionairePresenter : MillionairePresenterProtocol {
         }
     }
     
-    private var _millionaireViewController: MillionaireViewControllerProtocol?
+    private weak var _millionaireViewController: MillionaireViewControllerProtocol?
 
     // MARK: - Is Called Methods
     //         These record whether the method referred to was called on the mock object.
@@ -45,6 +45,10 @@ class MockMillionairePresenter : MillionairePresenterProtocol {
     // MARK: init
     
     init() {
+    }
+    
+    deinit {
+        print("deinit - MockMillionairePresenter")
     }
     
 }

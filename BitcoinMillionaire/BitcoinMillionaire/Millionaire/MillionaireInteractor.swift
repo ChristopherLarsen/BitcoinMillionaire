@@ -40,8 +40,8 @@ class MillionaireInteractor : MillionaireInteractorProtocol {
         
     }
     
-    func calculateCurrentBitcoinValue(forUserBitcoins bitcoins: Float, bitcoinPrice: Float) -> Float {
-        let valueOfUserBitcoin = bitcoins * bitcoinPrice
+    func calculateCurrentBitcoinValue(forUserBitcoins bitcoins: Double, bitcoinPrice: Float) -> Double {
+        let valueOfUserBitcoin = bitcoins * Double(bitcoinPrice)
         return valueOfUserBitcoin
     }
     

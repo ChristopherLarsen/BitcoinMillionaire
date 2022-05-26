@@ -20,7 +20,7 @@ class ExtensionTests: XCTestCase {
     }
 
     func testNotificationNamesExtension_WhenCreatedFromStrings_ShouldHaveCorrectRawValue() throws {
-        XCTAssertTrue(Notification.Name.userBitcoinUpdate.rawValue == "userBitcoinUpdate", "Failed - Incorrect Name raw value.")
+        XCTAssertTrue(Notification.Name.userBitcoinChanged.rawValue == "userBitcoinChanged", "Failed - Incorrect Name raw value.")
         XCTAssertTrue(Notification.Name.bitcoinPriceUpdate.rawValue == "bitcoinPriceUpdate", "Failed - Incorrect Name raw value.")
     }
 
