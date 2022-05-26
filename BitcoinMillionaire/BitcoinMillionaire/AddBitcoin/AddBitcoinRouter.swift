@@ -8,13 +8,13 @@
 import Foundation
 
 protocol AddBitcoinRouterProtocol {
-    func dismiss(viewController : AddBitcoinViewController)
+    func dismiss(viewController : AddBitcoinViewController, animated : Bool)
 }
 
 class AddBitcoinRouter : AddBitcoinRouterProtocol {
     
-    func dismiss(viewController : AddBitcoinViewController) {
-        viewController.navigationController?.popViewController(animated: true)
+    func dismiss(viewController : AddBitcoinViewController, animated : Bool = true) {
+        viewController.navigationController?.popViewController(animated: animated)
     }
     
 }

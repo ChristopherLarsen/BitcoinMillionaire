@@ -11,18 +11,31 @@ import Combine
 
 
 // MARK: - UserBitcoinServiceProtocol
-
+ 
 protocol UserBitcoinServiceProtocol : AnyObject {
     var currentUserBitcoins: CurrentValueSubject<UserBitcoinEntity, Never> { get }
-    func addBitcoin(amountToAdd: Float) -> Result<Bool, UserBitcoinServiceError>
-    func removeBitcoin(amountToRemove: Float) -> Result<Bool, UserBitcoinServiceError>
+    func addBitcoin(amountToAdd: Float) -> Result<Bool, Error>
+    func removeBitcoin(amountToRemove: Float) -> Result<Bool, Error>
+    func fetchLatestUserBitcoinsFromDatabase() 
 }
 
 // MARK: - UserBitcoinServiceError
 
 enum UserBitcoinServiceError: Error {
     case insufficientBitcoinToRemove
+    case cannotAddZeroOrNegativeAmount
     case unknownError
+    
+    var localizedDescription : String? {
+        switch self {
+        case .insufficientBitcoinToRemove:
+            return "Insufficient Bitcoin To Remove"
+        case .cannotAddZeroOrNegativeAmount:
+            return "Cannot Add Zero or Negative Amount"
+        case .unknownError:
+            return "unknownError"
+        }
+    }
 }
 
 // MARK: - UserBitcoinService
@@ -50,7 +63,11 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     
     // MARK: - Public
     
-    func addBitcoin(amountToAdd: Float) -> Result<Bool, UserBitcoinServiceError> {
+    func addBitcoin(amountToAdd: Float) -> Result<Bool, Error> {
+        
+        guard amountToAdd > 0 else  {
+            return .failure(UserBitcoinServiceError.cannotAddZeroOrNegativeAmount)
+        }
         
         let currentBitcoins: Float = currentUserBitcoins.value.bitcoins
         
@@ -63,12 +80,12 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
         return .success(true)
     }
     
-    func removeBitcoin(amountToRemove: Float) -> Result<Bool, UserBitcoinServiceError> {
+    func removeBitcoin(amountToRemove: Float) -> Result<Bool, Error> {
         
         let currentBitcoins: Float = currentUserBitcoins.value.bitcoins
         
         guard currentBitcoins > amountToRemove else {
-            return .failure(.insufficientBitcoinToRemove)
+            return .failure(UserBitcoinServiceError.insufficientBitcoinToRemove)
         }
         
         let newValue = currentBitcoins - amountToRemove
