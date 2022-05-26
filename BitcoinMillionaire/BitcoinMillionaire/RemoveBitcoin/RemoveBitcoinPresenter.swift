@@ -25,7 +25,7 @@ class RemoveBitcoinPresenter : RemoveBitcoinPresenterProtocol {
     }
     
     func removeBitcoin(amount: Double) -> Result<Bool, Error> {
-        return interactor.removeBitcoin(amount:amount)
+        interactor.removeBitcoin(amount:amount)
     }
     
     func showErrorMessage(_ error: Error, on viewController: UIViewController, animated: Bool) {

@@ -14,7 +14,7 @@ protocol RemoveBitcoinInteractorProtocol {
 class RemoveBitcoinInteractor : RemoveBitcoinInteractorProtocol {
     
     func removeBitcoin(amount: Double) -> Result<Bool, Error> {
-        return self.userBitcoinService.removeBitcoin(amountToRemove: amount)
+        self.userBitcoinService.removeBitcoin(amountToRemove: amount)
     }
     
     var userBitcoinService: UserBitcoinServiceProtocol
