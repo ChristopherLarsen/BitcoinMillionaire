@@ -27,6 +27,12 @@ class RemoveBitcoinViewController : UIViewController {
         configureView()
     }
     
+    // MARK: - deinit
+    
+    deinit {
+        print("deinit RemoveBitcoinViewController")
+    }
+
 }
 
 //MARK:Setup Actions
