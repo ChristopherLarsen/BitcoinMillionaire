@@ -10,4 +10,5 @@ import ReSwift
 
 struct BitcoinAction: Action {
     var bitcoins: Double
+    var bitcoinPrice: Double
 }

@@ -57,5 +57,15 @@ class HomePresenterTests: XCTestCase {
         }
         XCTAssertTrue(homeInteractor.checkLatestBitcoinPriceInInteractorCalled)
     }
+    
+    func testHomePresenter_WhenCheckMillionaireMethodIsCalledByUI_checkMillionaireMethodOnInetractorIsCalled() {
+        systemUnderTest.router = homeRouter
+        systemUnderTest.checkIfIAmAMillionaire()
+        guard let homeRouter = homeRouter as? MockHomeRouter else {
+            XCTAssertTrue(homeRouter == nil)
+            return
+        }
+        XCTAssertTrue(homeRouter.checkMillionaireViewOpened)
+    }
 
 }

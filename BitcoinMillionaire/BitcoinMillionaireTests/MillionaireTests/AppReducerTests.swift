@@ -24,10 +24,10 @@ class AppReducerTests: XCTestCase {
         let store = Store<State>(reducer: appReducer, state: nil)
         
         // Player 1 choose
-        store.dispatch(BitcoinAction(bitcoins: 20.0))
+        store.dispatch(BitcoinAction(bitcoins: 20.0, bitcoinPrice: 29617.224609375))
                 
         // Check result
-        XCTAssertEqual(store.state.message, "You need 15.0 bitcoins to become a Millionaire!")
+        XCTAssertEqual(store.state.message, "You need 13.764136011699797 bitcoins to become a Millionaire!")
     }
     
     func testAppReducer_WhenBitCoinsAreRemoved_MessageShouldGetUpdatedToShowNewCriteria() {
@@ -35,10 +35,21 @@ class AppReducerTests: XCTestCase {
         let store = Store<State>(reducer: appReducer, state: nil)
         
         // Player 1 choose
-        store.dispatch(BitcoinAction(bitcoins: 10))
+        store.dispatch(BitcoinAction(bitcoins: 10, bitcoinPrice: 29617.224609375))
                 
         // Check result
-        XCTAssertEqual(store.state.message, "You need 25.0 bitcoins to become a Millionaire!")
+        XCTAssertEqual(store.state.message, "You need 23.764136011699797 bitcoins to become a Millionaire!")
+    }
+    
+    func testAppReducer_WhenBitCoinsAreMoreThenRequired_MessageShouldGetUpdatedToShowYouAreAMillionaire() {
+        
+        let store = Store<State>(reducer: appReducer, state: nil)
+        
+        // Player 1 choose
+        store.dispatch(BitcoinAction(bitcoins: 100, bitcoinPrice: 29617.224609375))
+                
+        // Check result
+        XCTAssertEqual(store.state.message, "You are a Millionaire!")
     }
     
 }

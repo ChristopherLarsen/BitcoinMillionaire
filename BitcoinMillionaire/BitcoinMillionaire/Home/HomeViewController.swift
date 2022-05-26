@@ -50,7 +50,8 @@ class HomeViewController: UIViewController {
         self.title = "Bitcoin Millionaire"
         view.backgroundColor = .systemBackground
         if let presenter = presenter as? HomePresenter {
-            mainStore.dispatch(BitcoinAction(bitcoins: presenter.bitcoinsAvailable ?? 0.0))
+            presenter.checkNumberOfCoinsAvailable()
+            mainStore.dispatch(BitcoinAction(bitcoins: presenter.bitcoinsAvailable ?? 0.0, bitcoinPrice: presenter.latestPrice ?? 0.0))
         }
     }
     
@@ -62,10 +63,12 @@ class HomeViewController: UIViewController {
             [presenter.$latestPrice
                 .sink(receiveValue: { price in
                     self.latestPriceLabel.text  =  String(format: "Latest Price: $%.2f", price ?? 0.0)
+                    mainStore.dispatch(BitcoinAction(bitcoins: presenter.bitcoinsAvailable ?? 0.0, bitcoinPrice: presenter.latestPrice ?? 0.0))
                 }),
              presenter.$bitcoinsAvailable
                 .sink(receiveValue: { coins in
-                    self.numberOfCoinsLabel.text = "Bitcoins: \(self.numberOfCoins ?? 0.0)"
+                    self.numberOfCoinsLabel.text = "Bitcoins: \(coins ?? 0.0)"
+                    mainStore.dispatch(BitcoinAction(bitcoins: presenter.bitcoinsAvailable ?? 0.0, bitcoinPrice: presenter.latestPrice ?? 0.0))
                 })]
         }
     }
