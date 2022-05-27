@@ -90,6 +90,9 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     }
     
     func removeBitcoin(amountToRemove: Double) -> Result<Bool, Error> {
+        guard amountToRemove > 0.0 else  {
+            return .failure(UserBitcoinServiceError.cannotAddZeroOrNegativeAmount)
+        }
         
         let currentBitcoins: Double = currentUserBitcoins.value.bitcoins
         
