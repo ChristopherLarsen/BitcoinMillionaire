@@ -56,14 +56,22 @@ extension RemoveBitcoinViewController {
 extension RemoveBitcoinViewController {
     
     func configureView() {
-        self.view = contentStackView
+        self.view = UIView()
+        self.view.backgroundColor = .white
+        let contentView = self.contentStackView
+        self.view.addSubview(contentView)
+        self.title = "Removed Bitcoin"
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
     }
     
     var contentStackView : UIStackView {
         let spacing: CGFloat = 30.0
         let backgroundColor  = UIColor.white
         let stackView = UIStackView(arrangedSubviews: [
-            titleLabel,
             bitcoinImageBanner,
             removeBitcoinSection,
             spacer
@@ -75,14 +83,6 @@ extension RemoveBitcoinViewController {
         return stackView
     }
     
-    var titleLabel : UILabel {
-        let titleSize: CGFloat = 30.0
-        let returnValue = UILabel(frame: .zero)
-        returnValue.text = "Remove Bitcoin"
-        returnValue.font = UIFont.boldSystemFont(ofSize: titleSize)
-        returnValue.textAlignment = .center
-        return returnValue
-    }
     
     var bitcoinImageBanner : UIStackView {
         let spacing: CGFloat = 10.0
@@ -181,6 +181,7 @@ extension RemoveBitcoinViewController {
         //border
         returnValue.layer.borderColor = UIColor.black.cgColor
         returnValue.layer.borderWidth = borderWidth
+        returnValue.becomeFirstResponder()
         
         return returnValue
     }
