@@ -29,8 +29,12 @@ class BitcoinPriceService : BitcoinPriceServiceProtocol {
         self.webService = webService
         self.databaseService = databaseService
         
-        getLatestFromDataBase().sink { error in
-            // TODO: Handle Error
+        getLatestFromDataBase().sink { completion in
+            switch completion {
+            case .failure(let error):
+                self.currentBitcoinPrice.send(completion:.failure(error))
+            case .finished: break
+            }
         } receiveValue: { [weak self] bitcoinPrice in
             guard let self = self else {
                 return
