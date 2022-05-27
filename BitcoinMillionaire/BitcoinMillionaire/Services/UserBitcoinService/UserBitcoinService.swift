@@ -96,11 +96,14 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
         
         let currentBitcoins: Double = currentUserBitcoins.value.bitcoins
         
-        guard currentBitcoins > amountToRemove else {
+        let roundedBitcoin: Double = Double(round(100_000_000 * currentBitcoins) / 100_000_000)
+        let roundedAmountToRemove: Double = Double(round(100_000_000 * amountToRemove) / 100_000_000)
+
+        guard roundedBitcoin >= roundedAmountToRemove else {
             return .failure(UserBitcoinServiceError.insufficientBitcoinToRemove)
         }
         
-        let newValue = currentBitcoins - amountToRemove
+        let newValue = roundedBitcoin - roundedAmountToRemove
         
         let userBitcoinEntity = UserBitcoinEntity(initialCoins: newValue)
         
