@@ -175,10 +175,9 @@ extension AddBitcoinViewController {
         NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: returnValue)
             .receive(on: RunLoop.main)
             .map({ $0.object as! UITextField})
-            .sink { textField in
-                self.textFieldText.send(textField.text ?? "")
-            }
-            .store(in: &cancellables)
+            .sink { [weak self] textField in
+                self?.textFieldText.send(textField.text ?? "")
+            }.store(in: &cancellables)
         
         //border
         returnValue.layer.borderColor = UIColor.black.cgColor
