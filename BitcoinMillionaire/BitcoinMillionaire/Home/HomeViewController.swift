@@ -62,8 +62,14 @@ class HomeViewController: UIViewController {
             subscriptions =
             [presenter.$latestPrice
                 .sink(receiveValue: { price in
-                    self.latestPriceLabel.text  =  String(format: "Latest Price: $%.2f", price ?? 0.0)
-                    mainStore.dispatch(BitcoinAction(bitcoins: presenter.bitcoinsAvailable ?? 0.0, bitcoinPrice: presenter.latestPrice ?? 0.0))
+                    if let price = price {
+                        let numberFormatter = NumberFormatter()
+                        numberFormatter.numberStyle = .decimal
+                        if let formattedNumber = numberFormatter.string(from: NSNumber(value: price)) {
+                            self.latestPriceLabel.text  =  "Latest Price: $\(formattedNumber)"
+                        }
+                        mainStore.dispatch(BitcoinAction(bitcoins: presenter.bitcoinsAvailable ?? 0.0, bitcoinPrice: presenter.latestPrice ?? 0.0))
+                    }
                 }),
              presenter.$bitcoinsAvailable
                 .sink(receiveValue: { coins in
@@ -127,7 +133,7 @@ extension HomeViewController {
         view.addSubview(latestPriceLabel)
         
         NSLayoutConstraint.activate([
-            latestPriceLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
+            latestPriceLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
             latestPriceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             latestPriceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             latestPriceLabel.heightAnchor.constraint(equalToConstant: 40)
@@ -149,7 +155,7 @@ extension HomeViewController {
             bitcoinContainerView.topAnchor.constraint(equalTo: latestPriceLabel.bottomAnchor, constant: 15),
             bitcoinContainerView.leadingAnchor.constraint(equalTo: latestPriceLabel.leadingAnchor),
             bitcoinContainerView.trailingAnchor.constraint(equalTo: latestPriceLabel.trailingAnchor),
-            bitcoinContainerView.heightAnchor.constraint(equalToConstant: 280)
+            bitcoinContainerView.heightAnchor.constraint(equalToConstant: 250)
         ])
         
         //Bitcoin Image
