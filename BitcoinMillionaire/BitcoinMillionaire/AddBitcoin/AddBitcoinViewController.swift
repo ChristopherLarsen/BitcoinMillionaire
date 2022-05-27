@@ -31,7 +31,7 @@ class AddBitcoinViewController : UIViewController {
     // MARK: - deinit
     
     deinit {
-        print("deinit AddBitcoinViewController")
+        self.view = nil
     }
 
 }
@@ -57,14 +57,22 @@ extension AddBitcoinViewController {
 extension AddBitcoinViewController {
     
     func configureView() {
-        self.view = contentStackView
+        self.view = UIView()
+        self.view.backgroundColor = .white
+        let contentView = self.contentStackView
+        self.view.addSubview(contentView)
+        self.title = "Add Bitcoin"
+        contentView.translatesAutoresizingMaskIntoConstraints = false 
+        contentView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
     }
     
     var contentStackView : UIStackView {
         let spacing: CGFloat = 30.0
         let backgroundColor  = UIColor.white
         let stackView = UIStackView(arrangedSubviews: [
-            titleLabel,
             bitcoinImageBanner,
             addBitcoinSection,
             spacer
@@ -74,15 +82,6 @@ extension AddBitcoinViewController {
         stackView.alignment = .center
         stackView.axis = .vertical
         return stackView
-    }
-    
-    var titleLabel : UILabel {
-        let titleSize: CGFloat = 30.0
-        let returnValue = UILabel(frame: .zero)
-        returnValue.text = "Add Bitcoin"
-        returnValue.font = UIFont.boldSystemFont(ofSize: titleSize)
-        returnValue.textAlignment = .center
-        return returnValue
     }
     
     var bitcoinImageBanner : UIStackView {
@@ -182,6 +181,7 @@ extension AddBitcoinViewController {
         //border
         returnValue.layer.borderColor = UIColor.black.cgColor
         returnValue.layer.borderWidth = borderWidth
+        returnValue.becomeFirstResponder()
         
         return returnValue
     }
@@ -216,7 +216,6 @@ extension AddBitcoinViewController {
             returnValue.isEnabled = isEnabled
         }
         .store(in: &cancellables)
-        
         return returnValue
     }
     
@@ -224,24 +223,5 @@ extension AddBitcoinViewController {
         return UIView()
     }
      
-}
- 
-
-
-struct AddBitcoinView : UIViewControllerRepresentable {
-    typealias UIViewControllerType = AddBitcoinViewController
-    func makeUIViewController(context: Context) -> AddBitcoinViewController {
-        return AddBitcoinViewController()
-    }
-    func updateUIViewController(_ uiViewController: AddBitcoinViewController, context: Context) { }
-}
-
-
-struct AddBitcoinViewController_Previews : PreviewProvider {
-    static var previews: some View {
-        Group {
-            AddBitcoinView()
-        }
-    }
 }
 
