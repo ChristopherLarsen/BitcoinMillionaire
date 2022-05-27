@@ -53,6 +53,54 @@ class MillionaireViewControllerTests: XCTestCase {
 
     }
     
+    func testMillionaireView_WhenIsMillionaire_ShouldShowYES() {
+        
+        // Arrange
+
+        let expectedText = "yes"
+        let mockPresenter = MockMillionairePresenter()
+        let sut = MillionaireViewController(withPresenter: mockPresenter)
+        sut.loadViewIfNeeded()
+        
+        // Act
+
+        sut.isBitcoinMillionaire.send(true)
+        
+        // Assert
+
+        guard let text = sut.labelResult.text?.lowercased() else {
+            XCTFail("Failed - View is missing the expected UILabel")
+            return
+        }
+        
+        XCTAssertTrue(text.contains(expectedText), "Failed - Presenter not created with MillionaireViewController.")
+
+    }
+    
+    func testMillionaireView_WhenIsNotMillionaire_ShouldShowNO() {
+        
+        // Arrange
+
+        let expectedText = "no"
+        let mockPresenter = MockMillionairePresenter()
+        let sut = MillionaireViewController(withPresenter: mockPresenter)
+        sut.loadViewIfNeeded()
+        
+        // Act
+
+        sut.isBitcoinMillionaire.send(false)
+        
+        // Assert
+
+        guard let text = sut.labelResult.text?.lowercased() else {
+            XCTFail("Failed - View is missing the expected UILabel")
+            return
+        }
+        
+        XCTAssertTrue(text.contains(expectedText), "Failed - Presenter not created with MillionaireViewController.")
+
+    }
+    
     func testMillionaireView_WhenLoaded_CallsCheckMillionaireOnPresenter() {
         
         // Arrange
