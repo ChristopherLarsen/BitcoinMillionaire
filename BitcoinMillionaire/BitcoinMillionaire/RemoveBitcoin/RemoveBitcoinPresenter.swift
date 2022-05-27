@@ -29,9 +29,9 @@ class RemoveBitcoinPresenter : RemoveBitcoinPresenterProtocol {
     }
     
     func showErrorMessage(_ error: Error, on viewController: UIViewController, animated: Bool) {
-        let message = error.localizedDescription
+        let message = "You don't have enoough Bitcoin for that!"
         //create alert message
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default)
         alert.addAction(action)
         
