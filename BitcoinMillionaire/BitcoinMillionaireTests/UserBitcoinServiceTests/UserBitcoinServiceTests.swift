@@ -14,8 +14,9 @@ class UserBitcoinServiceTests: XCTestCase {
     
     var mockBitcoinUserDefaults: MockBitcoinUserDefaults!
     var mockDatabase: MockDatabase!
-    var sut: UserBitcoinServiceProtocol!
     var cancellables: Set<AnyCancellable> = []
+    
+    var sut: UserBitcoinServiceProtocol!
     
     override func setUpWithError() throws {
         
@@ -26,10 +27,12 @@ class UserBitcoinServiceTests: XCTestCase {
     }
     
     override func tearDownWithError() throws {
+        
         mockBitcoinUserDefaults = nil
         mockDatabase = nil
         sut = nil
         cancellables = []
+        
     }
     
     func testUserBitcoinService_WhenCreated_HasZeroUserBitcoin() {
@@ -67,8 +70,6 @@ class UserBitcoinServiceTests: XCTestCase {
         
         // Arrange
         
-        // Insert a random number of Bitcoins to start
-        //
         let initialNumberOfBitcoins = Double.random(in: 0...1.0)
         
         mockBitcoinUserDefaults.set(initialNumberOfBitcoins, forKey: Key.keyUserBitcoin)
@@ -118,7 +119,7 @@ class UserBitcoinServiceTests: XCTestCase {
         
         XCTAssertNotNil(cancellable, "Failed - The Publisher should have provided a cancellable.")
         
-        self.waitForExpectations(timeout: 1.0)
+        waitForExpectations(timeout: 1.0)
         
     }
     
@@ -341,24 +342,27 @@ class UserBitcoinServiceTests: XCTestCase {
         
     }
     
-    func testUserBitcoinService_WhenOneIsChanged_ShouldChangeForAllSeriveObjects() {
+    func testUserBitcoinService_WhenOneIsChanged_ShouldChangeForAllServiceObjects() {
         
         // Arrange
 
-        let expection1 = self.expectation(description: "UserBitcoinServices")
+        let expection = self.expectation(description: "UserBitcoinServices")
         var isNotificationRecieved = false
 
         let userBitcoinService1 = UserBitcoinService(database: mockDatabase)
         let userBitcoinService2 = UserBitcoinService(database: mockDatabase)
 
         NotificationCenter.default.publisher(for: .userBitcoinChanged).sink { notification in
+            
             guard let obj = notification.object as? UserBitcoinService else {
                 return
             }
-            if obj === userBitcoinService2 {
+            
+            if obj === userBitcoinService1 {
                 isNotificationRecieved = true
-                expection1.fulfill()
+                expection.fulfill()
             }
+            
         }.store(in: &cancellables)
         
         // Act
@@ -367,7 +371,7 @@ class UserBitcoinServiceTests: XCTestCase {
         
         // Assert
 
-        self.waitForExpectations(timeout: 1.0) { error in
+        waitForExpectations(timeout: 2.0) { error in
             
             guard error == nil else {
                 return

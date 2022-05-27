@@ -173,8 +173,8 @@ extension RemoveBitcoinViewController {
         NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: returnValue)
             .receive(on: RunLoop.main)
             .map({ $0.object as! UITextField})
-            .sink { textField in
-                self.textFieldText.send(textField.text ?? "")
+            .sink { [weak self] textField in
+                self?.textFieldText.send(textField.text ?? "")
             }
             .store(in: &cancellables)
         
