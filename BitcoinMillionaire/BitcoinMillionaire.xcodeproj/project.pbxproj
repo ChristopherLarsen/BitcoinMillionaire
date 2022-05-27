@@ -40,6 +40,8 @@
 		57A0C74A2836A78200AC0A39 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C7492836A78200AC0A39 /* UserDefaultsProtocol.swift */; };
 		57A0C74E2836CF8100AC0A39 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C74D2836CF8100AC0A39 /* MockDatabase.swift */; };
 		57A0C7542836D57300AC0A39 /* UserBitcoinEntityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C7532836D57300AC0A39 /* UserBitcoinEntityTests.swift */; };
+		5C64D8522840F9F100B5D208 /* RemoveBitcoinPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C64D8512840F9F100B5D208 /* RemoveBitcoinPresenterTests.swift */; };
+		5C64D8542840FABF00B5D208 /* RemoveBitcoinInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C64D8532840FABF00B5D208 /* RemoveBitcoinInteractorMock.swift */; };
 		7A2A3F2F28357DF300559CB4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F2E28357DF300559CB4 /* HomeViewController.swift */; };
 		7A2A3F3128357E0500559CB4 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F3028357E0400559CB4 /* HomeInteractor.swift */; };
 		7A2A3F3328357E0E00559CB4 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F3228357E0E00559CB4 /* HomePresenter.swift */; };
@@ -145,6 +147,8 @@
 		57A0C74B2836B9F100AC0A39 /* Weak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
 		57A0C74D2836CF8100AC0A39 /* MockDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabase.swift; sourceTree = "<group>"; };
 		57A0C7532836D57300AC0A39 /* UserBitcoinEntityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBitcoinEntityTests.swift; sourceTree = "<group>"; };
+		5C64D8512840F9F100B5D208 /* RemoveBitcoinPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBitcoinPresenterTests.swift; sourceTree = "<group>"; };
+		5C64D8532840FABF00B5D208 /* RemoveBitcoinInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBitcoinInteractorMock.swift; sourceTree = "<group>"; };
 		7A2A3F2E28357DF300559CB4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7A2A3F3028357E0400559CB4 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		7A2A3F3228357E0E00559CB4 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -318,6 +322,7 @@
 		57A0C71D28355CAC00AC0A39 /* BitcoinMillionaireTests */ = {
 			isa = PBXGroup;
 			children = (
+				5C64D8502840F9AF00B5D208 /* RemoveBitcoin */,
 				7A8FDDBF284086A700C13EBC /* Home */,
 				99D113E5283FD34200222D35 /* AddBitcoin */,
 				573E8A0D283D7ECC00B4F21C /* MillionaireTests */,
@@ -393,6 +398,14 @@
 				57A0C7472836A50100AC0A39 /* MockBitcoinUserDefaults.swift */,
 			);
 			path = DatabaseServiceTests;
+			sourceTree = "<group>";
+		};
+		5C64D8502840F9AF00B5D208 /* RemoveBitcoin */ = {
+			isa = PBXGroup;
+			children = (
+				5C64D8512840F9F100B5D208 /* RemoveBitcoinPresenterTests.swift */,
+			);
+			path = RemoveBitcoin;
 			sourceTree = "<group>";
 		};
 		7A2A3F2D28357DC900559CB4 /* Home */ = {
@@ -473,6 +486,7 @@
 				7A8FDDB8283FBD3A00C13EBC /* MockBitcoinPriceService.swift */,
 				99D113E6283FD98F00222D35 /* AddBitcoinInteractorMock.swift */,
 				99D113E8283FF12500222D35 /* AddBitcoinRouterMock.swift */,
+				5C64D8532840FABF00B5D208 /* RemoveBitcoinInteractorMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -780,7 +794,9 @@
 				99AFD77C2836922D00BD7321 /* BitcoinPriceServiceTests.swift in Sources */,
 				573E8A21283D9CFD00B4F21C /* MillionaireInteractorTests.swift in Sources */,
 				57043860283FDC1500B1E214 /* ExtensionTests.swift in Sources */,
+				5C64D8542840FABF00B5D208 /* RemoveBitcoinInteractorMock.swift in Sources */,
 				57A0C7482836A50100AC0A39 /* MockBitcoinUserDefaults.swift in Sources */,
+				5C64D8522840F9F100B5D208 /* RemoveBitcoinPresenterTests.swift in Sources */,
 				7A6F78E62835C6A10030FE91 /* HomeViewControllerTests.swift in Sources */,
 				7A8FDDB9283FBD3A00C13EBC /* MockBitcoinPriceService.swift in Sources */,
 				7A6F792B2836BEC00030FE91 /* MockHomeRouter.swift in Sources */,
