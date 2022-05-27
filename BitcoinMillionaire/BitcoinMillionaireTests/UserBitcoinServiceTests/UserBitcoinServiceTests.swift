@@ -152,11 +152,11 @@ class UserBitcoinServiceTests: XCTestCase {
         
         // Arrange
         
-        let initialCoins: Double = 1.0 + Double.random(in: 0...1.0)
+        let initialCoins: Double = 1.1
         
         sut.currentUserBitcoins.value = UserBitcoinEntity(initialCoins: initialCoins)
         
-        let bitcoinsToRemove: Double = Double.random(in: 0...1.0)
+        let bitcoinsToRemove: Double = 1.0
         let expectedBitcoinsAfterRemovingBitcoins = initialCoins - bitcoinsToRemove
         
         // Act
