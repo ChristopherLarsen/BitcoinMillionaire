@@ -190,13 +190,11 @@ extension RemoveBitcoinViewController {
         
         let height: CGFloat = 40.0
         let width: CGFloat = 300.0
-        let borderWidth: CGFloat = 2.0
         let foregroundColor = UIColor.white
         let foregroundColorDisabled = UIColor(white: 0.9, alpha: 1.0)
         let backgroundColor = UIColor(named: "RemoveBitcoinRemoveButtonBackground")
         
-        let returnValue = UIButton(type: .custom)
-        returnValue.setTitle("Remove", for: .normal)
+        let returnValue = ButtonUtility.createButton(title: "Remove")
         
         //constraints
         returnValue.heightAnchor.constraint(equalToConstant: height).isActive = true
@@ -208,13 +206,8 @@ extension RemoveBitcoinViewController {
         returnValue.setTitleColor(foregroundColorDisabled, for: .disabled)
         returnValue.backgroundColor = backgroundColor
         
-        //border
-        
-        returnValue.layer.borderColor = UIColor.black.cgColor
-        returnValue.layer.borderWidth = borderWidth
-        
         //set action
-        returnValue.removeTarget(self, action: #selector(self.removeBitcoin), for: .touchUpInside)
+        returnValue.addTarget(self, action: #selector(self.removeBitcoin), for: .touchUpInside)
         self.textFieldText.sink { text in
             var isEnabled : Bool = false
             if let floatValue = Float(text), floatValue > 0 {
