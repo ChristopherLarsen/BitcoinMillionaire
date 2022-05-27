@@ -50,15 +50,25 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
     private let database: DatabaseRepositoryProtocol
     private var cancellables: Set<AnyCancellable> = []
     
+    /// broadcastToOtherUserBitcoinServices
+    ///
+    /// Prevents a change feedback loop from occuring when the bitcoin is updated.
+    /// When enabled, all other Services are notified of the change so they can update with the latest
+    /// value stored in the Database.
+    ///
+    private var broadcastToOtherUserBitcoinServices = false
+    
     init(database: DatabaseRepositoryProtocol = DatabaseService() ) {
         
         self.database = database
-        
-        fetchLatestUserBitcoinsFromDatabase()
-        
-        subscribeToChangesToCurrentUserBitcoin()
+                
         subscribeToNotificationsOfChangesToCurrentUserBitcoin()
-        
+
+        fetchLatestUserBitcoinsFromDatabase()
+
+        subscribeToChangesToCurrentUserBitcoin()
+
+        broadcastToOtherUserBitcoinServices = true
     }
     
     // MARK: - Public
@@ -146,7 +156,7 @@ extension UserBitcoinService {
             guard let self = self else {
                 return
             }
-            
+
             self.saveCurrentBitcoinsToDatabase()
             self.postNotificationWhenUserBitcoinChanges()
             
@@ -159,8 +169,6 @@ extension UserBitcoinService {
         NotificationCenter.default.publisher(for: .userBitcoinChanged).sink { complete in
             // Complete
         } receiveValue: { [weak self] notification in
-
-            print("Received Notification: userBitcoinChanged")
             
             guard let self = self else {
                 return
@@ -171,20 +179,30 @@ extension UserBitcoinService {
             }
             
             guard postingUserBitcoinService !== self else {
-                // Notification as posted by this UserBitcoinService
-                // so we prevent a feedback loop here.
+                // Ignore Notifications that were posted by the posting UserBitcoinService.
                 return
             }
+
+            print("Received Notification: userBitcoinChanged. Updating UserBitcoins from the Database")
             
-            print("Updating UserBitcoins from database")
-            
+            // When notified of changes from another UserBitcoinService
+            // we disable broadcasting changes to the bitcoin value while we update
+            // to the latest value stored in the database.
+            //
+            self.broadcastToOtherUserBitcoinServices = false
             self.fetchLatestUserBitcoinsFromDatabase()
+            self.broadcastToOtherUserBitcoinServices = true
             
         }.store(in: &cancellables)
         
     }
         
     func postNotificationWhenUserBitcoinChanges() {
+        
+        guard broadcastToOtherUserBitcoinServices else {
+            return
+        }
+        
         print("Notification: UserBitcoins changed: \(currentUserBitcoins.value.bitcoins)")
         NotificationCenter.default.post(name: .userBitcoinChanged, object: self)
     }
@@ -206,13 +224,17 @@ extension UserBitcoinService {
     
     func saveCurrentBitcoinsToDatabase() {
         
+        guard broadcastToOtherUserBitcoinServices else {
+            return
+        }
+
         let bitcoins: Double = currentUserBitcoins.value.bitcoins
         
         let resultDatabaseOperation = database.update(key: Key.keyUserBitcoin, object: bitcoins)
         
         switch resultDatabaseOperation {
         case .success(let result):
-            print("Database - Saved user bitcoin to Database: \(result).")
+            print("Database - Saved \(bitcoins) user bitcoin to Database: \(result).")
         case .failure(let databaseError):
             print("Database Error - Failed to save user bitcoin to Database: \(databaseError).")
         }
