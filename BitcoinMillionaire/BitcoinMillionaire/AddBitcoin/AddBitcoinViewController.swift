@@ -168,6 +168,7 @@ extension AddBitcoinViewController {
         let width: CGFloat = 300.0
         let borderWidth: CGFloat = 2.0
         let returnValue = BorderedTextField()
+        returnValue.becomeFirstResponder()
         //constraints
         returnValue.heightAnchor.constraint(equalToConstant: height).isActive = true
         returnValue.widthAnchor.constraint(equalToConstant: width).isActive = true
@@ -190,13 +191,11 @@ extension AddBitcoinViewController {
         
         let height: CGFloat = 40.0
         let width: CGFloat = 300.0
-        let borderWidth: CGFloat = 2.0
         let foregroundColor = UIColor.white
         let foregroundColorDisabled = UIColor(white: 0.9, alpha: 1.0)
         let backgroundColor = UIColor(named: "AddBitcoinAddButtonBackground")
         
-        let returnValue = UIButton(type: .custom)
-        returnValue.setTitle("Add", for: .normal)
+        let returnValue = ButtonUtility.createButton(title: "Add")
         
         //constraints
         returnValue.heightAnchor.constraint(equalToConstant: height).isActive = true
@@ -207,12 +206,7 @@ extension AddBitcoinViewController {
         returnValue.setTitleColor(foregroundColor, for: .normal)
         returnValue.setTitleColor(foregroundColorDisabled, for: .disabled)
         returnValue.backgroundColor = backgroundColor
-        
-        //border
-        
-        returnValue.layer.borderColor = UIColor.black.cgColor
-        returnValue.layer.borderWidth = borderWidth
-        
+                
         //set action
         returnValue.addTarget(self, action: #selector(self.addBitcoin), for: .touchUpInside)
         self.textFieldText.sink { text in

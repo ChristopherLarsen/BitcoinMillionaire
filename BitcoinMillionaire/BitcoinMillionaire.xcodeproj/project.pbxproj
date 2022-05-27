@@ -294,43 +294,38 @@
 		57A0C70628355CAA00AC0A39 /* BitcoinMillionaire */ = {
 			isa = PBXGroup;
 			children = (
-				578A420E283E6811007EF0D8 /* Extensions */,
-				573E8A0A283D7E8B00B4F21C /* Millionaire */,
-				7A6F791D2836BEB00030FE91 /* Protocols */,
-				99AFD76F28368AD000BD7321 /* Entities */,
-				7A6F78E22835929D0030FE91 /* Utilities */,
+				57A0C70928355CAA00AC0A39 /* SceneDelegate.swift */,
 				7A2A3F2D28357DC900559CB4 /* Home */,
 				7A2A3F3628357E2400559CB4 /* AddBitcoin */,
 				7A2A3F3F28357E6700559CB4 /* RemoveBitcoin */,
+				573E8A0A283D7E8B00B4F21C /* Millionaire */,
+				7A8FDDBE2840865800C13EBC /* Redux */,
+				578A420E283E6811007EF0D8 /* Extensions */,
+				7A6F791D2836BEB00030FE91 /* Protocols */,
+				99AFD76F28368AD000BD7321 /* Entities */,
+				7A6F78E22835929D0030FE91 /* Utilities */,
 				57A0C7372836967500AC0A39 /* Entities */,
 				7A2A3F4828357EB200559CB4 /* Network */,
 				57A0C73A283697DD00AC0A39 /* Services */,
 				57A0C70728355CAA00AC0A39 /* AppDelegate.swift */,
-				57A0C70928355CAA00AC0A39 /* SceneDelegate.swift */,
 				57A0C71028355CAC00AC0A39 /* Assets.xcassets */,
 				57A0C71228355CAC00AC0A39 /* LaunchScreen.storyboard */,
 				57A0C71528355CAC00AC0A39 /* Info.plist */,
-				7ADE5DEE283E87FE003C81CC /* State.swift */,
-				7ADE5DF0283E88F3003C81CC /* BitcoinAction.swift */,
-				7ADE5DF2283E8C75003C81CC /* AppReducer.swift */,
 			);
 			path = BitcoinMillionaire;
 			sourceTree = "<group>";
 		};
 		57A0C71D28355CAC00AC0A39 /* BitcoinMillionaireTests */ = {
 			isa = PBXGroup;
-			children = ( 
+			children = (
+				7A8FDDBF284086A700C13EBC /* Home */,
 				99D113E5283FD34200222D35 /* AddBitcoin */,
-				99546ECC283FC4E700864BDF /* Stubs */, 
-				57043861283FDE0900B1E214 /* ReduxTests */,
-				5704385E283FDBFA00B1E214 /* ExtensionTests */, 
 				573E8A0D283D7ECC00B4F21C /* MillionaireTests */,
-				7A6F79282836BEC00030FE91 /* HomePresenterTests.swift */,
-				7A8FDDB6283FB97D00C13EBC /* HomeInteractorTests.swift */,
-				7A8FDDBA283FF96D00C13EBC /* HomeRouterTests.swift */,
+				99546ECC283FC4E700864BDF /* Stubs */,
+				57043861283FDE0900B1E214 /* ReduxTests */,
+				5704385E283FDBFA00B1E214 /* ExtensionTests */,
 				7A6F79242836BEC00030FE91 /* Mocks */,
 				99AFD778283691EB00BD7321 /* Network */,
-				7A6F78E52835C6A10030FE91 /* HomeViewControllerTests.swift */,
 				57A0C7512836D50700AC0A39 /* UserBitcoinServiceTests */,
 				57A0C7522836D51000AC0A39 /* DatabaseServiceTests */,
 				57A0C7532836D57300AC0A39 /* UserBitcoinEntityTests.swift */,
@@ -341,8 +336,8 @@
 		57A0C72728355CAC00AC0A39 /* BitcoinMillionaireUITests */ = {
 			isa = PBXGroup;
 			children = (
-				57A0C72828355CAC00AC0A39 /* HomeViewUITests.swift */,
-				57A0C72A28355CAC00AC0A39 /* BitcoinMillionaireUITestsLaunchTests.swift */,
+				7A8FDDC0284086FF00C13EBC /* Home */,
+				7A8FDDC12840870500C13EBC /* Millionaire */,
 			);
 			path = BitcoinMillionaireUITests;
 			sourceTree = "<group>";
@@ -480,6 +475,43 @@
 				99D113E8283FF12500222D35 /* AddBitcoinRouterMock.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		7A8FDDBE2840865800C13EBC /* Redux */ = {
+			isa = PBXGroup;
+			children = (
+				7ADE5DEE283E87FE003C81CC /* State.swift */,
+				7ADE5DF0283E88F3003C81CC /* BitcoinAction.swift */,
+				7ADE5DF2283E8C75003C81CC /* AppReducer.swift */,
+			);
+			path = Redux;
+			sourceTree = "<group>";
+		};
+		7A8FDDBF284086A700C13EBC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7A6F78E52835C6A10030FE91 /* HomeViewControllerTests.swift */,
+				7A8FDDB6283FB97D00C13EBC /* HomeInteractorTests.swift */,
+				7A6F79282836BEC00030FE91 /* HomePresenterTests.swift */,
+				7A8FDDBA283FF96D00C13EBC /* HomeRouterTests.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7A8FDDC0284086FF00C13EBC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				57A0C72828355CAC00AC0A39 /* HomeViewUITests.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7A8FDDC12840870500C13EBC /* Millionaire */ = {
+			isa = PBXGroup;
+			children = (
+				57A0C72A28355CAC00AC0A39 /* BitcoinMillionaireUITestsLaunchTests.swift */,
+			);
+			path = Millionaire;
 			sourceTree = "<group>";
 		};
 		99546ECC283FC4E700864BDF /* Stubs */ = {
@@ -923,8 +955,6 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -952,8 +982,6 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -61,7 +61,7 @@ class HomePresenter: HomePresenterProtocol, ObservableObject {
     func checkNumberOfCoinsAvailable() {
         subscriptions.insert(interactor?.checkBitcoinAvailability()
             .sink(receiveCompletion: { _ in}, receiveValue: { bitcoinEntity in
-                self.bitcoinsAvailable = Double(bitcoinEntity.bitcoins)
+                self.bitcoinsAvailable = Double(round(100000000 * bitcoinEntity.bitcoins) / 100000000)
             }))
     }
     
