@@ -62,11 +62,10 @@ class UserBitcoinService: UserBitcoinServiceProtocol {
         
         self.database = database
                 
-        subscribeToNotificationsOfChangesToCurrentUserBitcoin()
-
         fetchLatestUserBitcoinsFromDatabase()
 
         subscribeToChangesToCurrentUserBitcoin()
+        subscribeToNotificationsOfChangesToCurrentUserBitcoin()
 
         broadcastToOtherUserBitcoinServices = true
     }
