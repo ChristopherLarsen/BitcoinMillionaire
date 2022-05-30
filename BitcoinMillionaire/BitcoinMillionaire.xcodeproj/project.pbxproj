@@ -64,6 +64,7 @@
 		7A6F792B2836BEC00030FE91 /* MockHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F79272836BEC00030FE91 /* MockHomeRouter.swift */; };
 		7A8FDDB5283EA24B00C13EBC /* AppReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8FDDB4283EA24B00C13EBC /* AppReducerTests.swift */; };
 		7A8FDDB9283FBD3A00C13EBC /* MockBitcoinPriceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8FDDB8283FBD3A00C13EBC /* MockBitcoinPriceService.swift */; };
+		7ACEC1AE284526E200B1D242 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEC1AD284526E200B1D242 /* UIViewController+Extensions.swift */; };
 		7ADE5DEF283E87FF003C81CC /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE5DEE283E87FE003C81CC /* State.swift */; };
 		7ADE5DF1283E88F4003C81CC /* BitcoinAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE5DF0283E88F3003C81CC /* BitcoinAction.swift */; };
 		7ADE5DF3283E8C75003C81CC /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE5DF2283E8C75003C81CC /* AppReducer.swift */; };
@@ -177,6 +178,7 @@
 		7A8FDDB6283FB97D00C13EBC /* HomeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorTests.swift; sourceTree = "<group>"; };
 		7A8FDDB8283FBD3A00C13EBC /* MockBitcoinPriceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBitcoinPriceService.swift; sourceTree = "<group>"; };
 		7A8FDDBA283FF96D00C13EBC /* HomeRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouterTests.swift; sourceTree = "<group>"; };
+		7ACEC1AD284526E200B1D242 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7ADE5DEE283E87FE003C81CC /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		7ADE5DF0283E88F3003C81CC /* BitcoinAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinAction.swift; sourceTree = "<group>"; };
 		7ADE5DF2283E8C75003C81CC /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				578A420F283E6827007EF0D8 /* UINavigationController+Extensions.swift */,
 				578A4215283E844E007EF0D8 /* UIApplication+Extensions.swift */,
 				5704385C283FC20200B1E214 /* Notification+Extensions.swift */,
+				7ACEC1AD284526E200B1D242 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -768,6 +771,7 @@
 				7A2A3F4728357EA000559CB4 /* RemoveBitcoinRouter.swift in Sources */,
 				7A6F79212836BEB00030FE91 /* HomePresenterProtocol.swift in Sources */,
 				9923FD94283C11030026F99D /* BorderedTextField.swift in Sources */,
+				7ACEC1AE284526E200B1D242 /* UIViewController+Extensions.swift in Sources */,
 				57A0C70A28355CAA00AC0A39 /* SceneDelegate.swift in Sources */,
 				578A4210283E6827007EF0D8 /* UINavigationController+Extensions.swift in Sources */,
 				7ADE5DEF283E87FF003C81CC /* State.swift in Sources */,

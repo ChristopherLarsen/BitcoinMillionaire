@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
     var millionaireButton: UIButton!
     var presenter: HomePresenterProtocol?
     var noticeLabel: UILabel!
-    
+    var activityLoader: UIAlertController?
     private var subscriptions = Set<AnyCancellable>()
     
     //MARK: Lifecycle methods
@@ -62,6 +62,9 @@ class HomeViewController: UIViewController {
             subscriptions =
             [presenter.$latestPrice
                 .sink(receiveValue: { price in
+                    if let activityLoader = self.activityLoader {
+                        self.stopLoader(loader: activityLoader)
+                    }
                     if let price = price {
                         let numberFormatter = NumberFormatter()
                         numberFormatter.numberStyle = .decimal
@@ -89,6 +92,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func checkPrice() {
+        activityLoader = loader(message: "Please wait...")
         presenter?.checkLatestBitcoinPriceOnline()
     }
     
