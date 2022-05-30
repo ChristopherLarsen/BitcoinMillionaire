@@ -167,6 +167,8 @@ extension RemoveBitcoinViewController {
         let width: CGFloat = 300.0
         let borderWidth: CGFloat = 2.0
         let returnValue = BorderedTextField()
+        returnValue.keyboardType = .decimalPad
+        returnValue.delegate = self
         //constraints
         returnValue.heightAnchor.constraint(equalToConstant: height).isActive = true
         returnValue.widthAnchor.constraint(equalToConstant: width).isActive = true
@@ -246,3 +248,23 @@ struct RemoveBitcoinViewController_Previews : PreviewProvider {
     }
 }
 
+extension RemoveBitcoinViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let oldText = textField.text, let range = Range(range, in: oldText) else {
+            return true
+        }
+        
+        let newText = oldText.replacingCharacters(in: range, with: string)
+        let isNumeric = newText.isEmpty || (Double(newText) != nil)
+        let numberOfDots = newText.components(separatedBy: ".").count - 1
+        
+        let numberOfDecimalDigits: Int
+        if let dotIndex = newText.firstIndex(of: ".") {
+            numberOfDecimalDigits = newText.distance(from: dotIndex, to: newText.endIndex) - 1
+        } else {
+            numberOfDecimalDigits = 0
+        }
+        
+        return isNumeric && numberOfDots <= 1 && numberOfDecimalDigits <= 8
+    }
+}
