@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Combine
+import ReSwift
 
 // MARK: - MillionaireViewControllerProtocol
 
@@ -24,7 +25,8 @@ class MillionaireViewController : UIViewController, MillionaireViewControllerPro
     var imageView: UIImageView!
     var labelCheer: UILabel!
     var buttonDone: UIButton!
-    
+    var noticeLabel: UILabel!
+
     var millionairePresenter: MillionairePresenterProtocol
     
     var isBitcoinMillionaire: PassthroughSubject<Bool, Never> = PassthroughSubject()
@@ -135,7 +137,8 @@ private extension MillionaireViewController {
         labelCheer.addConstraint(heightConstraintCheer)
         
         self.labelCheer = labelCheer
-
+        
+        // Done button
         let buttonDone = ButtonUtility.createButton(title: "Yay!")
         buttonDone.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(buttonDone)
@@ -152,9 +155,26 @@ private extension MillionaireViewController {
         
         self.buttonDone = buttonDone
         
+        //Notice label
+        noticeLabel = UILabel()
+        noticeLabel.accessibilityIdentifier = "noticeLabel"
+        noticeLabel.textAlignment = .center
+        self.noticeLabel.text  =  ""
+        noticeLabel.numberOfLines = 0
+        noticeLabel.font = UIFont.preferredFont(forTextStyle: .title2)
+        noticeLabel.adjustsFontForContentSizeCategory = true
+        noticeLabel.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(noticeLabel)
+        
+        NSLayoutConstraint.activate([
+            noticeLabel.topAnchor.constraint(equalTo: labelCheer.bottomAnchor, constant: 25),
+            noticeLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 30),
+            noticeLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -30),
+            noticeLabel.bottomAnchor.constraint(equalTo: buttonDone.topAnchor, constant: -20)
+        ])
+        
         view.setNeedsLayout()
     }
-    
 }
 
 // MARK: - Private - Update
@@ -177,8 +197,8 @@ private extension MillionaireViewController {
             imageView.image = symbol
             labelCheer.text = "But you're on your way!"
             buttonDone.setTitle("Collect more Bitcoin!", for: .normal)
+            noticeLabel.text = mainStore.state.message
         }
-        
     }
     
 }
