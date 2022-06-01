@@ -13,7 +13,6 @@ import Combine
 // MARK: - UserBitcoinServiceProtocol
  
 protocol UserBitcoinServiceProtocol : AnyObject {
-    var currentUserBitcoins: CurrentValueSubject<UserBitcoinEntity, Never> { get }
     func addBitcoin(amountToAdd: Double) -> Result<Bool, Error>
     func removeBitcoin(amountToRemove: Double) -> Result<Bool, Error>
     func fetchLatestUserBitcoinsFromDatabase() 
