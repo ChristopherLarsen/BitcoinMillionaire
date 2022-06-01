@@ -10,6 +10,7 @@ import Combine
 @testable import BitcoinMillionaire
 
 class MockHomeInteractor: HomeInteractorProtocol {
+    
     var checkLatestBitcoinPriceInInteractorCalled: Bool = false
     var checkIfIAmAMillionaireInInteractorCalled: Bool = false
     var checkIfBitcoinAvailabilityInInteractorCalled: Bool = false
@@ -30,12 +31,6 @@ class MockHomeInteractor: HomeInteractorProtocol {
         return Just(0.0)
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
-    }
-
-    func checkBitcoinAvailability() -> CurrentValueSubject<UserBitcoinEntity, Never> {
-        checkIfBitcoinAvailabilityInInteractorCalled = true
-        let currentValueSubject = CurrentValueSubject<UserBitcoinEntity, Never>(UserBitcoinEntity(initialCoins: 10.0))
-        return currentValueSubject
     }
 
 }

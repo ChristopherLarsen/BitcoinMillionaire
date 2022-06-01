@@ -19,6 +19,7 @@ class AppReducerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
+    // TODO: repair
 //    func testAppReducer_WhenMoreBitCoinsAreAdded_MessageShouldGetUpdatedToShowNewCriteria() {
 //
 //        let store = Store<State>(reducer: reducer, state: nil)

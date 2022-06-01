@@ -14,13 +14,13 @@ func bitcoinReducer(bitcoinAction: BitcoinAction, state: State) -> State {
     var state: State = state
 
     switch bitcoinAction {
+        
     case .addBitcoin(let amount):
         
         let currentAmount = state.bitcoinState.bitcoin
         let amountToAdd = amount
         let newAmount = currentAmount + amountToAdd
         state.bitcoinState = BitcoinState(bitcoin: newAmount)
-        print("adding")
         
     case .removeBitcoin(let amount):
         
@@ -34,7 +34,6 @@ func bitcoinReducer(bitcoinAction: BitcoinAction, state: State) -> State {
         
         let newAmount = currentAmount - amountToRemove
         state.bitcoinState = BitcoinState(bitcoin: newAmount)
-        print("removing")
     }
     
     return state

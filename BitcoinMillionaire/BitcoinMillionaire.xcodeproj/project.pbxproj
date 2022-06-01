@@ -28,6 +28,7 @@
 		576F118C2847D4E900176794 /* MockStoreSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576F118B2847D4E900176794 /* MockStoreSubscriber.swift */; };
 		576F118E2847DC2B00176794 /* MessageReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576F118D2847DC2B00176794 /* MessageReducer.swift */; };
 		576F11902847DC4200176794 /* BitcoinReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576F118F2847DC4200176794 /* BitcoinReducer.swift */; };
+		576F11922847E36D00176794 /* MockStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576F11912847E36D00176794 /* MockStore.swift */; };
 		578A4210283E6827007EF0D8 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A420F283E6827007EF0D8 /* UINavigationController+Extensions.swift */; };
 		578A4216283E844E007EF0D8 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A4215283E844E007EF0D8 /* UIApplication+Extensions.swift */; };
 		57A0C70828355CAA00AC0A39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C70728355CAA00AC0A39 /* AppDelegate.swift */; };
@@ -36,7 +37,6 @@
 		57A0C71428355CAC00AC0A39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57A0C71228355CAC00AC0A39 /* LaunchScreen.storyboard */; };
 		57A0C72928355CAC00AC0A39 /* HomeViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C72828355CAC00AC0A39 /* HomeViewUITests.swift */; };
 		57A0C72B28355CAC00AC0A39 /* BitcoinMillionaireUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C72A28355CAC00AC0A39 /* BitcoinMillionaireUITestsLaunchTests.swift */; };
-		57A0C739283696AE00AC0A39 /* UserBitcoinEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C738283696AE00AC0A39 /* UserBitcoinEntity.swift */; };
 		57A0C73C283697F100AC0A39 /* UserBitcoinService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C73B283697F100AC0A39 /* UserBitcoinService.swift */; };
 		57A0C74028369BD600AC0A39 /* UserBitcoinServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C73F28369BD600AC0A39 /* UserBitcoinServiceTests.swift */; };
 		57A0C7422836A0A000AC0A39 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C7412836A0A000AC0A39 /* DatabaseService.swift */; };
@@ -45,7 +45,6 @@
 		57A0C7482836A50100AC0A39 /* MockBitcoinUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C7472836A50100AC0A39 /* MockBitcoinUserDefaults.swift */; };
 		57A0C74A2836A78200AC0A39 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C7492836A78200AC0A39 /* UserDefaultsProtocol.swift */; };
 		57A0C74E2836CF8100AC0A39 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C74D2836CF8100AC0A39 /* MockDatabase.swift */; };
-		57A0C7542836D57300AC0A39 /* UserBitcoinEntityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A0C7532836D57300AC0A39 /* UserBitcoinEntityTests.swift */; };
 		5C64D8522840F9F100B5D208 /* RemoveBitcoinPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C64D8512840F9F100B5D208 /* RemoveBitcoinPresenterTests.swift */; };
 		5C64D8542840FABF00B5D208 /* RemoveBitcoinInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C64D8532840FABF00B5D208 /* RemoveBitcoinInteractorMock.swift */; };
 		7A2A3F2F28357DF300559CB4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F2E28357DF300559CB4 /* HomeViewController.swift */; };
@@ -143,6 +142,7 @@
 		576F118B2847D4E900176794 /* MockStoreSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStoreSubscriber.swift; sourceTree = "<group>"; };
 		576F118D2847DC2B00176794 /* MessageReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageReducer.swift; sourceTree = "<group>"; };
 		576F118F2847DC4200176794 /* BitcoinReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinReducer.swift; sourceTree = "<group>"; };
+		576F11912847E36D00176794 /* MockStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStore.swift; sourceTree = "<group>"; };
 		578A420F283E6827007EF0D8 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		578A4215283E844E007EF0D8 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		57A0C70428355CAA00AC0A39 /* BitcoinMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitcoinMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,7 +155,6 @@
 		57A0C72428355CAC00AC0A39 /* BitcoinMillionaireUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitcoinMillionaireUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57A0C72828355CAC00AC0A39 /* HomeViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewUITests.swift; sourceTree = "<group>"; };
 		57A0C72A28355CAC00AC0A39 /* BitcoinMillionaireUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinMillionaireUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		57A0C738283696AE00AC0A39 /* UserBitcoinEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBitcoinEntity.swift; sourceTree = "<group>"; };
 		57A0C73B283697F100AC0A39 /* UserBitcoinService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBitcoinService.swift; sourceTree = "<group>"; };
 		57A0C73F28369BD600AC0A39 /* UserBitcoinServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBitcoinServiceTests.swift; sourceTree = "<group>"; };
 		57A0C7412836A0A000AC0A39 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
@@ -164,7 +163,6 @@
 		57A0C7472836A50100AC0A39 /* MockBitcoinUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBitcoinUserDefaults.swift; sourceTree = "<group>"; };
 		57A0C7492836A78200AC0A39 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
 		57A0C74D2836CF8100AC0A39 /* MockDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabase.swift; sourceTree = "<group>"; };
-		57A0C7532836D57300AC0A39 /* UserBitcoinEntityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBitcoinEntityTests.swift; sourceTree = "<group>"; };
 		5C64D8512840F9F100B5D208 /* RemoveBitcoinPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBitcoinPresenterTests.swift; sourceTree = "<group>"; };
 		5C64D8532840FABF00B5D208 /* RemoveBitcoinInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBitcoinInteractorMock.swift; sourceTree = "<group>"; };
 		7A2A3F2E28357DF300559CB4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +265,7 @@
 				93EFE8E22847B8BA00A041B1 /* BitcoinStateTests.swift */,
 				576F11872847D0FD00176794 /* BitcoinReducerTests.swift */,
 				576F118B2847D4E900176794 /* MockStoreSubscriber.swift */,
+				576F11912847E36D00176794 /* MockStore.swift */,
 			);
 			path = ReduxTests;
 			sourceTree = "<group>";
@@ -343,7 +342,6 @@
 				7A6F791D2836BEB00030FE91 /* Protocols */,
 				99AFD76F28368AD000BD7321 /* Entities */,
 				7A6F78E22835929D0030FE91 /* Utilities */,
-				57A0C7372836967500AC0A39 /* Entities */,
 				7A2A3F4828357EB200559CB4 /* Network */,
 				57A0C73A283697DD00AC0A39 /* Services */,
 				57A0C70728355CAA00AC0A39 /* AppDelegate.swift */,
@@ -368,7 +366,6 @@
 				99AFD778283691EB00BD7321 /* Network */,
 				57A0C7512836D50700AC0A39 /* UserBitcoinServiceTests */,
 				57A0C7522836D51000AC0A39 /* DatabaseServiceTests */,
-				57A0C7532836D57300AC0A39 /* UserBitcoinEntityTests.swift */,
 			);
 			path = BitcoinMillionaireTests;
 			sourceTree = "<group>";
@@ -380,14 +377,6 @@
 				7A8FDDC12840870500C13EBC /* Millionaire */,
 			);
 			path = BitcoinMillionaireUITests;
-			sourceTree = "<group>";
-		};
-		57A0C7372836967500AC0A39 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				57A0C738283696AE00AC0A39 /* UserBitcoinEntity.swift */,
-			);
-			path = Entities;
 			sourceTree = "<group>";
 		};
 		57A0C73A283697DD00AC0A39 /* Services */ = {
@@ -817,7 +806,6 @@
 				99E33D632836AD9500021460 /* ResponseProtocol.swift in Sources */,
 				5704385D283FC20200B1E214 /* Notification+Extensions.swift in Sources */,
 				7A2A3F4328357E9100559CB4 /* RemoveBitcoinInteractor.swift in Sources */,
-				57A0C739283696AE00AC0A39 /* UserBitcoinEntity.swift in Sources */,
 				7A2A3F3828357E4300559CB4 /* AddBitcoinViewController.swift in Sources */,
 				99AFD77E283693A300BD7321 /* BitcoinPriceService.swift in Sources */,
 				576F118E2847DC2B00176794 /* MessageReducer.swift in Sources */,
@@ -873,6 +861,7 @@
 				573E8A0F283D7EEB00B4F21C /* MillionaireViewControllerTests.swift in Sources */,
 				7A6F79292836BEC00030FE91 /* MockHomePresenter.swift in Sources */,
 				99546ECE283FC53600864BDF /* BitcoinPriceServiceCorrectResponseStub.swift in Sources */,
+				576F11922847E36D00176794 /* MockStore.swift in Sources */,
 				99D113E7283FD98F00222D35 /* AddBitcoinInteractorMock.swift in Sources */,
 				7A6F792A2836BEC00030FE91 /* MockHomeInteractor.swift in Sources */,
 				99B0CBF828401F6000082A04 /* AddBitcoinInteractorTests.swift in Sources */,
@@ -882,7 +871,6 @@
 				99B0CBFC2840265C00082A04 /* MockWrongResponse.swift in Sources */,
 				99E33D6F2836E44700021460 /* MockURLProtocol.swift in Sources */,
 				93EFE8E32847B8BA00A041B1 /* BitcoinStateTests.swift in Sources */,
-				57A0C7542836D57300AC0A39 /* UserBitcoinEntityTests.swift in Sources */,
 				57A0C7462836A49B00AC0A39 /* DatabaseServiceTests.swift in Sources */,
 				573E8A1D283D9C0D00B4F21C /* MockMillionaireInteractor.swift in Sources */,
 				994C877928410A58009272F4 /* HomePresenterTests.swift in Sources */,

@@ -17,7 +17,7 @@ class HomeInteractor: HomeInteractorProtocol {
     var userBitcoinService: UserBitcoinServiceProtocol!
 
     //MARK: Lifecycle methods
-    init(with bitcoinPriceService: BitcoinPriceServiceProtocol = BitcoinPriceService(), userBitcoinService: UserBitcoinServiceProtocol = UserBitcoinService(database: DatabaseService(userDefaults: BitcoinUserDefaults()))) {
+    init(with bitcoinPriceService: BitcoinPriceServiceProtocol = BitcoinPriceService(), userBitcoinService: UserBitcoinServiceProtocol = UserBitcoinService()) {
         self.bitcoinPriceService = bitcoinPriceService
         self.userBitcoinService = userBitcoinService
     }

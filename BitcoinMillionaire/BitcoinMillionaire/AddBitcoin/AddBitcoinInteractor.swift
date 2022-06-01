@@ -15,7 +15,7 @@ class AddBitcoinInteractor : AddBitcoinInteractorProtocol {
     
     var userBitcoinService: UserBitcoinServiceProtocol
     
-    init(userBitcoinService: UserBitcoinServiceProtocol = UserBitcoinService(database: DatabaseService(userDefaults: BitcoinUserDefaults()))) {
+    init(userBitcoinService: UserBitcoinServiceProtocol = UserBitcoinService() ) {
         self.userBitcoinService = userBitcoinService
     }
     
