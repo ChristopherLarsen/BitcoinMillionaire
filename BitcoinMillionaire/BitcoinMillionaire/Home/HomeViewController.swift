@@ -49,10 +49,13 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         self.title = "Bitcoin Millionaire"
         view.backgroundColor = .systemBackground
-        if let presenter = presenter as? HomePresenter {
-            presenter.checkNumberOfCoinsAvailable()
-            mainStore.dispatch(BitcoinAction(bitcoins: presenter.bitcoinsAvailable ?? 0.0, bitcoinPrice: presenter.latestPrice ?? 0.0))
-        }
+        
+        // TODO: No longer needed?
+//        if let presenter = presenter as? HomePresenter {
+//            presenter.checkNumberOfCoinsAvailable()
+//            mainStore.dispatch(BitcoinAction(bitcoins: presenter.bitcoinsAvailable ?? 0.0, bitcoinPrice: presenter.latestPrice ?? 0.0))
+//        }
+        
     }
     
     //MARK: Custom methods
@@ -71,13 +74,15 @@ class HomeViewController: UIViewController {
                         if let formattedNumber = numberFormatter.string(from: NSNumber(value: price)) {
                             self.latestPriceLabel.text  =  "Latest Price: $\(formattedNumber)"
                         }
-                        mainStore.dispatch(BitcoinAction(bitcoins: presenter.bitcoinsAvailable ?? 0.0, bitcoinPrice: presenter.latestPrice ?? 0.0))
+                        // TODO: No longer needed?
+                        // mainStore.dispatch(BitcoinAction(bitcoins: presenter.bitcoinsAvailable ?? 0.0, bitcoinPrice: presenter.latestPrice ?? 0.0))
                     }
                 }),
              presenter.$bitcoinsAvailable
                 .sink(receiveValue: { coins in
                     self.numberOfCoinsLabel.text = "Bitcoins: \(coins ?? 0.0)"
-                    mainStore.dispatch(BitcoinAction(bitcoins: presenter.bitcoinsAvailable ?? 0.0, bitcoinPrice: presenter.latestPrice ?? 0.0))
+                    // TODO: No longer needed?
+                    // mainStore.dispatch(BitcoinAction(bitcoins: presenter.bitcoinsAvailable ?? 0.0, bitcoinPrice: presenter.latestPrice ?? 0.0))
                 })]
         }
     }

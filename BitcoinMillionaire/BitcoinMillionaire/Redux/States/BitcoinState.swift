@@ -13,6 +13,9 @@ struct BitcoinState {
     
     var bitcoin: Double
     
+    /// The Bitcoin amount is initialized from the Database by default.
+    /// Providing an initial value overrides the stored value.
+    ///
     init(bitcoin: Double? = nil, databaseService: DatabaseService = DatabaseService() ) {
         
         if let bitcoin = bitcoin {
@@ -21,7 +24,7 @@ struct BitcoinState {
         }
         
         let databaseService = DatabaseService()
-        let result = databaseService.read(key: Key.keyBitcoinPrice)
+        let result = databaseService.read(key: Key.keyBitcoin)
         
         switch result {
         case .success(let value):
@@ -29,13 +32,13 @@ struct BitcoinState {
                 self.bitcoin = valueAsDouble
             } else {
                 let initialBitcoin: Double = 0.0
-                _ = databaseService.update(key: Key.keyBitcoinPrice, object: initialBitcoin)
+                _ = databaseService.update(key: Key.keyBitcoin, object: initialBitcoin)
                 self.bitcoin = initialBitcoin
             }
         case .failure(let databaseError):
             print("Error reading from Database: \(databaseError)")
             let initialBitcoin: Double = 0.0
-            _ = databaseService.create(key: Key.keyBitcoinPrice, object: initialBitcoin)
+            _ = databaseService.create(key: Key.keyBitcoin, object: initialBitcoin)
             self.bitcoin = 0.0
         }
         

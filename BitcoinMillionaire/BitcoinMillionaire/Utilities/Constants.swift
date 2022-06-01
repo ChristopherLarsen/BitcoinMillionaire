@@ -19,7 +19,7 @@ struct Constants {
 
 struct Key {
     
-    static let keyUserBitcoin: String       = "keyUserBitcoin"
-    static let keyBitcoinPrice: String      = "keyBitcoinPrice"
+    static let keyBitcoin: String       = "keyBitcoin"
+    static let keyBitcoinPrice: String  = "keyBitcoinPrice"
 
 }

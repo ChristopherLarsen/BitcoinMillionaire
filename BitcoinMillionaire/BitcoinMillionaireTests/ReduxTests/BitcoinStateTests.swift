@@ -9,7 +9,7 @@ import XCTest
 @testable import BitcoinMillionaire
 
 
-class BitcoinReduxTests: XCTestCase {
+class BitcoinStateTests: XCTestCase {
 
     override func setUpWithError() throws {
     }
@@ -22,6 +22,7 @@ class BitcoinReduxTests: XCTestCase {
         // Arrange
         
         let mockDatabaseService = MockDatabase()
+        _ = mockDatabaseService.delete(key: Key.keyBitcoin)
         
         // Act
 

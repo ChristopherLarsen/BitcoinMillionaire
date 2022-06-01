@@ -126,7 +126,7 @@ extension UserBitcoinService {
     
     func fetchLatestUserBitcoinsFromDatabase() {
         
-        if case .success(let readObject) = database.read(key: Key.keyUserBitcoin) {
+        if case .success(let readObject) = database.read(key: Key.keyBitcoin) {
             
             if let initialCoins = readObject as? Double {
                 
@@ -140,7 +140,7 @@ extension UserBitcoinService {
             
             initializeUserBitcoinsWithZeroBitcoins()
             
-            if case .success(let readObject) = database.read(key: Key.keyUserBitcoin) {
+            if case .success(let readObject) = database.read(key: Key.keyBitcoin) {
                 
                 guard let initialCoins = readObject as? Double else {
                     print("Error - Failed to initialize the UserBitcoinEntity")
@@ -218,7 +218,7 @@ extension UserBitcoinService {
         
         let initialCoins: Float = 0.0
         
-        let result = database.create(key: Key.keyUserBitcoin, object: initialCoins)
+        let result = database.create(key: Key.keyBitcoin, object: initialCoins)
         
         guard case .success(_) = result else {
             print("The database operation was not successful.")
@@ -235,7 +235,7 @@ extension UserBitcoinService {
 
         let bitcoins: Double = currentUserBitcoins.value.bitcoins
         
-        let resultDatabaseOperation = database.update(key: Key.keyUserBitcoin, object: bitcoins)
+        let resultDatabaseOperation = database.update(key: Key.keyBitcoin, object: bitcoins)
         
         switch resultDatabaseOperation {
         case .success(let result):
