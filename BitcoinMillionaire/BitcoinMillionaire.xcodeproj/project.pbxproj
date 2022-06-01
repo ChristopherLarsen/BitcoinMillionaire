@@ -54,7 +54,6 @@
 		7A2A3F4328357E9100559CB4 /* RemoveBitcoinInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F4228357E9100559CB4 /* RemoveBitcoinInteractor.swift */; };
 		7A2A3F4528357E9800559CB4 /* RemoveBitcoinPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F4428357E9800559CB4 /* RemoveBitcoinPresenter.swift */; };
 		7A2A3F4728357EA000559CB4 /* RemoveBitcoinRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A3F4628357EA000559CB4 /* RemoveBitcoinRouter.swift */; };
-		7A4871F8283E9D3A001C6353 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7A4871F7283E9D3A001C6353 /* ReSwift */; };
 		7A6F78E4283592BC0030FE91 /* ButtonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F78E3283592BC0030FE91 /* ButtonUtility.swift */; };
 		7A6F79212836BEB00030FE91 /* HomePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F791E2836BEB00030FE91 /* HomePresenterProtocol.swift */; };
 		7A6F79222836BEB00030FE91 /* HomeInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F791F2836BEB00030FE91 /* HomeInteractorProtocol.swift */; };
@@ -68,6 +67,12 @@
 		7ADE5DEF283E87FF003C81CC /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE5DEE283E87FE003C81CC /* State.swift */; };
 		7ADE5DF1283E88F4003C81CC /* BitcoinAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE5DF0283E88F3003C81CC /* BitcoinAction.swift */; };
 		7ADE5DF3283E8C75003C81CC /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE5DF2283E8C75003C81CC /* AppReducer.swift */; };
+		93EFE8D22847B0DC00A041B1 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 93EFE8D12847B0DC00A041B1 /* ReSwift */; };
+		93EFE8D52847B13B00A041B1 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE8D42847B13B00A041B1 /* Store.swift */; };
+		93EFE8D82847B18E00A041B1 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE8D72847B18E00A041B1 /* Actions.swift */; };
+		93EFE8DB2847B1C400A041B1 /* Reducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE8DA2847B1C400A041B1 /* Reducers.swift */; };
+		93EFE8DE2847B27900A041B1 /* BitcoinState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE8DD2847B27900A041B1 /* BitcoinState.swift */; };
+		93EFE8E32847B8BA00A041B1 /* BitcoinReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EFE8E22847B8BA00A041B1 /* BitcoinReduxTests.swift */; };
 		9923FD94283C11030026F99D /* BorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9923FD93283C11030026F99D /* BorderedTextField.swift */; };
 		994C877628410A58009272F4 /* HomeRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C877228410A58009272F4 /* HomeRouterTests.swift */; };
 		994C877728410A58009272F4 /* HomeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C877328410A58009272F4 /* HomeInteractorTests.swift */; };
@@ -182,6 +187,11 @@
 		7ADE5DEE283E87FE003C81CC /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		7ADE5DF0283E88F3003C81CC /* BitcoinAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinAction.swift; sourceTree = "<group>"; };
 		7ADE5DF2283E8C75003C81CC /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		93EFE8D42847B13B00A041B1 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		93EFE8D72847B18E00A041B1 /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		93EFE8DA2847B1C400A041B1 /* Reducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducers.swift; sourceTree = "<group>"; };
+		93EFE8DD2847B27900A041B1 /* BitcoinState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinState.swift; sourceTree = "<group>"; };
+		93EFE8E22847B8BA00A041B1 /* BitcoinReduxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinReduxTests.swift; sourceTree = "<group>"; };
 		9923FD93283C11030026F99D /* BorderedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextField.swift; sourceTree = "<group>"; };
 		994C877228410A58009272F4 /* HomeRouterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRouterTests.swift; sourceTree = "<group>"; };
 		994C877328410A58009272F4 /* HomeInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeInteractorTests.swift; sourceTree = "<group>"; };
@@ -214,7 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A4871F8283E9D3A001C6353 /* ReSwift in Frameworks */,
+				93EFE8D22847B0DC00A041B1 /* ReSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +322,10 @@
 		57A0C70628355CAA00AC0A39 /* BitcoinMillionaire */ = {
 			isa = PBXGroup;
 			children = (
+				93EFE8DC2847B26C00A041B1 /* State */,
+				93EFE8D92847B1B200A041B1 /* Reducers */,
+				93EFE8D62847B18200A041B1 /* Actions */,
+				93EFE8D32847B12C00A041B1 /* Store */,
 				57A0C70928355CAA00AC0A39 /* SceneDelegate.swift */,
 				7A2A3F2D28357DC900559CB4 /* Home */,
 				7A2A3F3628357E2400559CB4 /* AddBitcoin */,
@@ -336,6 +350,7 @@
 		57A0C71D28355CAC00AC0A39 /* BitcoinMillionaireTests */ = {
 			isa = PBXGroup;
 			children = (
+				93EFE8DF2847B89200A041B1 /* BitcoinReduxTests */,
 				994C877128410A58009272F4 /* Home */,
 				5C64D8502840F9AF00B5D208 /* RemoveBitcoin */,
 				99D113E5283FD34200222D35 /* AddBitcoin */,
@@ -532,6 +547,46 @@
 			path = Millionaire;
 			sourceTree = "<group>";
 		};
+		93EFE8D32847B12C00A041B1 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				93EFE8D42847B13B00A041B1 /* Store.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		93EFE8D62847B18200A041B1 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				93EFE8D72847B18E00A041B1 /* Actions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		93EFE8D92847B1B200A041B1 /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				93EFE8DA2847B1C400A041B1 /* Reducers.swift */,
+			);
+			path = Reducers;
+			sourceTree = "<group>";
+		};
+		93EFE8DC2847B26C00A041B1 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				93EFE8DD2847B27900A041B1 /* BitcoinState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		93EFE8DF2847B89200A041B1 /* BitcoinReduxTests */ = {
+			isa = PBXGroup;
+			children = (
+				93EFE8E22847B8BA00A041B1 /* BitcoinReduxTests.swift */,
+			);
+			path = BitcoinReduxTests;
+			sourceTree = "<group>";
+		};
 		994C877028410A34009272F4 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,7 +664,7 @@
 			);
 			name = BitcoinMillionaire;
 			packageProductDependencies = (
-				7A4871F7283E9D3A001C6353 /* ReSwift */,
+				93EFE8D12847B0DC00A041B1 /* ReSwift */,
 			);
 			productName = BitcoinMillionaire;
 			productReference = 57A0C70428355CAA00AC0A39 /* BitcoinMillionaire.app */;
@@ -684,7 +739,7 @@
 			);
 			mainGroup = 57A0C6FB28355CAA00AC0A39;
 			packageReferences = (
-				7A4871F6283E9D3A001C6353 /* XCRemoteSwiftPackageReference "ReSwift" */,
+				93EFE8D02847B0DC00A041B1 /* XCRemoteSwiftPackageReference "ReSwift" */,
 			);
 			productRefGroup = 57A0C70528355CAA00AC0A39 /* Products */;
 			projectDirPath = "";
@@ -754,6 +809,8 @@
 				99E33D652836C3CA00021460 /* WebServiceProtocol.swift in Sources */,
 				99AFD7802836942300BD7321 /* Constants.swift in Sources */,
 				7A2A3F3A28357E4B00559CB4 /* AddBitcoinInteractor.swift in Sources */,
+				93EFE8D52847B13B00A041B1 /* Store.swift in Sources */,
+				93EFE8DB2847B1C400A041B1 /* Reducers.swift in Sources */,
 				99E33D632836AD9500021460 /* ResponseProtocol.swift in Sources */,
 				5704385D283FC20200B1E214 /* Notification+Extensions.swift in Sources */,
 				7A2A3F4328357E9100559CB4 /* RemoveBitcoinInteractor.swift in Sources */,
@@ -766,7 +823,9 @@
 				57A0C7422836A0A000AC0A39 /* DatabaseService.swift in Sources */,
 				57A0C70828355CAA00AC0A39 /* AppDelegate.swift in Sources */,
 				7A2A3F3528357E1500559CB4 /* HomeRouter.swift in Sources */,
+				93EFE8D82847B18E00A041B1 /* Actions.swift in Sources */,
 				7A2A3F4528357E9800559CB4 /* RemoveBitcoinPresenter.swift in Sources */,
+				93EFE8DE2847B27900A041B1 /* BitcoinState.swift in Sources */,
 				57A0C7442836A22500AC0A39 /* DatabaseError.swift in Sources */,
 				7A2A3F4728357EA000559CB4 /* RemoveBitcoinRouter.swift in Sources */,
 				7A6F79212836BEB00030FE91 /* HomePresenterProtocol.swift in Sources */,
@@ -818,6 +877,7 @@
 				57043863283FE31E00B1E214 /* MockMillionaireViewController.swift in Sources */,
 				99B0CBFC2840265C00082A04 /* MockWrongResponse.swift in Sources */,
 				99E33D6F2836E44700021460 /* MockURLProtocol.swift in Sources */,
+				93EFE8E32847B8BA00A041B1 /* BitcoinReduxTests.swift in Sources */,
 				57A0C7542836D57300AC0A39 /* UserBitcoinEntityTests.swift in Sources */,
 				57A0C7462836A49B00AC0A39 /* DatabaseServiceTests.swift in Sources */,
 				573E8A1D283D9C0D00B4F21C /* MockMillionaireInteractor.swift in Sources */,
@@ -1162,7 +1222,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7A4871F6283E9D3A001C6353 /* XCRemoteSwiftPackageReference "ReSwift" */ = {
+		93EFE8D02847B0DC00A041B1 /* XCRemoteSwiftPackageReference "ReSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReSwift/ReSwift.git";
 			requirement = {
@@ -1173,9 +1233,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7A4871F7283E9D3A001C6353 /* ReSwift */ = {
+		93EFE8D12847B0DC00A041B1 /* ReSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7A4871F6283E9D3A001C6353 /* XCRemoteSwiftPackageReference "ReSwift" */;
+			package = 93EFE8D02847B0DC00A041B1 /* XCRemoteSwiftPackageReference "ReSwift" */;
 			productName = ReSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

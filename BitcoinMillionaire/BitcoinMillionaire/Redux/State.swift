@@ -9,5 +9,7 @@ import Foundation
 import ReSwift
 
 struct State {
+    
     var message: String
+    
 }

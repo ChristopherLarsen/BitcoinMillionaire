@@ -8,7 +8,8 @@
 import Foundation
 import ReSwift
 
-func appReducer(action: Action, state: State?) -> State {
+func reducer(action: Action, state: State?) -> State {
+    
     if let action = action as? BitcoinAction {
         let balance = (Double(Constants.oneMillionDollars)/action.bitcoinPrice) - action.bitcoins
         let roundedOffBalance = Double(round(100000000 * balance) / 100000000)
@@ -16,5 +17,6 @@ func appReducer(action: Action, state: State?) -> State {
         state.message = roundedOffBalance <= 0 ? "You are a Millionaire!" : "You need \(roundedOffBalance) bitcoins to become a Millionaire!"
         return state
     }
+    
     return State(message: "")
 }
