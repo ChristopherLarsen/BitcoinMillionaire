@@ -37,6 +37,34 @@ class BitcoinReducerTests: XCTestCase {
         testStore.unsubscribe(mockStoreSubscriber)
     }
 
+    func testBitcoinReducer_WhenBitcoinChanges_ShouldNotifySubscribers() throws {
+        
+        // Arrange
+
+        let expectation = expectation(description: "Wait for state to update")
+        
+        mockStoreSubscriber.expection = expectation
+        
+        let amountToAdd = Double.random(in: 0...1).roundedToEightDigits
+        let addBitcoinAction = BitcoinAction.addBitcoin(amount: amountToAdd)
+        
+        // Act
+
+        testStore.dispatch(addBitcoinAction)
+                
+        // Assert
+
+        self.waitForExpectations(timeout: 1.0) { error in
+            
+            guard error == nil else {
+                return
+            }
+            
+            XCTAssert(self.mockStoreSubscriber.isCalledNewState, "Failed - Subscriber not called for changes to Bitcoin state.")
+        }
+        
+    }
+    
     func testBitcoinReducer_WhenAddingBitcoin_ShouldAddCorrectly() throws {
         
         // Arrange
@@ -132,5 +160,5 @@ class BitcoinReducerTests: XCTestCase {
         }
         
     }
-   
+    
 }

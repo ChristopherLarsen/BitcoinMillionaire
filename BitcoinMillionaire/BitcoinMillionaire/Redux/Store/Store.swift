@@ -12,5 +12,5 @@ import ReSwift
 ///
 let mainStore = Store<State>(
     reducer: reducer,
-    state: nil
+    state: State()
 )
