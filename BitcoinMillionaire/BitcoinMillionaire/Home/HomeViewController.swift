@@ -39,7 +39,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUserInterface()
-        mainStore.subscribe(self)
         setupBindings()
         presenter?.checkNumberOfCoinsAvailable()
         presenter?.checkLatestBitcoinPrice()
@@ -49,18 +48,21 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         self.title = "Bitcoin Millionaire"
         view.backgroundColor = .systemBackground
-        
-        // TODO: No longer needed?
-//        if let presenter = presenter as? HomePresenter {
-//            presenter.checkNumberOfCoinsAvailable()
-//            mainStore.dispatch(BitcoinAction(bitcoins: presenter.bitcoinsAvailable ?? 0.0, bitcoinPrice: presenter.latestPrice ?? 0.0))
-//        }
-        
+
+        mainStore.subscribe(self)
     }
     
-    //MARK: Custom methods
+    override func viewWillDisappear(_ animated: Bool) {
+        super .viewWillDisappear(animated)
+        
+        mainStore.unsubscribe(self)
+    }
+    
+    // MARK: Custom methods
     
     private func setupBindings() {
+        // TODO: Replace binding with Redux Store subscription
+        //
         if let presenter = presenter as? HomePresenter {
             subscriptions =
             [presenter.$latestPrice
@@ -74,17 +76,10 @@ class HomeViewController: UIViewController {
                         if let formattedNumber = numberFormatter.string(from: NSNumber(value: price)) {
                             self.latestPriceLabel.text  =  "Latest Price: $\(formattedNumber)"
                         }
-                        // TODO: No longer needed?
-                        // mainStore.dispatch(BitcoinAction(bitcoins: presenter.bitcoinsAvailable ?? 0.0, bitcoinPrice: presenter.latestPrice ?? 0.0))
                     }
-                }),
-             presenter.$bitcoinsAvailable
-                .sink(receiveValue: { coins in
-                    self.numberOfCoinsLabel.text = "Bitcoins: \(coins ?? 0.0)"
-                    // TODO: No longer needed?
-                    // mainStore.dispatch(BitcoinAction(bitcoins: presenter.bitcoinsAvailable ?? 0.0, bitcoinPrice: presenter.latestPrice ?? 0.0))
                 })]
         }
+        
     }
     
     //MARK: Actions performed by buttons
@@ -270,9 +265,12 @@ extension HomeViewController {
 
 extension HomeViewController: StoreSubscriber {
     typealias StoreSubscriberStateType = State
+    
     func newState(state: State) {
-        if noticeLabel != nil {
-            noticeLabel.text = state.message
-        }
+        noticeLabel?.text = state.message
+        
+        let bitcoinString = String(state.bitcoinState.bitcoin)
+        numberOfCoinsLabel.text = "Bitcoin: \(bitcoinString)"
     }
+    
 }

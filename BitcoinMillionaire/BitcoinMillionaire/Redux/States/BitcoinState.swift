@@ -11,6 +11,8 @@ import ReSwift
 
 struct BitcoinState {
     
+    // TODO: Save Bitcoin State to Database when updated.
+    
     var bitcoin: Double
     
     /// The Bitcoin amount is initialized from the Database by default.

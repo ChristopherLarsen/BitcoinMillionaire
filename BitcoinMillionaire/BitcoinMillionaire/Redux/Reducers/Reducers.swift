@@ -12,13 +12,14 @@ import ReSwift
 func reducer(action: Action, state: State?) -> State {
 
     var state: State = state ?? State()
-    
-    if let messageAction = action as? MessageAction {
-        state = messageReducer(messageAction: messageAction, state: state)
-    }
 
     if let bitcoinAction = action as? BitcoinAction {
         state = bitcoinReducer(bitcoinAction: bitcoinAction, state: state)
+        state = messageReducer(messageAction: MessageAction.updateMessage, state: state)
+    }
+
+    if let messageAction = action as? MessageAction {
+        state = messageReducer(messageAction: messageAction, state: state)
     }
 
     return state

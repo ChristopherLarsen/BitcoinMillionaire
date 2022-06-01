@@ -18,11 +18,12 @@ class AppReducerTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+  
+    // TODO: Repair with new Bitcoin State to heck Message state
     
-    // TODO: repair
 //    func testAppReducer_WhenMoreBitCoinsAreAdded_MessageShouldGetUpdatedToShowNewCriteria() {
 //
-//        let store = Store<State>(reducer: reducer, state: nil)
+//        let store = Store<State>(reducer: appReducer, state: nil)
 //
 //        // Player 1 choose
 //        store.dispatch(BitcoinAction(bitcoins: 20.0, bitcoinPrice: 29617.224609375))

@@ -50,7 +50,7 @@ class UserBitcoinServiceTests: XCTestCase {
     }
     
     func testUserBitcoinService_WhenBitcoinAdded_ShouldCallStoreToDispatch() {
-        // TODO: How to mock the store?
+        // TODO: Need a mock Store
     }
     
     func testUserBitcoinService_WhenBitcoinAdded_ShouldUpdateTheStore() {
