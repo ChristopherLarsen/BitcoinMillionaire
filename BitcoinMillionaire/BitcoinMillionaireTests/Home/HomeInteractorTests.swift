@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import ReSwift
 @testable import BitcoinMillionaire
 
 class HomeInteractorTests: XCTestCase {
@@ -15,11 +16,21 @@ class HomeInteractorTests: XCTestCase {
     var homeRouter: HomeRouterProtocol!
     var bitcoinPriceService: BitcoinPriceServiceProtocol!
     var userBitcoinService: UserBitcoinServiceProtocol!
-
+    var testStore: Store<State>!
+    
     override func setUpWithError() throws {
-        let dataBaseService = DatabaseService()
+        
+        let initialState = State(message: "",
+                                 bitcoinState: BitcoinState(),
+                                 priceState: PriceState() )
+        
+        testStore = Store<State>(
+            reducer: reducer,
+            state: initialState
+        )
+
         let bitcoinPriceService = MockBitcoinPriceService()
-        systemUnderTest = HomeInteractor(with: bitcoinPriceService, userBitcoinService: UserBitcoinService(database: dataBaseService))
+        systemUnderTest = HomeInteractor(with: bitcoinPriceService, userBitcoinService: UserBitcoinService(store: testStore))
         homeRouter = MockHomeRouter()
     }
 

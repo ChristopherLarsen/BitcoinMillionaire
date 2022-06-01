@@ -56,13 +56,8 @@ class HomePresenter: HomePresenterProtocol, ObservableObject {
             }))
     }
     
-    
-    /// Method to call inetractor to check the number of coins available with the user.
     func checkNumberOfCoinsAvailable() {
-        subscriptions.insert(interactor?.checkBitcoinAvailability()
-            .sink(receiveCompletion: { _ in}, receiveValue: { bitcoinEntity in
-                self.bitcoinsAvailable = Double(round(100000000 * bitcoinEntity.bitcoins) / 100000000)
-            }))
+        self.bitcoinsAvailable = mainStore.state.bitcoinState.bitcoin
     }
     
     /// Method to call interactor to check if user is a millionaire

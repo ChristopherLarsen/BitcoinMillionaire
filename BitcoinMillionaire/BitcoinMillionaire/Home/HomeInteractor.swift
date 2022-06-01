@@ -17,7 +17,7 @@ class HomeInteractor: HomeInteractorProtocol {
     var userBitcoinService: UserBitcoinServiceProtocol!
 
     //MARK: Lifecycle methods
-    init(with bitcoinPriceService: BitcoinPriceServiceProtocol = BitcoinPriceService(), userBitcoinService: UserBitcoinServiceProtocol = UserBitcoinService(database: DatabaseService(userDefaults: BitcoinUserDefaults()))) {
+    init(with bitcoinPriceService: BitcoinPriceServiceProtocol = BitcoinPriceService(), userBitcoinService: UserBitcoinServiceProtocol = UserBitcoinService()) {
         self.bitcoinPriceService = bitcoinPriceService
         self.userBitcoinService = userBitcoinService
     }
@@ -43,12 +43,4 @@ class HomeInteractor: HomeInteractorProtocol {
         return bitcoinPriceService.getLatestFromDataBase()
     }
     
-    /// Method to call bitcoin user bitcoin service to fetch available number of bitcoins with the user.
-    /// - Returns: A Subject publishing UserBitcoinEntity or Error, if any
-    func checkBitcoinAvailability() -> CurrentValueSubject<UserBitcoinEntity, Never> {
-        if let userBitcoinService = userBitcoinService as? UserBitcoinService {
-            userBitcoinService.fetchLatestUserBitcoinsFromDatabase()
-        }
-        return userBitcoinService.currentUserBitcoins
-    }
 }

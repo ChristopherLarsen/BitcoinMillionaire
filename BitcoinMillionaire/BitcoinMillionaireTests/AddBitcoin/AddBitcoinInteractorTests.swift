@@ -6,13 +6,33 @@
 //
 
 import XCTest
+import ReSwift
 @testable import BitcoinMillionaire
+
 
 class AddBitcoinInteractorTests: XCTestCase {
     
+    var testStore: Store<State>!
+
+    override func setUpWithError() throws {
+    
+        let initialState = State(message: "",
+                                 bitcoinState: BitcoinState(),
+                                 priceState: PriceState() )
+        
+        testStore = Store<State>(
+            reducer: reducer,
+            state: initialState
+        )
+
+    }
+
+    override func tearDownWithError() throws {
+    }
+    
     func testAddBitcoinInteractor_WhenAddingPositiveAmountOfBitcoin_ShouldReturnTrue() throws {
         //Arrange
-        let service = UserBitcoinService(database: MockDatabase(userDefaults: .init()))
+        let service = UserBitcoinService()
         let sut = AddBitcoinInteractor(userBitcoinService: service)
         //Act
         let amount : Double = 1.0
@@ -26,7 +46,7 @@ class AddBitcoinInteractorTests: XCTestCase {
     
     func testAddBitcoinInteractor_WhenGivingANegativeAmoungOfBitcoin_ShouldThrowError() throws {
         //Arrange
-        let service = UserBitcoinService(database: MockDatabase(userDefaults: .init()))
+        let service = UserBitcoinService(store: testStore)
         let sut = AddBitcoinInteractor(userBitcoinService: service)
         //Act
         let amount : Double = -1.0
@@ -40,7 +60,7 @@ class AddBitcoinInteractorTests: XCTestCase {
     
     func testAddBitcoinInteractor_WhenGivingZeroBitcoin_ShouldThrowError() throws {
         //Arrange
-        let service = UserBitcoinService(database: MockDatabase(userDefaults: .init()))
+        let service = UserBitcoinService(store: testStore)
         let sut = AddBitcoinInteractor(userBitcoinService: service)
         //Act
         let amount : Double = 0.0

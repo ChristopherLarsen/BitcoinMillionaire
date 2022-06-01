@@ -25,8 +25,7 @@ class MillionaireInteractor : MillionaireInteractorProtocol {
     
     func calculateUserBitcoinMillionaireStatus() {
         
-        let userBitcoinService = UserBitcoinService()
-        let bitcoins = userBitcoinService.currentUserBitcoins.value.bitcoins
+        let bitcoins = mainStore.state.bitcoinState.bitcoin
 
         let webservice = WebService()
         let bitcoinPriceService = BitcoinPriceService(webService: webservice)
